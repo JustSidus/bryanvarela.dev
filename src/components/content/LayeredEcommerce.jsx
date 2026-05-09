@@ -1,4 +1,3 @@
-import React from 'react'
 import { Frontmatter } from '../ui/Frontmatter'
 import { CodeBlock, tok } from '../ui/CodeBlock'
 import { Diagram } from '../ui/Diagram'

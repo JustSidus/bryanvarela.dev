@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { FILE_META } from '../../data/files'
 
 export function Breadcrumbs({ activeId }) {
@@ -8,10 +8,10 @@ export function Breadcrumbs({ activeId }) {
   return (
     <div className="breadcrumbs">
       {parts.map((p, i) => (
-        <React.Fragment key={i}>
+        <Fragment key={i}>
           <span className="crumb">{p}</span>
           <span className="sep">›</span>
-        </React.Fragment>
+        </Fragment>
       ))}
       <span className="crumb">{f.name}</span>
     </div>

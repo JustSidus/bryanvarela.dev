@@ -1,4 +1,3 @@
-import React from 'react'
 import { Frontmatter } from '../ui/Frontmatter'
 import { Metrics } from '../ui/Metrics'
 import { Diagram } from '../ui/Diagram'

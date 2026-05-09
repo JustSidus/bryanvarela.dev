@@ -1,4 +1,3 @@
-import React from 'react'
 import { Icon, FileIcon, FolderIcon } from '../../icons'
 import { FILE_META } from '../../data/files'
 

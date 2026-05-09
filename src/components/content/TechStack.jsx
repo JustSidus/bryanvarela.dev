@@ -1,4 +1,3 @@
-import React from 'react'
 import { ProficiencyBar } from '../ui/ProficiencyBar'
 import { skillCategories } from '../../data/skills'
 

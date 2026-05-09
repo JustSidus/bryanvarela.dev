@@ -1,3 +1,5 @@
+import { Fragment } from 'react'
+
 /**
  * KeyValue — displays a key-value grid.
  *
@@ -8,10 +10,10 @@ export function KeyValue({ entries, style }) {
   return (
     <div className="kv" style={style}>
       {entries.map((e, i) => (
-        <React.Fragment key={i}>
+        <Fragment key={i}>
           <div className="k">{e.key}</div>
           <div className="v">{e.value}</div>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   )

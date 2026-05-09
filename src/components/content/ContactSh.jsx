@@ -1,4 +1,3 @@
-import React from 'react'
 import { Terminal, TermLine, TermOut, TermCur } from '../ui/Terminal'
 import { KeyValue } from '../ui/KeyValue'
 import { contact } from '../../data/contact'

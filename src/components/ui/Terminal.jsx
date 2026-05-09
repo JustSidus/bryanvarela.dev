@@ -1,4 +1,3 @@
-import React from 'react'
 
 /**
  * Terminal — displays a terminal block with header and body.

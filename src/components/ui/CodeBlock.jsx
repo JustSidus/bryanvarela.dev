@@ -1,4 +1,3 @@
-import React from 'react'
 
 /**
  * Syntax token helper — wraps text in a colored span.

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Icon } from '../../icons'
 import { FILE_META, LANG_LABELS } from '../../data/files'
 import { contact } from '../../data/contact'

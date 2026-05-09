@@ -1,3 +1,5 @@
+import { Fragment } from 'react'
+
 /**
  * Frontmatter block — displays key-value metadata at the top of a file view.
  *
@@ -7,7 +9,7 @@ export function Frontmatter({ entries }) {
   return (
     <div className="frontmatter">
       {entries.map((e, i) => (
-        <React.Fragment key={i}>
+        <Fragment key={i}>
           <span className="k">{e.key}</span>
           <span className={`v${e.accent ? ' accent' : ''}`}>
             {e.statusDot && (
@@ -15,7 +17,7 @@ export function Frontmatter({ entries }) {
             )}
             {e.value}
           </span>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   )
