@@ -3,6 +3,88 @@
    Extracted from src/index.css
    ============================================================ */
 
+/* Line number gutter — IDE feel */
+.md {
+  counter-reset: line;
+}
+.md > * {
+  position: relative;
+  counter-increment: line;
+}
+.md > *::before {
+  content: counter(line);
+  position: absolute;
+  left: -48px;
+  width: 32px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: inherit;
+  color: var(--fg-4);
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
+}
+.md > h1::before,
+.md > h2::before,
+.md > h3::before {
+  opacity: 0.7;
+  color: var(--fg-3);
+}
+/* Hover highlight on line numbers — only on devices with true hover (mouse/trackpad) */
+@media (hover: hover) {
+  .md > *:hover::before {
+    opacity: 0.9;
+    color: var(--fg-1);
+  }
+}
+.md > .codeblock::before,
+.md > .diagram::before,
+.md > .terminal::before,
+.md > .badge-row::before,
+.md > .frontmatter::before {
+  content: none;
+}
+.md > .codeblock { counter-increment: none; }
+.md > .diagram { counter-increment: none; }
+.md > .terminal { counter-increment: none; }
+.md > .badge-row { counter-increment: none; }
+.md > .frontmatter { counter-increment: none; }
+.md > .chips { counter-increment: none; }
+
+/* Typing animation line */
+.typing-outro {
+  color: var(--fg-3);
+  font-size: 13.5px;
+  margin-top: 28px;
+  font-family: var(--font-mono);
+}
+.typing-prefix {
+  color: var(--fg-3);
+}
+.typing-line {
+  color: var(--fg-3);
+}
+.typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  border-right: 2px solid var(--accent);
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: blink-caret 1.05s steps(1) infinite;
+}
+.typing-cursor:not(.blink) {
+  animation: none;
+  border-color: var(--accent);
+}
+.md > .metrics { counter-increment: none; }
+.md > .ps { counter-increment: none; }
+.md > .kv { counter-increment: none; }
+.md > .mockup { counter-increment: none; }
+.md > .callout { counter-increment: none; }
+.md > .stack-grid { counter-increment: none; }
+
 .md h1, .md h2, .md h3, .md h4 {
   font-family: var(--font-prose);
   color: var(--fg-0);
@@ -346,6 +428,14 @@
 }
 .stack-cat .lvl-bar > i {
   display: block; height: 100%; background: var(--accent); border-radius: 2px;
+}
+
+/* Shields.io-style badges */
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 16px 0 8px;
 }
 
 /* terminal block (contact.sh) */

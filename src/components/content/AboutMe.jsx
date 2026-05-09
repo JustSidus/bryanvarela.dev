@@ -1,23 +1,26 @@
-import { Frontmatter } from '../ui/Frontmatter'
-import { KeyValue } from '../ui/KeyValue'
+import { Fragment } from 'react'
+import { CodeBlock, tok } from '../ui/CodeBlock'
+import { Badge, BadgeRow } from '../ui/Badge'
+import { TypingLine } from '../ui/TypingLine'
 
 /**
- * AboutMe — portfolio "about me" section.
+ * AboutMe — portfolio "about me" section, styled as IDE code.
  * To update contact info, edit src/data/contact.js.
  */
 export function AboutMe() {
   return (
     <div className="md">
-      <Frontmatter entries={[
-        { key: 'name', value: 'Bryan Varela' },
-        { key: 'role', value: 'Software Engineer', accent: true },
-        { key: 'focus', value: 'Backend · Infraestructura Cloud · Diseño de sistemas' },
-        { key: 'stack', value: 'C# · .NET 10 · React · Azure · Cloud Run · Cloudflare' },
-        { key: 'status', value: 'Disponible para roles backend / cloud', statusDot: 'var(--ok)' },
-      ]} />
+      <CodeBlock path="about-me.json" lang="JSON">
+{tok('{', 'pun')}{'\n'}
+{'  '}{tok('"developer"', 'str')}{tok(':', 'pun')} {tok('"Bryan Varela"', 'str')}{tok(',', 'pun')}{'\n'}
+{'  '}{tok('"role"', 'str')}{tok(':', 'pun')}      {tok('"Software Engineer"', 'str')}{tok(',', 'pun')}{'\n'}
+{'  '}{tok('"focus"', 'str')}{tok(':', 'pun')}     {tok('[', 'pun')}{tok('"Backend"', 'str')}{tok(',', 'pun')} {tok('"Cloud Architecture"', 'str')}{tok(',', 'pun')} {tok('"System Design"', 'str')}{tok(']', 'pun')}{tok(',', 'pun')}{'\n'}
+{'  '}{tok('"status"', 'str')}{tok(':', 'pun')}    {tok('"200 OK — Available"', 'str')}{'\n'}
+{tok('}', 'pun')}
+      </CodeBlock>
 
       <h1>
-        <span className="h1-prefix"># about-me</span>
+        <span className="h1-prefix">// about-me</span>
         Construyo entornos seguros y resuelvo problemas.
       </h1>
       <p className="lede">
@@ -27,6 +30,14 @@ export function AboutMe() {
         de trabajo diaria para acelerar el desarrollo y escribir código de calidad en
         el lenguaje que demande la infraestructura.
       </p>
+
+      <div className="badge-row">
+        <Badge label="lang" value="C# / .NET 10" color="#9D7CFF" />
+        <Badge label="runtime" value="React 18" color="#3178C6" />
+        <Badge label="cloud" value="Azure" color="#0078D4" />
+        <Badge label="edge" value="Cloudflare" color="#F1502F" />
+        <Badge label="infra" value="Cloud Run" color="#4285F4" />
+      </div>
 
       <h2><span className="num">01</span>Cómo trabajo</h2>
       <p>
@@ -49,10 +60,9 @@ export function AboutMe() {
       <p>
         Aquí puedes ver la documentación de cómo aplico estos conceptos en entornos reales.
       </p>
-      <p style={{ color: 'var(--fg-3)', fontSize: 13.5, marginTop: 28 }}>
-        <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--fg-3)' }}>// </span>
-        Para ver los casos de estudio, abre <code>projects/</code> en el explorador o presiona{' '}
-        <code>Ctrl+K</code>.<span className="read-caret"></span>
+      <p className="typing-outro">
+        <span className="typing-prefix">// </span>
+        <TypingLine text="Para ver los casos de estudio, abre projects/ o presiona Ctrl+K" speed={30} startDelay={600} />
       </p>
     </div>
   )

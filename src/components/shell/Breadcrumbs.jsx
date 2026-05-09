@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { FileIcon } from '../../icons'
 import { FILE_META } from '../../data/files'
 
 export function Breadcrumbs({ activeId }) {
@@ -13,7 +14,10 @@ export function Breadcrumbs({ activeId }) {
           <span className="sep">›</span>
         </Fragment>
       ))}
-      <span className="crumb">{f.name}</span>
+      <span className="crumb file-crumb">
+        <FileIcon ext={f.ext} />
+        {f.name}
+      </span>
     </div>
   )
 }

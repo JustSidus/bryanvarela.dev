@@ -255,10 +255,11 @@
 /* ============================================================
    Editor area
    ============================================================ */
+/* editor area now includes terminal */
 .editor {
   grid-area: editor;
   display: grid;
-  grid-template-rows: var(--tab-h) 28px 1fr;
+  grid-template-rows: var(--tab-h) 28px 1fr auto;
   background: var(--bg-0);
   min-width: 0;
   overflow: hidden;
@@ -334,6 +335,11 @@
 }
 .breadcrumbs .crumb { white-space: nowrap; }
 .breadcrumbs .crumb:last-child { color: var(--fg-1); }
+.breadcrumbs .crumb.file-crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 .breadcrumbs .sep { color: var(--fg-4); }
 
 /* content scroller */
@@ -360,11 +366,12 @@
   max-width: 880px;
   margin: 0 auto;
   padding: 56px 64px 120px;
+  padding-left: 112px;
   font-size: var(--prose-fs);
   line-height: var(--prose-lh);
   color: var(--fg-1);
 }
-[data-density="comfy"] .content-inner { padding: 64px 72px 140px; }
+[data-density="comfy"] .content-inner { padding: 64px 72px 140px; padding-left: 120px; }
 
 /* ============================================================
    Status bar
@@ -489,4 +496,82 @@
   font-size: 11px;
   color: var(--fg-1);
   margin: 0 2px;
+}
+
+/* ============================================================
+   Boot Terminal (bottom panel)
+   ============================================================ */
+.boot-terminal {
+  border-top: 1px solid var(--border);
+  background: var(--bg-1);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow: hidden;
+  transition: max-height .25s ease;
+}
+.boot-terminal.collapsed {
+  max-height: 0;
+  border-top: none;
+}
+.boot-terminal:not(.collapsed) {
+  max-height: 200px;
+}
+.boot-terminal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  padding: 0 12px;
+  height: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+.boot-terminal-head:hover { background: var(--bg-3); }
+.boot-terminal-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 100%;
+}
+.boot-terminal-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 100%;
+  color: var(--fg-2);
+  font-size: 11.5px;
+  border-bottom: 1px solid transparent;
+  transition: color .12s;
+}
+.boot-terminal-tab.active {
+  color: var(--fg-0);
+  border-bottom-color: var(--accent);
+}
+.boot-terminal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fg-3);
+  font-size: 11px;
+}
+.boot-terminal-toggle { cursor: pointer; }
+.boot-terminal-body {
+  padding: 10px 14px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+.boot-terminal-line {
+  color: var(--fg-2);
+  white-space: pre;
+  animation: term-line-in .2s ease-out;
+}
+.boot-terminal-line.term-success { color: var(--ok); }
+.boot-terminal-line.term-ready { color: var(--accent); }
+.boot-terminal-line.term-error { color: var(--err); }
+@keyframes term-line-in {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
 }

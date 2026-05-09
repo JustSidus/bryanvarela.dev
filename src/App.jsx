@@ -8,6 +8,7 @@ import { Breadcrumbs } from './components/shell/Breadcrumbs'
 import { StatusBar } from './components/shell/StatusBar'
 import { CommandPalette } from './components/shell/CommandPalette'
 import { Welcome } from './components/shell/Welcome'
+import { BootTerminal } from './components/shell/BootTerminal'
 import { AboutMe } from './components/content/AboutMe'
 import { ArelifyPlatform } from './components/content/ArelifyPlatform'
 import { VisitorManagement } from './components/content/VisitorManagement'
@@ -99,6 +100,7 @@ export default function App() {
             <Welcome onOpenPalette={() => setPaletteOpen(true)} />
           )}
         </div>
+        <BootTerminal />
       </main>
       <StatusBar activeId={activeId} onOpenPalette={() => setPaletteOpen(true)} />
 
