@@ -1,55 +1,53 @@
 /* ============================================================
-   Portfolio Content Styles — Markdown-rendered look
+   Line number gutter — VS Code style
    ============================================================ */
-
-/* Line number gutter — VS Code style */
 .md {
   counter-reset: line;
   position: relative;
+  padding-left: 56px;
 }
 .md::before {
   content: '';
   position: absolute;
-  top: 0; bottom: 0;
-  left: 0;
-  width: 52px;
+  inset: 0 auto 0 0;
+  width: 56px;
   background: var(--bg-1);
   border-right: 1px solid var(--border);
   pointer-events: none;
-  z-index: 0;
 }
 .md > * {
   position: relative;
   counter-increment: line;
-  z-index: 1;
 }
 .md > *::before {
   content: counter(line);
   position: absolute;
-  left: 0;
-  width: 44px;
+  right: 100%;
+  margin-right: 14px;
+  width: 32px;
   text-align: right;
-  padding-right: 12px;
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: inherit;
   color: var(--fg-4);
-  opacity: 0.45;
+  opacity: .4;
   user-select: none;
   pointer-events: none;
 }
 .md > h1::before,
 .md > h2::before,
 .md > h3::before {
-  opacity: 0.6;
+  opacity: .55;
   color: var(--fg-3);
 }
 @media (hover: hover) {
   .md > *:hover::before {
-    opacity: 0.8;
+    opacity: .75;
     color: var(--fg-2);
   }
 }
+
+/* Exclude UI primitives from line numbers */
 .md > .codeblock::before,
 .md > .diagram::before,
 .md > .terminal::before,
@@ -82,33 +80,14 @@
   line-height: 1.65;
   color: var(--fg-1);
 }
-.md.raw-md::before {
-  width: 52px;
-}
 .md.raw-md > .md-line {
   min-height: 1.65em;
-  padding-left: 0;
 }
 .md.raw-md > .md-line.md-blank {
   min-height: 0.85em;
 }
 .md.raw-md > .md-line.md-blank::before {
   content: '';
-}
-.md.raw-md > .md-line::before {
-  content: counter(line);
-  position: absolute;
-  left: 0;
-  width: 44px;
-  text-align: right;
-  padding-right: 12px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: inherit;
-  color: var(--fg-4);
-  opacity: 0.45;
-  user-select: none;
-  pointer-events: none;
 }
 .md-h1-prefix, .md-h2-prefix {
   color: var(--accent);

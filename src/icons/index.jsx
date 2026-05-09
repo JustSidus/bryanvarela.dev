@@ -121,32 +121,70 @@ export const Icon = {
   ),
 }
 
+const MdIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
+    <path d="M2 1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" fill="#42a5f5" opacity=".18"/>
+    <path d="M2 1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" fill="none" stroke="#42a5f5" strokeWidth=".8" rx="1"/>
+    <text x="8" y="12" textAnchor="middle" fill="#42a5f5" fontSize="9" fontWeight="700" fontFamily="monospace">M</text>
+  </svg>
+)
+
+const TsIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
+    <rect x="1" y="1" width="14" height="14" rx="2" fill="#3178c6" opacity=".18"/>
+    <rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="#3178c6" strokeWidth=".7"/>
+    <text x="8" y="12" textAnchor="middle" fill="#3178c6" fontSize="8" fontWeight="700" fontFamily="monospace">TS</text>
+  </svg>
+)
+
+const VueIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
+    <rect x="1" y="1" width="14" height="14" rx="2" fill="#41b883" opacity=".18"/>
+    <rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="#41b883" strokeWidth=".7"/>
+    <text x="8" y="12.5" textAnchor="middle" fill="#41b883" fontSize="10" fontWeight="700" fontFamily="monospace">V</text>
+  </svg>
+)
+
+const CsIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
+    <rect x="1" y="1" width="14" height="14" rx="2" fill="#9b5ab1" opacity=".18"/>
+    <rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="#9b5ab1" strokeWidth=".7"/>
+    <text x="8" y="12" textAnchor="middle" fill="#9b5ab1" fontSize="8" fontWeight="700" fontFamily="monospace">C#</text>
+  </svg>
+)
+
+const JsonIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="#f0db4f" opacity=".15"/>
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="none" stroke="#cb0" strokeWidth=".7"/>
+    <text x="8" y="12" textAnchor="middle" fill="#cc0" fontSize="9" fontWeight="700" fontFamily="monospace">{'{}'}</text>
+  </svg>
+)
+
+const ShIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="#db7100" opacity=".15"/>
+    <rect x="1" y="1" width="14" height="14" rx="3" fill="none" stroke="#db7100" strokeWidth=".7"/>
+    <text x="8" y="12" textAnchor="middle" fill="#db7100" fontSize="9" fontWeight="700" fontFamily="monospace">{'>'}_</text>
+  </svg>
+)
+
+const iconMap = {
+  md:   MdIcon,
+  ts:   TsIcon,
+  vue:  VueIcon,
+  cs:   CsIcon,
+  json: JsonIcon,
+  sh:   ShIcon,
+}
+
 export const FileIcon = ({ ext }) => {
-  const map = {
-    md:   { color: '#498ba7', bg: '#1b3a4b', letter: 'M' },
-    ts:   { color: '#3178c6', bg: '#17273e', letter: 'TS' },
-    vue:  { color: '#41b883', bg: '#1a3328', letter: 'V' },
-    cs:   { color: '#9b5ab1', bg: '#2a1a33', letter: 'C#' },
-    json: { color: '#cbcb41', bg: '#2b2b14', letter: '{}' },
-    sh:   { color: '#4ec9b0', bg: '#1a3330', letter: '>_' },
-  }
-  const m = map[ext] || { color: '#8b949e', bg: '#21262d', letter: '·' }
+  const Comp = iconMap[ext]
+  if (Comp) return <Comp />
   return (
-    <span style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 16,
-      height: 16,
-      fontFamily: 'var(--font-mono)',
-      fontSize: ext === 'cs' || ext === 'ts' ? 7.5 : 9,
-      fontWeight: 700,
-      color: m.color,
-      letterSpacing: '-0.04em',
-      borderRadius: 2,
-      background: m.bg,
-      flexShrink: 0,
-    }}>{m.letter}</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
+      <rect x="2" y="1" width="12" height="14" rx="2" fill="none" stroke="#6e7681" strokeWidth=".7"/>
+    </svg>
   )
 }
 

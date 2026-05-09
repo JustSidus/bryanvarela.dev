@@ -365,13 +365,12 @@
 .content-inner {
   max-width: 880px;
   margin: 0 auto;
-  padding: 32px 64px 80px;
-  padding-left: 72px;
+  padding: 12px 0 80px;
   font-size: var(--prose-fs);
   line-height: var(--prose-lh);
   color: var(--fg-1);
 }
-[data-density="comfy"] .content-inner { padding: 40px 72px 100px; padding-left: 80px; }
+[data-density="comfy"] .content-inner { padding: 20px 0 100px; }
 
 /* ============================================================
    Status bar
