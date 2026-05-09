@@ -1,0 +1,66 @@
+/**
+ * File metadata — edit this file to add/remove/change portfolio sections.
+ * Each key maps to a "file" in the IDE sidebar.
+ *
+ * To add a new section:
+ *   1. Create a component in src/components/content/
+ *   2. Add an entry here with the file's metadata
+ *   3. Add a tree entry in tree.js
+ *   4. Register the component in App.jsx's FILE_COMPONENTS map
+ */
+export const FILE_META = {
+  'about-me.md': {
+    id: 'about-me.md',
+    name: 'about-me.md',
+    ext: 'md',
+    path: '~/portfolio',
+    langAccent: null,
+  },
+  'arelify-platform.ts': {
+    id: 'arelify-platform.ts',
+    name: 'arelify-platform.ts',
+    ext: 'ts',
+    path: '~/portfolio/projects',
+    langAccent: 'var(--lang-ts)',
+  },
+  'visitor-management.vue': {
+    id: 'visitor-management.vue',
+    name: 'visitor-management.vue',
+    ext: 'vue',
+    path: '~/portfolio/projects',
+    langAccent: 'var(--lang-vue)',
+  },
+  'layered-ecommerce.cs': {
+    id: 'layered-ecommerce.cs',
+    name: 'layered-ecommerce.cs',
+    ext: 'cs',
+    path: '~/portfolio/projects',
+    langAccent: 'var(--lang-cs)',
+  },
+  'tech-stack.json': {
+    id: 'tech-stack.json',
+    name: 'tech-stack.json',
+    ext: 'json',
+    path: '~/portfolio/infrastructure',
+    langAccent: 'var(--lang-json)',
+  },
+  'contact.sh': {
+    id: 'contact.sh',
+    name: 'contact.sh',
+    ext: 'sh',
+    path: '~/portfolio/infrastructure',
+    langAccent: 'var(--lang-sh)',
+  },
+}
+
+/**
+ * Language display labels for the status bar.
+ */
+export const LANG_LABELS = {
+  md: 'Markdown',
+  ts: 'TypeScript',
+  vue: 'Vue · TS',
+  cs: 'C#',
+  json: 'JSON',
+  sh: 'Shell',
+}

@@ -1,0 +1,64 @@
+/* ============================================================
+   CSS Custom Properties — Theme & Density Tokens
+   Extracted from src/index.css
+   ============================================================ */
+
+:root {
+  /* GitHub Dark inspired palette */
+  --bg-0: #0D1117;          /* canvas (GH dark) */
+  --bg-1: #010409;          /* sidebar / title bar (GH darker) */
+  --bg-2: #161B22;          /* tabs strip / panels (GH muted) */
+  --bg-3: #1F242C;          /* hover */
+  --bg-4: #262C36;          /* selected */
+  --border: #21262D;
+  --border-strong: #30363D;
+
+  --fg-0: #E6EDF3;          /* primary text */
+  --fg-1: #C9D1D9;          /* body text */
+  --fg-2: #8B949E;          /* muted */
+  --fg-3: #6E7681;          /* subtle */
+  --fg-4: #484F58;          /* very subtle */
+
+  /* accent (overridden by tweaks) — defaults to GitHub blue */
+  --accent: #58A6FF;
+  --accent-soft: #58a6ff22;
+  --accent-line: #58a6ff55;
+
+  /* GitHub-style secondary accent (green) */
+  --accent-2: #3FB950;
+
+  /* language hues — GitHub linguist style */
+  --lang-ts: #3178C6;
+  --lang-vue: #41B883;
+  --lang-cs: #9D7CFF;
+  --lang-md: #C9D1D9;
+  --lang-json: #E3B341;
+  --lang-sh: #F1502F;
+
+  /* status / chips */
+  --ok: #3FB950;
+  --warn: #D29922;
+  --err: #F85149;
+
+  /* Win11 caption */
+  --caption-h: 36px;
+
+  /* type */
+  --font-prose: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* density */
+  --row-h: 26px;
+  --tab-h: 36px;
+  --base-fs: 14px;
+  --prose-fs: 15.5px;
+  --prose-lh: 1.65;
+}
+
+[data-density="comfy"] {
+  --row-h: 30px;
+  --tab-h: 40px;
+  --base-fs: 15px;
+  --prose-fs: 17px;
+  --prose-lh: 1.75;
+}
