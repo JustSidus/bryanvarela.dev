@@ -1,56 +1,145 @@
 /* ============================================================
    Portfolio Content Styles — Markdown-rendered look
-   Extracted from src/index.css
    ============================================================ */
 
-/* Line number gutter — IDE feel */
+/* Line number gutter — VS Code style */
 .md {
   counter-reset: line;
+  position: relative;
+}
+.md::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0;
+  width: 52px;
+  background: var(--bg-1);
+  border-right: 1px solid var(--border);
+  pointer-events: none;
+  z-index: 0;
 }
 .md > * {
   position: relative;
   counter-increment: line;
+  z-index: 1;
 }
 .md > *::before {
   content: counter(line);
   position: absolute;
-  left: -48px;
-  width: 32px;
+  left: 0;
+  width: 44px;
   text-align: right;
+  padding-right: 12px;
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: inherit;
   color: var(--fg-4);
-  opacity: 0.5;
+  opacity: 0.45;
   user-select: none;
   pointer-events: none;
 }
 .md > h1::before,
 .md > h2::before,
 .md > h3::before {
-  opacity: 0.7;
+  opacity: 0.6;
   color: var(--fg-3);
 }
-/* Hover highlight on line numbers — only on devices with true hover (mouse/trackpad) */
 @media (hover: hover) {
   .md > *:hover::before {
-    opacity: 0.9;
-    color: var(--fg-1);
+    opacity: 0.8;
+    color: var(--fg-2);
   }
 }
 .md > .codeblock::before,
 .md > .diagram::before,
 .md > .terminal::before,
 .md > .badge-row::before,
-.md > .frontmatter::before {
-  content: none;
+.md > .frontmatter::before,
+.md > .chips::before,
+.md > .metrics::before,
+.md > .ps::before,
+.md > .kv::before,
+.md > .mockup::before,
+.md > .callout::before,
+.md > .stack-grid::before { content: none; }
+.md > .codeblock,
+.md > .diagram,
+.md > .terminal,
+.md > .badge-row,
+.md > .frontmatter,
+.md > .chips,
+.md > .metrics,
+.md > .ps,
+.md > .kv,
+.md > .mockup,
+.md > .callout,
+.md > .stack-grid { counter-increment: none; }
+
+/* Raw markdown style — VS Code editor view */
+.md.raw-md {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--fg-1);
 }
-.md > .codeblock { counter-increment: none; }
-.md > .diagram { counter-increment: none; }
-.md > .terminal { counter-increment: none; }
-.md > .badge-row { counter-increment: none; }
-.md > .frontmatter { counter-increment: none; }
-.md > .chips { counter-increment: none; }
+.md.raw-md::before {
+  width: 52px;
+}
+.md.raw-md > .md-line {
+  min-height: 1.65em;
+  padding-left: 0;
+}
+.md.raw-md > .md-line.md-blank {
+  min-height: 0.85em;
+}
+.md.raw-md > .md-line.md-blank::before {
+  content: '';
+}
+.md.raw-md > .md-line::before {
+  content: counter(line);
+  position: absolute;
+  left: 0;
+  width: 44px;
+  text-align: right;
+  padding-right: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: inherit;
+  color: var(--fg-4);
+  opacity: 0.45;
+  user-select: none;
+  pointer-events: none;
+}
+.md-h1-prefix, .md-h2-prefix {
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 8px;
+}
+.md-heading {
+  color: var(--fg-0);
+  font-weight: 600;
+}
+.md-bullet {
+  color: var(--fg-3);
+  margin-right: 8px;
+}
+.md-bold {
+  color: var(--fg-0);
+  font-weight: 600;
+}
+.md-bold .md-mark {
+  color: var(--accent);
+}
+.md-code {
+  color: var(--accent);
+}
+.md-comment {
+  color: var(--fg-3);
+  font-style: italic;
+}
+.md-line .md-mark {
+  color: var(--accent);
+}
 
 /* Typing animation line */
 .typing-outro {
@@ -78,12 +167,6 @@
   animation: none;
   border-color: var(--accent);
 }
-.md > .metrics { counter-increment: none; }
-.md > .ps { counter-increment: none; }
-.md > .kv { counter-increment: none; }
-.md > .mockup { counter-increment: none; }
-.md > .callout { counter-increment: none; }
-.md > .stack-grid { counter-increment: none; }
 
 .md h1, .md h2, .md h3, .md h4 {
   font-family: var(--font-prose);

@@ -365,13 +365,13 @@
 .content-inner {
   max-width: 880px;
   margin: 0 auto;
-  padding: 56px 64px 120px;
-  padding-left: 112px;
+  padding: 32px 64px 80px;
+  padding-left: 72px;
   font-size: var(--prose-fs);
   line-height: var(--prose-lh);
   color: var(--fg-1);
 }
-[data-density="comfy"] .content-inner { padding: 64px 72px 140px; padding-left: 120px; }
+[data-density="comfy"] .content-inner { padding: 40px 72px 100px; padding-left: 80px; }
 
 /* ============================================================
    Status bar
@@ -550,6 +550,20 @@
   color: var(--fg-0);
   border-bottom-color: var(--accent);
 }
+.pwsh-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: #012456;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
 .boot-terminal-actions {
   display: flex;
   align-items: center;
@@ -562,15 +576,34 @@
   padding: 10px 14px;
   max-height: 160px;
   overflow-y: auto;
+  background: #012456;
 }
 .boot-terminal-line {
   color: var(--fg-2);
   white-space: pre;
   animation: term-line-in .2s ease-out;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.boot-terminal-line.blank {
+  height: 0.8em;
+}
+.boot-terminal-line.banner {
+  color: #f0f0f0;
+  font-size: 12px;
 }
 .boot-terminal-line.term-success { color: var(--ok); }
 .boot-terminal-line.term-ready { color: var(--accent); }
+.boot-terminal-line.term-info { color: #569cd6; }
 .boot-terminal-line.term-error { color: var(--err); }
+.pwsh-prompt {
+  color: #f0f0f0;
+  flex-shrink: 0;
+}
+.pwsh-cmd {
+  color: #ffd700;
+}
 @keyframes term-line-in {
   0% { opacity: 0; transform: translateY(4px); }
   100% { opacity: 1; transform: translateY(0); }

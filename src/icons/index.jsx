@@ -123,25 +123,29 @@ export const Icon = {
 
 export const FileIcon = ({ ext }) => {
   const map = {
-    md:   { color: 'var(--lang-md)', letter: 'M' },
-    ts:   { color: 'var(--lang-ts)', letter: 'TS' },
-    vue:  { color: 'var(--lang-vue)', letter: 'V' },
-    cs:   { color: 'var(--lang-cs)', letter: 'C#' },
-    json: { color: 'var(--lang-json)', letter: '{}' },
-    sh:   { color: 'var(--lang-sh)', letter: '>_' },
+    md:   { color: '#498ba7', bg: '#1b3a4b', letter: 'M' },
+    ts:   { color: '#3178c6', bg: '#17273e', letter: 'TS' },
+    vue:  { color: '#41b883', bg: '#1a3328', letter: 'V' },
+    cs:   { color: '#9b5ab1', bg: '#2a1a33', letter: 'C#' },
+    json: { color: '#cbcb41', bg: '#2b2b14', letter: '{}' },
+    sh:   { color: '#4ec9b0', bg: '#1a3330', letter: '>_' },
   }
-  const m = map[ext] || { color: 'var(--fg-3)', letter: '·' }
+  const m = map[ext] || { color: '#8b949e', bg: '#21262d', letter: '·' }
   return (
     <span style={{
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
-      width: 16, height: 16,
+      width: 16,
+      height: 16,
       fontFamily: 'var(--font-mono)',
-      fontSize: 9,
-      fontWeight: 600,
+      fontSize: ext === 'cs' || ext === 'ts' ? 7.5 : 9,
+      fontWeight: 700,
       color: m.color,
       letterSpacing: '-0.04em',
+      borderRadius: 2,
+      background: m.bg,
+      flexShrink: 0,
     }}>{m.letter}</span>
   )
 }
