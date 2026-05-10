@@ -1,6 +1,6 @@
-import { EditorFile } from '../ui/EditorFile'
-import rawContent from '../../content/about-me.md?raw'
+import { EditorFile } from "../ui/EditorFile";
+import rawContent from "../../content/about-me.md?raw";
 
 export function AboutMe() {
-  return <EditorFile code={rawContent} lang="md" animateLastN={2} />
+  return <EditorFile code={rawContent} lang="md" animateLastN={4} />;
 }
