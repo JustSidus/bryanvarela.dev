@@ -1,4 +1,6 @@
-import React from 'react'
+import { Icon as Iconify } from '@iconify/react'
+
+// ── Shell icons (stroke-based, custom) ───────────────────────────────────────
 
 export const Icon = {
   files: (p) => (
@@ -119,68 +121,75 @@ export const Icon = {
       <path d="M6 7v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V7M12 13v4" />
     </svg>
   ),
+  terminal: (p) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" {...p}>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m7 9 3 3-3 3M13 15h4" />
+    </svg>
+  ),
 }
 
-const MdIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
-    <path d="M2 1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" fill="#42a5f5" opacity=".18"/>
-    <path d="M2 1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z" fill="none" stroke="#42a5f5" strokeWidth=".8" rx="1"/>
-    <text x="8" y="12" textAnchor="middle" fill="#42a5f5" fontSize="9" fontWeight="700" fontFamily="monospace">M</text>
-  </svg>
-)
+// ── [bv] logo mark (SVG inline, color follows --accent) ──────────────────────
 
-const TsIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
-    <rect x="1" y="1" width="14" height="14" rx="2" fill="#3178c6" opacity=".18"/>
-    <rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="#3178c6" strokeWidth=".7"/>
-    <text x="8" y="12" textAnchor="middle" fill="#3178c6" fontSize="8" fontWeight="700" fontFamily="monospace">TS</text>
-  </svg>
-)
-
-const VueIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
-    <rect x="1" y="1" width="14" height="14" rx="2" fill="#41b883" opacity=".18"/>
-    <rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="#41b883" strokeWidth=".7"/>
-    <text x="8" y="12.5" textAnchor="middle" fill="#41b883" fontSize="10" fontWeight="700" fontFamily="monospace">V</text>
-  </svg>
-)
-
-const CsIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
-    <rect x="1" y="1" width="14" height="14" rx="2" fill="#9b5ab1" opacity=".18"/>
-    <rect x="1" y="1" width="14" height="14" rx="2" fill="none" stroke="#9b5ab1" strokeWidth=".7"/>
-    <text x="8" y="12" textAnchor="middle" fill="#9b5ab1" fontSize="8" fontWeight="700" fontFamily="monospace">C#</text>
-  </svg>
-)
-
-const JsonIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
-    <rect x="1" y="1" width="14" height="14" rx="3" fill="#f0db4f" opacity=".15"/>
-    <rect x="1" y="1" width="14" height="14" rx="3" fill="none" stroke="#cb0" strokeWidth=".7"/>
-    <text x="8" y="12" textAnchor="middle" fill="#cc0" fontSize="9" fontWeight="700" fontFamily="monospace">{'{}'}</text>
-  </svg>
-)
-
-const ShIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
-    <rect x="1" y="1" width="14" height="14" rx="3" fill="#db7100" opacity=".15"/>
-    <rect x="1" y="1" width="14" height="14" rx="3" fill="none" stroke="#db7100" strokeWidth=".7"/>
-    <text x="8" y="12" textAnchor="middle" fill="#db7100" fontSize="9" fontWeight="700" fontFamily="monospace">{'>'}_</text>
-  </svg>
-)
-
-const iconMap = {
-  md:   MdIcon,
-  ts:   TsIcon,
-  vue:  VueIcon,
-  cs:   CsIcon,
-  json: JsonIcon,
-  sh:   ShIcon,
+export function BvLogo({ size = 18, className = '' }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 18 18"
+      className={className}
+      style={{ flexShrink: 0 }}
+      aria-label="[bv]"
+    >
+      <rect x="0.5" y="0.5" width="17" height="17" rx="3"
+        fill="currentColor" fillOpacity="0.12"
+        stroke="currentColor" strokeOpacity="0.6" strokeWidth="0.8" />
+      <text
+        x="9" y="13"
+        textAnchor="middle"
+        fill="currentColor"
+        fontSize="8.5"
+        fontWeight="700"
+        fontFamily="'JetBrains Mono', ui-monospace, monospace"
+        letterSpacing="-0.5"
+      >
+        [bv]
+      </text>
+    </svg>
+  )
 }
 
-export const FileIcon = ({ ext }) => {
-  const Comp = iconMap[ext]
-  if (Comp) return <Comp />
+// ── File icons — Material Icon Theme via Iconify ──────────────────────────────
+
+const FILE_ICON_MAP = {
+  md:   'material-icon-theme:markdown',
+  ts:   'material-icon-theme:typescript',
+  vue:  'material-icon-theme:vue',
+  cs:   'material-icon-theme:csharp',
+  json: 'material-icon-theme:json',
+  sh:   'material-icon-theme:console',
+}
+
+const FOLDER_ICON_MAP = {
+  projects:       'material-icon-theme:folder-app',
+  infrastructure: 'material-icon-theme:folder-ci',
+  default:        'material-icon-theme:folder-src',
+  open:           'material-icon-theme:folder-app',
+}
+
+export function FileIcon({ ext }) {
+  const iconId = FILE_ICON_MAP[ext]
+  if (iconId) {
+    return (
+      <Iconify
+        icon={iconId}
+        width={16}
+        height={16}
+        style={{ flexShrink: 0, display: 'inline-block' }}
+      />
+    )
+  }
+  // generic fallback
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" style={{ flexShrink: 0 }}>
       <rect x="2" y="1" width="12" height="14" rx="2" fill="none" stroke="#6e7681" strokeWidth=".7"/>
@@ -188,11 +197,15 @@ export const FileIcon = ({ ext }) => {
   )
 }
 
-export const FolderIcon = ({ open }) => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--fg-2)' }}>
-    {open
-      ? <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H3zM3 10h18l-2 9H5z" />
-      : <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-    }
-  </svg>
-)
+export function FolderIcon({ id, open }) {
+  const closedId = FOLDER_ICON_MAP[id] || FOLDER_ICON_MAP.default
+  const iconId = open ? FOLDER_ICON_MAP.open : closedId
+  return (
+    <Iconify
+      icon={iconId}
+      width={16}
+      height={16}
+      style={{ flexShrink: 0, display: 'inline-block' }}
+    />
+  )
+}

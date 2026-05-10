@@ -1,4 +1,4 @@
-import { Icon } from '../../icons'
+import { Icon, BvLogo } from '../../icons'
 import { FILE_META } from '../../data/files'
 
 export function Caption({ activeId, onOpenPalette }) {
@@ -6,7 +6,9 @@ export function Caption({ activeId, onOpenPalette }) {
   return (
     <div className="caption">
       <div className="caption-left">
-        <span className="product-mark">B</span>
+        <span className="product-mark" title="[bv] · bryanvarela.dev">
+          <BvLogo size={18} />
+        </span>
         <span className="repo">bryan</span>
         <span className="crumb-sep">/</span>
         <span className="repo">portfolio</span>
@@ -19,10 +21,10 @@ export function Caption({ activeId, onOpenPalette }) {
         </span>
       </div>
 
-      <div className="caption-search" onClick={onOpenPalette} title="Buscar archivos · Ctrl+K">
+      <div className="caption-search" onClick={onOpenPalette} title="Buscar archivos · Ctrl+P">
         <Icon.search />
         <span className="placeholder">Buscar en el portafolio…</span>
-        <kbd>Ctrl</kbd> + <kbd>K</kbd>
+        <kbd>Ctrl</kbd> + <kbd>P</kbd>
       </div>
 
       <div className="caption-right">

@@ -11,7 +11,7 @@ export function TreeRow({ node, depth, openFolders, toggleFolder, openFile, acti
           onClick={() => toggleFolder(node.id)}
         >
           <span className="chev"><Icon.chev style={{ width: 12, height: 12 }} /></span>
-          <span className="icon"><FolderIcon open={open} /></span>
+          <span className="icon"><FolderIcon id={node.id} open={open} /></span>
           <span className="file-name">{node.label}</span>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10.5, color: 'var(--fg-3)' }}>
             {node.children.length}

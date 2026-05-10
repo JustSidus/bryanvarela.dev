@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import { FILE_META } from './data/files'
 import { Caption } from './components/shell/Caption'
 import { ActivityRail } from './components/shell/ActivityRail'
@@ -18,17 +18,13 @@ import { ContactSh } from './components/content/ContactSh'
 import { useAccentColor } from './hooks/useAccentColor'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 
-/**
- * Maps file IDs to their content components.
- * To add a new section: create a component, import it here, and add an entry.
- */
 const FILE_COMPONENTS = {
-  'about-me.md': AboutMe,
-  'arelify-platform.ts': ArelifyPlatform,
+  'about-me.md':           AboutMe,
+  'arelify-platform.ts':   ArelifyPlatform,
   'visitor-management.vue': VisitorManagement,
-  'layered-ecommerce.cs': LayeredEcommerce,
-  'tech-stack.json': TechStack,
-  'contact.sh': ContactSh,
+  'layered-ecommerce.cs':  LayeredEcommerce,
+  'tech-stack.json':       TechStack,
+  'contact.sh':            ContactSh,
 }
 
 export default function App() {
@@ -36,6 +32,7 @@ export default function App() {
   const [activeId, setActiveId] = useState('about-me.md')
   const [openFolders, setOpenFolders] = useState(new Set(['projects', 'infrastructure']))
   const [paletteOpen, setPaletteOpen] = useState(false)
+  const terminalRef = useRef(null)
 
   useAccentColor(activeId)
 
@@ -64,11 +61,7 @@ export default function App() {
     })
   }, [])
 
-  useKeyboardShortcuts({
-    activeId,
-    closeFile,
-    setPaletteOpen,
-  })
+  useKeyboardShortcuts({ activeId, closeFile, setPaletteOpen, terminalRef })
 
   const ActiveComp = activeId ? FILE_COMPONENTS[activeId] : null
 
@@ -100,7 +93,7 @@ export default function App() {
             <Welcome onOpenPalette={() => setPaletteOpen(true)} />
           )}
         </div>
-        <BootTerminal />
+        <BootTerminal ref={terminalRef} />
       </main>
       <StatusBar activeId={activeId} onOpenPalette={() => setPaletteOpen(true)} />
 

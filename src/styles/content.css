@@ -1,247 +1,83 @@
 /* ============================================================
-   Line number gutter — VS Code style
+   EditorFile — VS Code-faithful gutter + code area
    ============================================================ */
-.md {
-  counter-reset: line;
-  position: relative;
-  padding-left: 56px;
-}
-.md::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 56px;
-  background: var(--bg-1);
-  border-right: 1px solid var(--border);
-  pointer-events: none;
-}
-.md > * {
-  position: relative;
-  counter-increment: line;
-}
-.md > *::before {
-  content: counter(line);
-  position: absolute;
-  right: 100%;
-  margin-right: 14px;
-  width: 32px;
-  text-align: right;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: inherit;
-  color: var(--fg-4);
-  opacity: .4;
-  user-select: none;
-  pointer-events: none;
-}
-.md > h1::before,
-.md > h2::before,
-.md > h3::before {
-  opacity: .55;
-  color: var(--fg-3);
-}
-@media (hover: hover) {
-  .md > *:hover::before {
-    opacity: .75;
-    color: var(--fg-2);
-  }
-}
 
-/* Exclude UI primitives from line numbers */
-.md > .codeblock::before,
-.md > .diagram::before,
-.md > .terminal::before,
-.md > .badge-row::before,
-.md > .frontmatter::before,
-.md > .chips::before,
-.md > .metrics::before,
-.md > .ps::before,
-.md > .kv::before,
-.md > .mockup::before,
-.md > .callout::before,
-.md > .stack-grid::before { content: none; }
-.md > .codeblock,
-.md > .diagram,
-.md > .terminal,
-.md > .badge-row,
-.md > .frontmatter,
-.md > .chips,
-.md > .metrics,
-.md > .ps,
-.md > .kv,
-.md > .mockup,
-.md > .callout,
-.md > .stack-grid { counter-increment: none; }
-
-/* Raw markdown style — VS Code editor view */
-.md.raw-md {
+.editor-file {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
   font-family: var(--font-mono);
   font-size: 13.5px;
   line-height: 1.65;
   color: var(--fg-1);
+  min-height: 100%;
+  padding-bottom: 80px;
 }
-.md.raw-md > .md-line {
+
+/* Gutter — fixed width, non-selectable, number column */
+.editor-gutter {
+  flex: 0 0 var(--gutter-w, 52px);
+  width: var(--gutter-w, 52px);
+  min-width: var(--gutter-w, 52px);
+  padding: 0;
+  background: var(--bg-0);
+  border-right: 1px solid var(--border);
+  user-select: none;
+  pointer-events: none;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.gutter-num {
+  display: block;
+  height: 1.65em;           /* exactly one line height */
+  line-height: 1.65em;
+  text-align: right;
+  padding-right: 14px;
+  font-size: 12px;
+  color: var(--fg-4);
+  opacity: 0.55;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Code area — scrollable, word-wrap off (VS Code default) */
+.editor-code {
+  flex: 1 1 auto;
+  padding: 0 24px 0 16px;
+  overflow-x: auto;
+  min-width: 0;
+}
+
+.code-line {
+  display: block;
   min-height: 1.65em;
-}
-.md.raw-md > .md-line.md-blank {
-  min-height: 0.85em;
-}
-.md.raw-md > .md-line.md-blank::before {
-  content: '';
-}
-.md-h1-prefix, .md-h2-prefix {
-  color: var(--accent);
-  font-weight: 600;
-  margin-right: 8px;
-}
-.md-heading {
-  color: var(--fg-0);
-  font-weight: 600;
-}
-.md-bullet {
-  color: var(--fg-3);
-  margin-right: 8px;
-}
-.md-bold {
-  color: var(--fg-0);
-  font-weight: 600;
-}
-.md-bold .md-mark {
-  color: var(--accent);
-}
-.md-code {
-  color: var(--accent);
-}
-.md-comment {
-  color: var(--fg-3);
-  font-style: italic;
-}
-.md-line .md-mark {
-  color: var(--accent);
+  line-height: 1.65em;
+  white-space: pre;          /* preserve indentation, no wrap — like a real editor */
+  tab-size: 2;
 }
 
-/* Typing animation line */
-.typing-outro {
-  color: var(--fg-3);
-  font-size: 13.5px;
-  margin-top: 28px;
-  font-family: var(--font-mono);
-}
-.typing-prefix {
-  color: var(--fg-3);
-}
-.typing-line {
-  color: var(--fg-3);
-}
-.typing-cursor {
+.code-blank {
   display: inline-block;
-  width: 8px;
-  height: 1.1em;
-  border-right: 2px solid var(--accent);
-  vertical-align: text-bottom;
-  margin-left: 1px;
-  animation: blink-caret 1.05s steps(1) infinite;
-}
-.typing-cursor:not(.blink) {
-  animation: none;
-  border-color: var(--accent);
+  height: 1.65em;
 }
 
-.md h1, .md h2, .md h3, .md h4 {
-  font-family: var(--font-prose);
-  color: var(--fg-0);
-  font-weight: 600;
-  margin: 0 0 .4em;
-  letter-spacing: -0.01em;
+/* Hover highlight — subtle current-line indicator */
+.code-line:hover {
+  background: rgba(255,255,255,0.025);
 }
-.md h1 {
-  font-size: 34px; line-height: 1.2;
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-}
-.md h1 .h1-prefix {
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: 0.55em;
-  margin-right: 10px;
-  vertical-align: middle;
-  letter-spacing: 0;
-}
-.md h2 {
-  font-size: 22px; line-height: 1.3;
-  margin-top: 48px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-  display: flex; align-items: baseline; gap: 12px;
-}
-.md h2 .num {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--fg-3);
-}
-.md h3 {
-  font-size: 17px;
-  margin-top: 32px;
-  color: var(--fg-0);
-}
-.md h3 .arrow {
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-weight: 400;
-  margin-right: 8px;
-}
-.md p {
-  margin: 14px 0;
-  color: var(--fg-1);
-  text-wrap: pretty;
-}
-.md p.lede {
-  font-size: calc(var(--prose-fs) + 2px);
-  color: var(--fg-1);
-  line-height: 1.55;
-  margin: 18px 0 28px;
-}
-.md a {
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid var(--accent-line);
-  transition: border-color .15s, color .15s;
-}
-.md a:hover { border-bottom-color: var(--accent); }
-.md code {
-  font-family: var(--font-mono);
-  font-size: 0.88em;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
-  padding: 1px 6px;
-  border-radius: 4px;
-  color: var(--fg-0);
-}
-.md strong { color: var(--fg-0); font-weight: 600; }
-.md em { color: var(--fg-0); }
 
-.md ul { padding-left: 0; list-style: none; margin: 14px 0; }
-.md ul li {
-  position: relative;
-  padding-left: 22px;
-  margin: 8px 0;
-}
-.md ul li::before {
-  content: "";
-  position: absolute;
-  left: 4px; top: 0.7em;
-  width: 6px; height: 1px;
-  background: var(--fg-3);
-}
-.md ul li ul { margin: 6px 0; }
+/* ── Syntax token colors (VS Code Dark+ inspired) ──────────────────────────── */
+/* keyword   */ .tk-key { color: #FF7B9C; }
+/* string    */ .tk-str { color: #CE9178; }
+/* number    */ .tk-num { color: #B5CEA8; }
+/* comment   */ .tk-com { color: var(--fg-3); font-style: italic; }
+/* function  */ .tk-fn  { color: #DCDCAA; }
+/* type      */ .tk-typ { color: #4EC9B0; }
+/* punctuation */ .tk-pun { color: var(--fg-2); }
 
-.md hr {
-  border: 0;
-  border-top: 1px solid var(--border);
-  margin: 36px 0;
-}
+/* ── Legacy rich components (kept for any remaining UI usage) ──────────────── */
 
 /* author / front-matter */
 .frontmatter {
@@ -286,10 +122,7 @@
   border-radius: 6px;
   overflow: hidden;
 }
-.metric {
-  background: var(--bg-1);
-  padding: 16px 18px;
-}
+.metric { background: var(--bg-1); padding: 16px 18px; }
 .metric .v {
   font-family: var(--font-mono);
   font-size: 22px;
@@ -297,12 +130,7 @@
   font-weight: 500;
   letter-spacing: -0.02em;
 }
-.metric .v .unit {
-  font-size: 13px;
-  color: var(--fg-3);
-  margin-left: 2px;
-  font-weight: 400;
-}
+.metric .v .unit { font-size: 13px; color: var(--fg-3); margin-left: 2px; font-weight: 400; }
 .metric .k {
   font-family: var(--font-mono);
   font-size: 10.5px;
@@ -335,13 +163,6 @@
 .codeblock-head .lang { color: var(--fg-2); }
 .codeblock-body { padding: 14px 16px; overflow-x: auto; }
 .codeblock pre { margin: 0; color: var(--fg-1); white-space: pre; }
-.tk-key { color: #FF7B9C; }
-.tk-str { color: #B5E48C; }
-.tk-num { color: #E6B450; }
-.tk-com { color: var(--fg-3); font-style: italic; }
-.tk-fn  { color: var(--accent); }
-.tk-typ { color: #4FC08D; }
-.tk-pun { color: var(--fg-2); }
 
 /* ASCII diagram block */
 .diagram {
@@ -366,141 +187,7 @@
   text-transform: uppercase;
 }
 
-/* mockup placeholder */
-.mockup {
-  border: 1px dashed var(--border-strong);
-  background:
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 11px,
-      #161A23 11px 12px
-    ),
-    var(--bg-1);
-  border-radius: 6px;
-  padding: 36px 28px;
-  margin: 22px 0;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 18px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--fg-2);
-}
-.mockup .label {
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--fg-3);
-  font-size: 11px;
-}
-.mockup .desc { color: var(--fg-1); margin-top: 4px; font-family: var(--font-prose); font-size: 14px; }
-.mockup .meta { color: var(--fg-3); font-size: 11px; }
-
-/* callout */
-.callout {
-  border: 1px solid var(--border);
-  border-left: 2px solid var(--accent);
-  background: var(--bg-1);
-  padding: 14px 18px;
-  border-radius: 4px;
-  margin: 22px 0;
-  font-size: 14.5px;
-  color: var(--fg-1);
-}
-.callout .head {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
-/* tables / KV blocks */
-.kv {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 10px 24px;
-  margin: 18px 0;
-  font-size: 14px;
-}
-.kv .k { color: var(--fg-3); font-family: var(--font-mono); font-size: 12.5px; }
-.kv .v { color: var(--fg-1); }
-
-/* problem→solution stack for case studies */
-.ps {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  margin: 22px 0;
-  overflow: hidden;
-}
-.ps > div { background: var(--bg-1); padding: 18px 20px; }
-.ps h4 {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg-3);
-  margin: 0 0 10px;
-  font-weight: 500;
-}
-.ps .problem h4 { color: var(--err); }
-.ps .solution h4 { color: var(--ok); }
-.ps p { margin: 6px 0; font-size: 14px; }
-
-/* tech stack categorized list */
-.stack-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  margin: 18px 0;
-}
-.stack-cat h3 {
-  margin-top: 0;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--fg-3);
-  font-weight: 500;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 8px;
-}
-.stack-cat ul { padding: 0; list-style: none; margin: 12px 0; }
-.stack-cat li {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px dashed var(--border);
-  font-size: 14px;
-}
-.stack-cat li:last-child { border-bottom: 0; }
-.stack-cat .name { display: inline-flex; align-items: center; gap: 10px; color: var(--fg-0); }
-.stack-cat .lvl {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--fg-3);
-  display: inline-flex; align-items: center; gap: 6px;
-}
-.stack-cat .lvl-bar {
-  width: 60px; height: 3px;
-  background: var(--border);
-  border-radius: 2px; overflow: hidden;
-}
-.stack-cat .lvl-bar > i {
-  display: block; height: 100%; background: var(--accent); border-radius: 2px;
-}
-
-/* Shields.io-style badges */
-.badge-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 16px 0 8px;
-}
-
-/* terminal block (contact.sh) */
+/* terminal block */
 .terminal {
   background: var(--bg-1);
   border: 1px solid var(--border);

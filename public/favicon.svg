@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect x="0.5" y="0.5" width="31" height="31" rx="6"
+    fill="#0D1117"/>
+  <rect x="1" y="1" width="30" height="30" rx="5.5"
+    fill="#58A6FF" fill-opacity="0.12"
+    stroke="#58A6FF" stroke-opacity="0.65" stroke-width="1"/>
+  <text
+    x="16" y="23"
+    text-anchor="middle"
+    fill="#58A6FF"
+    font-size="13"
+    font-weight="700"
+    font-family="'JetBrains Mono', ui-monospace, Consolas, monospace"
+    letter-spacing="-0.5"
+  >[bv]</text>
+</svg>

@@ -1,0 +1,62 @@
+{
+  "engineer": "Bryan Varela",
+  "description": "Las herramientas con las que trabajo a diario, agrupadas por capa.",
+  "note": "Nivel honesto: alto = lo uso en producción y conozco sus bordes; medio = sé lo que hace y lo defiendo en una decisión.",
+
+  "languages": {
+    "C# / .NET":    { "level": 0.95, "tag": "primary"   },
+    "TypeScript":   { "level": 0.85, "tag": "primary"   },
+    "SQL":          { "level": 0.85, "tag": "primary"   },
+    "JavaScript":   { "level": 0.85, "tag": "primary"   },
+    "Python":       { "level": 0.55, "tag": "secondary" }
+  },
+
+  "backend": {
+    "ASP.NET Core":     { "level": 0.95 },
+    "EF Core":          { "level": 0.90 },
+    "MediatR · CQRS":   { "level": 0.85 },
+    "FluentValidation": { "level": 0.80 },
+    "SignalR":          { "level": 0.70 }
+  },
+
+  "data": {
+    "PostgreSQL":            { "level": 0.85 },
+    "SQL Server":            { "level": 0.90 },
+    "Redis":                 { "level": 0.70 },
+    "Multi-tenant patterns": { "level": 0.85 }
+  },
+
+  "cloud_infra": {
+    "Google Cloud Run":          { "level": 0.85 },
+    "Cloudflare (Workers/Pages)": { "level": 0.80 },
+    "Azure App Service":         { "level": 0.75 },
+    "Docker":                    { "level": 0.85 },
+    "GitHub Actions":            { "level": 0.80 }
+  },
+
+  "frontend": {
+    "React":                    { "level": 0.75 },
+    "Vue 3 (Composition API)":  { "level": 0.80 },
+    "Tailwind CSS":             { "level": 0.70 },
+    "Vite":                     { "level": 0.75 }
+  },
+
+  "practices": {
+    "Clean Architecture":          { "level": 0.90 },
+    "N-Tier":                      { "level": 0.90 },
+    "ADRs · Documentación técnica": { "level": 0.85 },
+    "Code Review":                 { "level": 0.85 },
+    "Testing pragmático":          { "level": 0.75 }
+  },
+
+  "not_in_list": {
+    "no_go": [
+      "Frameworks que ocultan SQL — prefiero ver la consulta",
+      "ORMs con magia implícita; EF Core sí, pero con migraciones revisadas a mano"
+    ],
+    "learning": [
+      "Rust para servicios chicos críticos",
+      "Temporal para workflows duraderos"
+    ]
+  }
+}

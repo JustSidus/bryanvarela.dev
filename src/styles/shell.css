@@ -46,12 +46,8 @@
 .caption-left .product-mark {
   width: 18px; height: 18px;
   display: inline-grid; place-items: center;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  border-radius: 4px;
-  color: #0D1117;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 11px;
+  color: var(--accent);
+  flex-shrink: 0;
 }
 .caption-left .crumb-sep { color: var(--fg-4); }
 .caption-left .repo { color: var(--fg-1); font-weight: 500; }
@@ -348,29 +344,15 @@
   position: relative;
 }
 .content-inner {
-  animation: content-fade .28s ease-out both;
-}
-
-/* reading caret — blinks at end of last paragraph in view */
-.read-caret {
-  display: inline-block;
-  width: 8px; height: 1.05em;
-  background: var(--accent);
-  vertical-align: text-bottom;
-  margin-left: 2px;
-  animation: caret-blink 1.05s steps(1) infinite;
-  border-radius: 1px;
-  transform: translateY(2px);
-}
-.content-inner {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 12px 0 80px;
+  /* No max-width — editor files fill full width like a real editor */
+  width: 100%;
+  min-height: 100%;
+  padding: 0;
   font-size: var(--prose-fs);
   line-height: var(--prose-lh);
   color: var(--fg-1);
+  animation: content-fade .28s ease-out both;
 }
-[data-density="comfy"] .content-inner { padding: 20px 0 100px; }
 
 /* ============================================================
    Status bar
@@ -477,45 +459,184 @@
   color: var(--fg-1);
 }
 
-/* welcome screen */
+/* ============================================================
+   Welcome / Empty state
+   ============================================================ */
 .welcome {
   height: 100%;
-  display: grid; place-items: center;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
   color: var(--fg-2);
   font-family: var(--font-mono);
-  font-size: 13px;
 }
-.welcome .inner { text-align: center; }
-.welcome .inner kbd {
+
+/* Giant watermark */
+.welcome-watermark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+.watermark-logo {
+  opacity: 0.04;
+  color: var(--fg-0);
+  filter: blur(0.5px);
+}
+
+/* Foreground content */
+.welcome-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 24px;
+}
+
+.welcome-title {
+  font-size: 13px;
+  color: var(--fg-3);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.welcome-name   { color: var(--fg-1); font-weight: 500; }
+.welcome-sep    { color: var(--fg-4); }
+.welcome-role   { color: var(--fg-3); }
+
+/* Shortcut grid */
+.welcome-shortcuts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 280px;
+}
+
+.welcome-shortcut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background 0.14s, border-color 0.14s;
+}
+.welcome-shortcut.clickable {
+  cursor: pointer;
+}
+.welcome-shortcut.clickable:hover {
   background: var(--bg-2);
-  border: 1px solid var(--border-strong);
-  border-radius: 4px;
-  padding: 2px 6px;
+  border-color: var(--border);
+}
+
+.shortcut-keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.key-sep {
+  color: var(--fg-4);
+  font-size: 10px;
+  margin: 0 1px;
+}
+
+.key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
   font-size: 11px;
+  font-weight: 500;
   color: var(--fg-1);
-  margin: 0 2px;
+  background: var(--bg-2);
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 3px 7px;
+  line-height: 1;
+  min-width: 28px;
+  text-align: center;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.4);
+  white-space: nowrap;
+}
+.key-sm {
+  font-size: 10px;
+  padding: 2px 5px;
+  min-width: 22px;
+}
+
+.shortcut-label {
+  font-size: 12.5px;
+  color: var(--fg-2);
+  flex: 1;
+  text-align: right;
+}
+
+.welcome-hint {
+  font-size: 12px;
+  color: var(--fg-4);
+  text-align: center;
+  line-height: 1.6;
 }
 
 /* ============================================================
-   Boot Terminal (bottom panel)
+   Boot Terminal (bottom panel) — smooth transform-based slide
    ============================================================ */
 .boot-terminal {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid transparent;
   background: var(--bg-1);
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.6;
+  /* slide from below on mount */
+  transform: translateY(100%);
+  opacity: 0;
   overflow: hidden;
-  transition: max-height .25s ease;
+  /* body height transitions for collapse */
+  --panel-h: 192px;
 }
-.boot-terminal.collapsed {
+
+/* After mount, slide in */
+.boot-terminal.boot-mounted {
+  transform: translateY(0);
+  opacity: 1;
+  border-top-color: var(--border);
+  transition:
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity   0.28s ease,
+    border-top-color 0.1s ease;
+}
+
+/* Collapse: shrink the body, keep the header peeking */
+.boot-terminal .boot-terminal-body {
+  max-height: var(--panel-h);
+  overflow: hidden;
+  transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity    0.22s ease,
+              padding    0.22s ease;
+  opacity: 1;
+  padding: 10px 14px;
+  background: #012456;
+  overflow-y: auto;
+}
+
+.boot-terminal.collapsed .boot-terminal-body {
   max-height: 0;
-  border-top: none;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
-.boot-terminal:not(.collapsed) {
-  max-height: 200px;
+
+.boot-terminal.collapsed {
+  border-top-color: var(--border);
 }
+
 .boot-terminal-head {
   display: flex;
   align-items: center;
@@ -526,12 +647,12 @@
   height: 30px;
   cursor: pointer;
   user-select: none;
+  flex-shrink: 0;
 }
 .boot-terminal-head:hover { background: var(--bg-3); }
 .boot-terminal-tabs {
   display: flex;
   align-items: center;
-  gap: 0;
   height: 100%;
 }
 .boot-terminal-tab {
@@ -570,40 +691,27 @@
   color: var(--fg-3);
   font-size: 11px;
 }
-.boot-terminal-toggle { cursor: pointer; }
-.boot-terminal-body {
-  padding: 10px 14px;
-  max-height: 160px;
-  overflow-y: auto;
-  background: #012456;
-}
+.boot-terminal-toggle { cursor: pointer; font-size: 10px; }
+
 .boot-terminal-line {
   color: var(--fg-2);
   white-space: pre;
-  animation: term-line-in .2s ease-out;
   font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.6;
+  animation: term-line-in 0.18s ease-out both;
 }
-.boot-terminal-line.blank {
-  height: 0.8em;
-}
-.boot-terminal-line.banner {
-  color: #f0f0f0;
-  font-size: 12px;
-}
+.boot-terminal-line.blank { height: 0.8em; }
+.boot-terminal-line.banner { color: #f0f0f0; }
 .boot-terminal-line.term-success { color: var(--ok); }
-.boot-terminal-line.term-ready { color: var(--accent); }
-.boot-terminal-line.term-info { color: #569cd6; }
-.boot-terminal-line.term-error { color: var(--err); }
-.pwsh-prompt {
-  color: #f0f0f0;
-  flex-shrink: 0;
-}
-.pwsh-cmd {
-  color: #ffd700;
-}
+.boot-terminal-line.term-ready   { color: var(--accent); }
+.boot-terminal-line.term-info    { color: #569cd6; }
+.boot-terminal-line.term-error   { color: var(--err); }
+
+.pwsh-prompt { color: #f0f0f0; flex-shrink: 0; }
+.pwsh-cmd    { color: #ffd700; }
+
 @keyframes term-line-in {
-  0% { opacity: 0; transform: translateY(4px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0%   { opacity: 0; transform: translateY(3px); }
+  100% { opacity: 1; transform: translateY(0);   }
 }
