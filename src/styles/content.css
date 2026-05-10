@@ -3,9 +3,6 @@
    ============================================================ */
 
 .editor-file {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
   font-family: var(--font-mono);
   font-size: 13.5px;
   line-height: 1.65;
@@ -14,58 +11,60 @@
   padding-bottom: 80px;
 }
 
-/* Gutter — fixed width, non-selectable, number column */
-.editor-gutter {
-  flex: 0 0 var(--gutter-w, 52px);
-  width: var(--gutter-w, 52px);
-  min-width: var(--gutter-w, 52px);
-  padding: 0;
-  background: var(--bg-0);
-  border-right: 1px solid var(--border);
-  user-select: none;
-  pointer-events: none;
-  position: sticky;
-  left: 0;
-  z-index: 1;
-}
-
-.gutter-num {
-  display: block;
-  height: 1.65em;           /* exactly one line height */
-  line-height: 1.65em;
-  text-align: right;
-  padding-right: 14px;
-  font-size: 12px;
-  color: var(--fg-4);
-  opacity: 0.55;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-/* Code area — scrollable, word-wrap off (VS Code default) */
-.editor-code {
-  flex: 1 1 auto;
-  padding: 0 24px 0 16px;
-  overflow-x: auto;
-  min-width: 0;
-}
-
+/* Each row = flex container so line-number always aligns to top of its row */
 .code-line {
-  display: block;
+  display: flex;
+  align-items: flex-start;
   min-height: 1.65em;
-  line-height: 1.65em;
-  white-space: pre;          /* preserve indentation, no wrap — like a real editor */
-  tab-size: 2;
 }
 
-.code-blank {
-  display: inline-block;
-  height: 1.65em;
-}
-
-/* Hover highlight — subtle current-line indicator */
+/* Hover highlight */
 .code-line:hover {
   background: rgba(255,255,255,0.025);
+}
+
+/* Line number — fixed-width, non-selectable, tenue */
+.line-number {
+  flex: 0 0 52px;
+  width: 52px;
+  min-width: 52px;
+  line-height: 1.65em;
+  text-align: right;
+  padding-right: 20px;
+  font-size: 12px;
+  color: var(--fg-4);
+  opacity: 0.5;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  border-right: 1px solid var(--border);
+}
+
+/* Line content — actual code, horizontal scroll, pre whitespace */
+.line-content {
+  flex: 1 1 auto;
+  padding: 0 24px 0 16px;
+  white-space: pre;
+  tab-size: 2;
+  min-width: 0;
+  overflow-x: visible;
+  line-height: 1.65em;
+}
+
+/* Typing cursor — block cursor (VS Code / terminal style) */
+.typed-cursor {
+  display: inline-block;
+  width: 7.5px;
+  height: 1.1em;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  opacity: 1;
+  border-radius: 1px;
+}
+.typed-cursor--blink {
+  animation: blink 1.05s step-start infinite;
 }
 
 /* ── Syntax token colors (VS Code Dark+ inspired) ──────────────────────────── */

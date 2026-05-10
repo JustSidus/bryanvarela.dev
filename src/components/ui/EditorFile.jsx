@@ -1,31 +1,31 @@
 import { useMemo } from 'react'
 import { tokenize, tokenClass } from '../../utils/tokenize'
+import { TypedLines } from './TypedLines'
 
 /**
- * EditorFile — renders raw file content with a proper VS Code-style gutter.
+ * EditorFile — VS Code-style file viewer with per-row line numbers.
  *
- * Layout: flex row → [gutter | code-area]
- * The gutter is fixed-width, non-selectable, line numbers vertically aligned
- * to the first text row even when a line wraps.
+ * Each .code-line is a flex row: [line-number | line-content].
+ * This guarantees the line number stays top-aligned even if word-wrap is on.
  *
- * @param {string} code  - Raw file content (imported with ?raw)
- * @param {string} lang  - Language id: md | ts | cs | json | vue | sh
+ * @param {string} code        - Raw file content (imported with ?raw)
+ * @param {string} lang        - Language: md | ts | cs | json | vue | sh
+ * @param {number} animateLastN - Last N lines use a typing animation
  */
-export function EditorFile({ code, lang }) {
+export function EditorFile({ code, lang, animateLastN = 0 }) {
   const lines = useMemo(() => tokenize(code, lang), [code, lang])
+
+  const staticLines = animateLastN > 0 ? lines.slice(0, -animateLastN) : lines
+  const animatedLines = animateLastN > 0 ? lines.slice(-animateLastN) : []
 
   return (
     <div className="editor-file">
-      <div className="editor-gutter" aria-hidden="true">
-        {lines.map((_, i) => (
-          <div key={i} className="gutter-num">{i + 1}</div>
-        ))}
-      </div>
-      <div className="editor-code">
-        {lines.map((tokens, i) => (
-          <div key={i} className="code-line">
+      {staticLines.map((tokens, i) => (
+        <div key={i} className="code-line">
+          <span className="line-number" aria-hidden="true">{i + 1}</span>
+          <span className="line-content">
             {tokens.length === 0
-              ? <span className="code-blank"> </span>
+              ? '​'
               : tokens.map((tok, j) => {
                   const cls = tokenClass(tok.type)
                   return cls
@@ -33,9 +33,16 @@ export function EditorFile({ code, lang }) {
                     : tok.text
                 })
             }
-          </div>
-        ))}
-      </div>
+          </span>
+        </div>
+      ))}
+
+      {animatedLines.length > 0 && (
+        <TypedLines
+          lines={animatedLines}
+          lineOffset={staticLines.length}
+        />
+      )}
     </div>
   )
 }
