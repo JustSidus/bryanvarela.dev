@@ -1,4 +1,4 @@
-import { BvLogo } from '../../icons'
+import { ServerRackWatermark } from './ServerRackWatermark'
 
 const SHORTCUTS = [
   {
@@ -26,10 +26,7 @@ const SHORTCUTS = [
 export function Welcome({ onOpenPalette }) {
   return (
     <div className="welcome">
-      {/* Giant watermark logo */}
-      <div className="welcome-watermark" aria-hidden="true">
-        <BvLogo size={220} className="watermark-logo" />
-      </div>
+      <ServerRackWatermark />
 
       <div className="welcome-content">
         <div className="welcome-title">

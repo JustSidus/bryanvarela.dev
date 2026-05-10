@@ -472,8 +472,8 @@
   font-family: var(--font-mono);
 }
 
-/* Giant watermark */
-.welcome-watermark {
+/* Server rack watermark — replaces the old logo watermark */
+.server-rack-wm {
   position: absolute;
   inset: 0;
   display: grid;
@@ -481,10 +481,60 @@
   pointer-events: none;
   user-select: none;
 }
-.watermark-logo {
-  opacity: 0.04;
-  color: var(--fg-0);
-  filter: blur(0.5px);
+
+.rack-svg {
+  width: min(380px, 58vw);
+  height: auto;
+  color: var(--fg-2);
+  opacity: 0.1;
+}
+
+.rack-chassis { fill: currentColor; opacity: 0.85; }
+.rack-vent    { fill: currentColor; opacity: 0.4; }
+.rack-badge   { fill: var(--accent); opacity: 0.35; }
+.drive-bay {
+  fill: currentColor;
+  opacity: 0.25;
+  stroke: var(--bg-0);
+  stroke-width: 1;
+}
+
+.led { opacity: 0.75; }
+.led-power   { fill: var(--ok);     animation: led-pulse-slow 4s ease-in-out infinite; }
+.led-network { fill: var(--accent); animation: led-network 2.8s steps(24, end) infinite; }
+.led-disk    { fill: var(--warn);   animation: led-disk 3.6s ease-in-out infinite; }
+
+/* Falling binary stream above the rack */
+.rack-rain {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(380px, 58vw);
+  height: 50%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 100%);
+}
+
+.rain-bit {
+  position: absolute;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.12;
+  white-space: nowrap;
+  animation-name: rack-rain-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rain-bit { animation: none; opacity: 0; }
+  .led-network, .led-disk { animation: none; opacity: 0.7; }
 }
 
 /* Foreground content */
