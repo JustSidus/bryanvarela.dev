@@ -7,7 +7,7 @@ import { Tabs } from './components/shell/Tabs'
 import { Breadcrumbs } from './components/shell/Breadcrumbs'
 import { StatusBar } from './components/shell/StatusBar'
 import { CommandPalette } from './components/shell/CommandPalette'
-import { Welcome } from './components/shell/Welcome'
+import { EmptyStateDashboard } from './components/shell/EmptyStateDashboard'
 import { BootTerminal } from './components/shell/BootTerminal'
 import { AboutMe } from './components/content/AboutMe'
 import { ArelifyPlatform } from './components/content/ArelifyPlatform'
@@ -90,7 +90,7 @@ export default function App() {
               <ActiveComp />
             </div>
           ) : (
-            <Welcome onOpenPalette={() => setPaletteOpen(true)} />
+            <EmptyStateDashboard />
           )}
         </div>
         <BootTerminal ref={terminalRef} />

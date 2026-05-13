@@ -2,3 +2,21 @@ node_modules/
 dist/
 .claude/
 *.zip
+
+# Environment & secrets
+.env
+.env.*
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# MCP tooling config
+.mcp.json
+.vscode/
+
+# Memory MCP
+memory.jsonl
+.ai-terminal-images/
+ai_terminal_images/

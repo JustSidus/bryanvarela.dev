@@ -1,3 +1,4 @@
+import React from 'react'
 import { Icon as Iconify } from '@iconify/react'
 
 // ── Shell icons (stroke-based, custom) ───────────────────────────────────────

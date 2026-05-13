@@ -47,6 +47,24 @@
   --font-prose: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
+  /* Rack pixel-art palette */
+  --led-power:     #4cd964;
+  --led-net:       #4fc3f7;
+  --led-disk:      #ffaa3b;
+  --chassis-frame: #14141a;
+  --rail-mid:      #44444e;
+  --screw:         #08080a;
+  --panel-face:    #2e2e36;
+  --panel-edge:    #1c1c22;
+  --bay-edge:      #50505c;
+  --bay-body:      #08080c;
+  --bay-handle:    #74747e;
+  --vent-dark:     #06060a;
+  --vent-light:    #2a2a34;
+  --led-bezel:     #08080c;
+  --led-dim:       #2a2a34;
+  --rack-port:     #050507;
+
   /* density */
   --row-h: 26px;
   --tab-h: 36px;
