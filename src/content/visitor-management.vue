@@ -1,82 +1,66 @@
 <template>
-  <!--
-    visitor-management.vue
-    Sistema de gestión de visitas · agencia gubernamental (cliente real, sanitizado)
-    Pasantía CONANI · septiembre - diciembre 2025
+  <article class="proyecto">
+    <header>
+      <h2>{{ proyecto.titulo }}</h2>
+      <p class="meta">{{ proyecto.rol }} · {{ proyecto.estado }}</p>
+      <p class="stack">{{ proyecto.stack }}</p>
+    </header>
 
-    Repo público sanitizado:
-    https://github.com/JustSidus/gestion-visitas-demo
-  -->
+    <section v-for="bloque in bloques" :key="bloque.titulo">
+      <h3>{{ bloque.titulo }}</h3>
+      <p>{{ bloque.contenido }}</p>
+    </section>
+
+    <section>
+      <h3>Flujo de autenticación</h3>
+      <ol>
+        <li v-for="paso in authFlow" :key="paso.numero">
+          <strong>{{ paso.actor }}</strong> — {{ paso.accion }}
+        </li>
+      </ol>
+    </section>
+  </article>
 </template>
 
 <script setup lang="ts">
-// CONTEXTO ───────────────────────────────────────────────────────────────────
-//
-// Edificio gubernamental con cientos de visitas diarias registradas en una
-// libreta de papel. El proceso era lento, sin trazabilidad y sin forma de
-// validar quién estaba dentro en tiempo real. Lo reemplacé por una SPA con
-// API REST y autenticación corporativa.
+import { computed } from 'vue'
 
-interface Proyecto {
-  rol:    'Full-stack engineer'
-  stack:  ['Laravel', 'Vue 3', 'MSAL', 'Microsoft Entra ID', 'Azure', 'MySQL']
-  estado: 'Entregado en producción a la agencia'
+interface PasoAuth {
+  numero: number
+  actor:  'Frontend' | 'Microsoft' | 'Laravel'
+  accion: string
 }
 
-// DECISIÓN TÉCNICA QUE IMPORTÓ ───────────────────────────────────────────────
-//
-// SSO empresarial sin acoplar la app al proveedor de identidad.
-//
-// El cliente exigía login con la cuenta corporativa de Microsoft 365. La
-// trampa: si toda la autorización se hacía con el token de Microsoft, cada
-// llamada al backend dependía de un round-trip a Entra ID y migrar de
-// proveedor en el futuro hubiera sido reescribir la mitad del backend.
-//
-// Diseño que terminé usando: dos tokens, dos responsabilidades.
+const proyecto = {
+  titulo: 'Visitor Management System',
+  rol:    'Full-stack engineer · Pasantía CONANI (sep–dic 2025)',
+  estado: 'Entregado en producción a la agencia',
+  stack:  'Laravel (PHP 8) · Vue 3 · MSAL · Microsoft Entra ID · Azure · MySQL',
 
-const authFlow = {
-  paso_1: 'Frontend autentica con MSAL contra Microsoft Entra ID',
-  paso_2: 'Recibe un access_token de Microsoft (prueba de identidad)',
-  paso_3: 'Backend Laravel valida el token contra los JWKS de Microsoft',
-  paso_4: 'Provisiona o sincroniza el usuario interno',
-  paso_5: 'Emite un JWT propio, con scope y claims controlados por nosotros',
-  paso_6: 'El frontend usa el JWT propio para todas las llamadas siguientes',
-}
+  contexto: `Edificio gubernamental con cientos de visitas diarias registradas en una libreta de papel. El proceso era lento, sin trazabilidad y sin forma de validar quién estaba dentro en tiempo real. Lo reemplacé por una SPA con API REST y autenticación corporativa.`,
 
-// Resultado: Microsoft Entra ID maneja la identidad, Laravel maneja la
-// autorización. Cambiar de proveedor solo toca el paso 1-3.
+  decisionTecnicaClave: `SSO empresarial sin acoplar la app al proveedor de identidad. El cliente exigía login con Microsoft 365, pero si toda la autorización dependía del token de Microsoft, cada llamada al backend hacía round-trip a Entra ID y migrar de proveedor en el futuro hubiera sido reescribir la mitad del backend. La salida: dos tokens, dos responsabilidades.`,
 
-// RBAC ───────────────────────────────────────────────────────────────────────
-//
-// Cuatro roles, cada uno con permisos definidos en el JWT. Las guardas
-// del router en Vue y el middleware de Laravel comparten la misma fuente
-// de verdad — el claim `role` del JWT.
+  controlDeAcceso: `Cuatro roles (recepcionista, anfitrión, guardia, admin) con permisos definidos en el JWT. Las guardas del router en Vue y el middleware de Laravel comparten la misma fuente de verdad: el claim 'role' del JWT.`,
 
-type Role = 'recepcionista' | 'anfitrion' | 'guardia' | 'admin'
+  impacto: `Reemplazó el registro en papel. Auditoría real, validación en segundos, y el guardia deja de depender del walkie-talkie para avisar al anfitrión.`,
+} as const
 
-interface AuthClaims {
-  sub:   string
-  role:  Role
-  scope: string[]
-  exp:   number
-}
+const bloques = computed(() => [
+  { titulo: 'Contexto',                       contenido: proyecto.contexto },
+  { titulo: 'Decisión técnica que importó',   contenido: proyecto.decisionTecnicaClave },
+  { titulo: 'Control de acceso',              contenido: proyecto.controlDeAcceso },
+  { titulo: 'Impacto',                        contenido: proyecto.impacto },
+])
 
-// STACK ──────────────────────────────────────────────────────────────────────
-//
-// Backend     ·  Laravel (PHP 8) sobre Azure App Service
-// Frontend    ·  Vue 3 + Vite sobre Azure Static Web Apps
-// Datos       ·  Azure Database for MySQL
-// Identidad   ·  MSAL en el navegador, Entra ID, JWT propio
-// Despliegue  ·  Pipelines CI/CD originales (detached en el repo público)
-
-// IMPACTO ────────────────────────────────────────────────────────────────────
-//
-// Reemplazó el registro en papel. Auditoría real, validación en segundos,
-// y el guardia deja de depender del walkie-talkie para avisar al anfitrión.
+const authFlow: readonly PasoAuth[] = [
+  { numero: 1, actor: 'Frontend',  accion: 'Autentica con MSAL contra Microsoft Entra ID' },
+  { numero: 2, actor: 'Microsoft', accion: 'Devuelve un access_token (prueba de identidad)' },
+  { numero: 3, actor: 'Laravel',   accion: 'Valida el token contra los JWKS de Microsoft' },
+  { numero: 4, actor: 'Laravel',   accion: 'Provisiona o sincroniza el usuario interno' },
+  { numero: 5, actor: 'Laravel',   accion: 'Emite un JWT propio con scope y claims controlados' },
+  { numero: 6, actor: 'Frontend',  accion: 'Usa el JWT propio para todas las llamadas siguientes' },
+]
 
 export const REPO = 'https://github.com/JustSidus/gestion-visitas-demo'
 </script>
-
-<style scoped>
-/* stack: Laravel · Vue 3 · MSAL · Entra ID · Azure · MySQL */
-</style>

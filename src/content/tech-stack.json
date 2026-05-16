@@ -10,7 +10,7 @@
     "frontend": ["React", "Vue 3", "Vite"]
   },
 
-  "tambien_lo_hago": {
+  "secundario": {
     "lenguajes": ["PHP", "Python"],
     "frameworks": ["Laravel", "Django"],
     "datos": ["MySQL"]

@@ -28,12 +28,15 @@ export function Caption({ activeId, onOpenPalette }) {
       </div>
 
       <div className="caption-right">
-        <span className="meta-bit" title="Stars">
-          <Icon.star /><span className="num">12</span>
-        </span>
-        <span className="meta-bit" title="Forks">
-          <Icon.fork /><span className="num">3</span>
-        </span>
+        <a
+          className="meta-bit meta-bit--link"
+          href="https://github.com/JustSidus/bryanvarela.dev"
+          target="_blank"
+          rel="noreferrer"
+          title="Código fuente de este portfolio"
+        >
+          <Icon.github /><span className="num">view source</span>
+        </a>
       </div>
 
       <div className="caption-buttons">

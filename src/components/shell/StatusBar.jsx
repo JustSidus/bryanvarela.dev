@@ -28,6 +28,14 @@ export function StatusBar({ activeId }) {
           <Icon.err style={{ width: 12, height: 12, color: 'var(--err)', marginLeft: 6 }} />
           0
         </span>
+        <a
+          className="status-item status-item--link"
+          href="/resume.pdf"
+          download="bryan-varela-cv.pdf"
+          title="Descargar CV en PDF"
+        >
+          ↓ resume.pdf
+        </a>
       </div>
       <div className="right">
         <span className="status-item">{langLabel}</span>

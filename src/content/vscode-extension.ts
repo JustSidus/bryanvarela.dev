@@ -1,90 +1,67 @@
-// vscode-paste-image-to-terminal
-// Extensión publicable para VS Code · TypeScript · multi-plataforma
-//
+// vscode-paste-image-to-terminal · extensión personal para VS Code
 // Repo: https://github.com/JustSidus/vscode-paste-image-to-terminal
 
-interface Proyecto {
-  rol:    'Autor y mantenedor'
-  stack:  ['TypeScript', 'VS Code Extension API', 'Node.js']
-  estado: 'Publicada, en uso diario'
+interface DecisionTecnica {
+  nombre: string
+  comoFunciona: string
 }
 
-// EL PROBLEMA ────────────────────────────────────────────────────────────────
-//
-// Trabajás dentro de un Dev Container. El agente de IA (OpenCode) corre ahí
-// adentro. Tomás una captura de pantalla y querés mostrársela.
-//
-// Ctrl+V no funciona: la imagen vive en el portapapeles del host, el agente
-// vive en el contenedor, y no hay puente directo entre los dos.
-//
-// Las otras extensiones guardan la imagen en /tmp del host — una ruta que
-// dentro del contenedor no existe.
-
-// LA SOLUCIÓN ────────────────────────────────────────────────────────────────
-//
-// La extensión corre en el host (extensionKind: "ui") y escribe el archivo
-// vía vscode.workspace.fs, que es el mismo canal IPC que VS Code usa para
-// sincronizar con Dev Containers, SSH y Codespaces. La imagen aparece dentro
-// del contenedor sin montajes extra.
-
-const WORKFLOW = [
-  '1. Usuario copia una imagen (Ctrl+C, screenshot)',
-  '2. Pulsa Ctrl+Alt+V con la terminal enfocada',
-  '3. Extensión lee el portapapeles del host con la herramienta nativa',
-  '4. Calcula SHA-256 → si ya existe, reusa el archivo',
-  '5. Escribe el PNG vía vscode.workspace.fs (sincroniza al contenedor)',
-  '6. Inserta la ruta en la terminal como paste real (no como texto tipeado)',
-] as const
-
-// DECISIONES TÉCNICAS QUE IMPORTARON ─────────────────────────────────────────
-
-// 1) Bracketed paste sequences en vez de sendText plano.
-//    terminal.sendText() inyecta caracteres como si fueran tipeados. OpenCode
-//    CLI distingue paste de tipeo — solo trata como imagen lo que llega como
-//    paste real. Resolverlo requirió envolver el texto en escapes ANSI:
-
-const ESC_PASTE_START = '\x1b[200~'
-const ESC_PASTE_END   = '\x1b[201~'
-
-function sendAsRealPaste(terminal: Terminal, path: string): void {
-  terminal.sendText(ESC_PASTE_START + path + ESC_PASTE_END, false)
+interface ExtensionProject {
+  rol: string
+  stack: string
+  estado: string
+  elProblema: string
+  laSolucion: string
+  workflow: readonly string[]
+  decisionesTecnicas: readonly DecisionTecnica[]
+  impacto: string
+  repo: string
 }
 
-// 2) Deduplicación por SHA-256.
-//    El nombre del archivo es el prefijo de 12 chars del hash del contenido.
-//    Dos capturas idénticas → mismo nombre → cero duplicados en disco.
+export const project: ExtensionProject = {
+  rol:    'Autor y mantenedor',
+  stack:  'TypeScript · VS Code Extension API · Node.js',
+  estado: 'En uso personal diario',
 
-function fileName(bytes: Uint8Array): string {
-  return sha256(bytes).slice(0, 12) + '.png'
+  elProblema: `Trabajo dentro de un Dev Container con un agente de IA (OpenCode) corriendo adentro. Tomo una captura de pantalla y quiero pasársela al agente.
+
+Ctrl+V no funciona: la imagen vive en el portapapeles del host, el agente vive en el contenedor, y no hay puente directo entre los dos. Las otras extensiones guardan la imagen en /tmp del host, una ruta que dentro del contenedor no existe.`,
+
+  laSolucion: `La extensión corre en el host (extensionKind: "ui") y escribe el archivo vía vscode.workspace.fs, el mismo canal IPC que VS Code usa para sincronizar con Dev Containers, SSH y Codespaces. La imagen aparece dentro del contenedor sin montajes extra.`,
+
+  workflow: [
+    'Usuario copia una imagen (Ctrl+C, screenshot)',
+    'Pulsa Ctrl+Alt+V con la terminal enfocada',
+    'Extensión lee el portapapeles del host con la herramienta nativa del SO',
+    'Calcula SHA-256; si ya existe, reusa el archivo',
+    'Escribe el PNG vía vscode.workspace.fs (sincroniza al contenedor)',
+    'Inserta la ruta en la terminal como paste real, no como texto tipeado',
+  ],
+
+  decisionesTecnicas: [
+    {
+      nombre: 'Bracketed paste sequences en vez de sendText plano',
+      comoFunciona: `Envuelvo la ruta en ESC[200~ … ESC[201~ para que el terminal lo interprete como paste real. OpenCode CLI distingue paste de tipeo y solo trata como imagen lo que llega como paste real.`,
+    },
+    {
+      nombre: 'Deduplicación por SHA-256',
+      comoFunciona: `El nombre del archivo es el prefijo de 12 caracteres del SHA-256 del contenido. Dos capturas idénticas terminan con el mismo nombre y cero duplicados en disco.`,
+    },
+    {
+      nombre: 'Multi-plataforma sin dependencias de npm',
+      comoFunciona: `PowerShell en Windows, osascript en macOS, wl-paste con fallback a xclip en Linux. Cero dependencias agregadas al package.json.`,
+    },
+    {
+      nombre: 'Concurrencia segura con mutex de un bit',
+      comoFunciona: `Un flag booleano evita que dos invocaciones rápidas peleen por el portapapeles. Antes del lock, dos Ctrl+Alt+V seguidos rompían el archivo.`,
+    },
+    {
+      nombre: 'Espera de archivo estable en remoto',
+      comoFunciona: `En Dev Container o SSH el write llega async. Polling de fs.stat hasta que el tamaño se mantenga igual durante 3 lecturas seguidas; sin esto, OpenCode leía el PNG a medio escribir.`,
+    },
+  ],
+
+  impacto: `Uso diario propio. Resolvió un loop molesto: tomar captura, guardarla manual, copiar la ruta, pegarla. Ahora es Ctrl+Alt+V y listo.`,
+
+  repo: 'https://github.com/JustSidus/vscode-paste-image-to-terminal',
 }
-
-// 3) Multi-plataforma sin npm deps.
-//    El portapapeles se lee con la herramienta nativa de cada SO. Cero
-//    dependencias agregadas al package.json.
-
-const CLIPBOARD_TOOL = {
-  win32:  'PowerShell + System.Windows.Forms.Clipboard',
-  darwin: 'AppleScript + osascript',
-  linux:  'wl-paste (Wayland) con fallback a xclip (X11)',
-} as const
-
-// 4) Concurrencia segura.
-//    Un mutex de un solo bit evita que dos invocaciones rápidas peleen por el
-//    portapapeles. Antes del lock, dos Ctrl+Alt+V seguidos rompían el archivo.
-
-let isProcessing = false
-
-// 5) Espera de archivo estable.
-//    En remoto (Dev Container, SSH) el write llega async. Antes de pasar la
-//    ruta a la terminal, polling de fs.stat hasta que el tamaño se mantenga
-//    igual durante 3 lecturas seguidas — sin esto, OpenCode leía el PNG a
-//    medio escribir.
-
-// IMPACTO ────────────────────────────────────────────────────────────────────
-//
-// Uso diario propio, primero. Resolvió un loop molesto: tomar captura,
-// guardarla manual, copiar la ruta, pegarla. Ahora es Ctrl+Alt+V y listo.
-//
-// Publicada como VSIX, código abierto. Empaquetada y firmada con vsce.
-
-export const REPO = 'https://github.com/JustSidus/vscode-paste-image-to-terminal'

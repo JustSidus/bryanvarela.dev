@@ -80,7 +80,7 @@
         "knowsAbout": ["C#", ".NET", "ASP.NET Core", "PostgreSQL", "React", "Vue", "Docker", "Google Cloud Run", "Cloudflare Workers", "Azure", "Clean Architecture", "CQRS", "Multi-tenant SaaS"],
         "nationality": { "@type": "Country", "name": "República Dominicana" },
         "sameAs": [
-          "https://github.com/bryanvrd"
+          "https://github.com/JustSidus"
         ]
       },
       {
@@ -116,7 +116,7 @@
             "item": {
               "@type": "SoftwareApplication",
               "name": "Arelify Platform",
-              "description": "SaaS B2B multi-tenant en producción en República Dominicana. Tech lead de backend y arquitectura. Stack: .NET 8, PostgreSQL, React, Google Cloud Run, Cloudflare.",
+              "description": "SaaS B2B multi-tenant en producción en República Dominicana. Tech lead de backend y arquitectura. Stack: .NET 10, PostgreSQL, React, Google Cloud Run, Cloudflare.",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Cloud",
               "author": { "@id": "https://bryanvarela.dev/#person" }
@@ -128,7 +128,7 @@
             "item": {
               "@type": "SoftwareApplication",
               "name": "Visitor Management System",
-              "description": "Aplicación interna de gestión de accesos con tiempo de registro de ~28 segundos, 3 roles y trazabilidad QR completa. Stack: Vue 3, TypeScript, .NET, SQL Server, Azure.",
+              "description": "Aplicación interna de gestión de accesos con tiempo de registro de ~28 segundos, 3 roles y trazabilidad QR completa. Stack: Vue 3, TypeScript, Laravel (PHP 8), MySQL, Azure.",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Cloud",
               "author": { "@id": "https://bryanvarela.dev/#person" }
@@ -139,10 +139,10 @@
             "position": 3,
             "item": {
               "@type": "SoftwareApplication",
-              "name": "Layered E-commerce",
-              "description": "Plataforma e-commerce con arquitectura N-Tier y Clean Architecture. Stack: C#, ASP.NET Core, SQL Server, Redis, Docker.",
-              "applicationCategory": "BusinessApplication",
-              "operatingSystem": "Cloud",
+              "name": "VS Code Extension · paste-image-to-terminal",
+              "description": "Extensión de VSCode que pega imágenes al terminal como secuencias de escape bracketed paste reales. Stack: VSCode API, TypeScript, SHA-256 deduplication, multi-plataforma.",
+              "applicationCategory": "DeveloperApplication",
+              "operatingSystem": "Desktop",
               "author": { "@id": "https://bryanvarela.dev/#person" }
             }
           }
@@ -170,7 +170,7 @@
           <li><a href="/#about-me">Sobre mí</a></li>
           <li><a href="/#arelify-platform">Arelify Platform</a></li>
           <li><a href="/#visitor-management">Visitor Management System</a></li>
-          <li><a href="/#layered-ecommerce">Layered E-commerce</a></li>
+          <li><a href="/#vscode-extension">VS Code Extension</a></li>
           <li><a href="/#tech-stack">Tech Stack</a></li>
           <li><a href="/#contact">Contacto</a></li>
         </ul>
@@ -206,16 +206,17 @@
       <section id="visitor-management">
         <h2>Visitor Management System</h2>
         <p><strong>Rol:</strong> Full-stack engineer.</p>
-        <p><strong>Stack:</strong> Vue 3, TypeScript, .NET, SQL Server, Azure.</p>
+        <p><strong>Stack:</strong> Vue 3, TypeScript, Laravel (PHP 8), MySQL, Azure.</p>
         <p><strong>Métricas:</strong> Tiempo de registro ~28 segundos, 3 roles (recepción / anfitrión / guardia), trazabilidad 100% QR.</p>
         <p>Aplicación interna de gestión de accesos para edificio corporativo con ~600 personas. Tres apps que comparten el mismo backend, pensadas como flujos cortos. Recepción registra con foto opcional y genera QR. Anfitrión pre-registra visitas. Guardia escanea QR offline-first y registra entrada/salida.</p>
+        <p><a href="https://github.com/JustSidus/gestion-visitas-demo">→ gestion-visitas-demo (repo sanitizado)</a></p>
       </section>
 
-      <section id="layered-ecommerce">
-        <h2>Layered E-commerce — N-Tier Architecture</h2>
-        <p><strong>Rol:</strong> Backend engineer · Diseño de capas.</p>
-        <p><strong>Stack:</strong> C#, ASP.NET Core, SQL Server, Redis, Docker.</p>
-        <p>Plataforma e-commerce con arquitectura N-Tier estricta: Presentation, Application/Services, Domain, Infrastructure. Dependencias unidireccionales, bordes explícitos por interfaz. Un único proceso, despliegue simple, pero con la disciplina interna que un sistema más grande exigiría. Clean Architecture aplicado a un equipo pequeño donde la prioridad era evitar que un cambio tocara cinco archivos no relacionados.</p>
+      <section id="vscode-extension">
+        <h2>VS Code Extension · paste-image-to-terminal</h2>
+        <p><strong>Rol:</strong> Developer tool creator.</p>
+        <p><strong>Stack:</strong> VSCode API, TypeScript, SHA-256 deduplication, multi-plataforma.</p>
+        <p>Extensión que pega imágenes al terminal usando secuencias de escape bracketed paste. Deduplicación por SHA-256 para evitar duplicados, manejo de multi-plataforma (Windows/Mac/Linux) sin dependencias npm, y concurrencia segura. Uso personal y disponible en su repositorio público.</p>
       </section>
 
       <section id="tech-stack">

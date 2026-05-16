@@ -1,32 +1,26 @@
-{
-"developer": "Bryan Varela",
-"role": "Software Engineer",
-"focus": ["Backend", "Cloud Architecture", "System Design"],
-"status": "200 OK — Available"
-}
+# Bryan Varela
 
-# about-me
+Backend & Cloud Software Engineer
 
-Construyo entornos seguros y resuelvo problemas.
+**Ubicación:** Santo Domingo, República Dominicana (UTC-4)
+**Intereses:** Backend, Cloud Infrastructure, Arquitectura de Sistemas
+**Ecosistema Core:** .NET 10, C#, PostgreSQL, Google Cloud / Azure
 
-Tengo una base lógica fuerte y mi trabajo está orientado totalmente a la nube. Mi fuerte no es memorizar sintaxis, sino analizar arquitecturas, investigar dependencias y diseñar soluciones. Uso la inteligencia artificial como herramienta de trabajo diaria para acelerar el desarrollo y escribir código de calidad en el lenguaje que demande la infraestructura.
+## Perfil Profesional
 
-## 01 Cómo trabajo
+Ingeniero de software, cursando el 9no cuatrimestre de Ingeniería de Software en UNAPEC. Mi fuerte está en arquitectura y entrega: pensar el sistema, decidir las piezas, conectarlas y desplegarlas.
 
-Antes de tirar líneas de código, defino el problema a nivel de sistema.
+Uso herramientas modernas como agentes de IA y Model Context Protocol (MCP) para acelerar el desarrollo sin perder calidad técnica, enfocando todo el esfuerzo en construir soluciones reales que sean mantenibles, escalables y seguras desde el primer día.
 
-- **Investigación técnica:** Analizo el requerimiento, evalúo los servicios disponibles y defino la arquitectura que mejor se adapte al caso de uso.
-- **Adaptabilidad:** Soy agnóstico al lenguaje. Si el backend requiere C#, Node.js o el frontend pide React, uso mi base lógica y herramientas para adaptarme al stack sin perder velocidad.
-- **Enfoque Cloud:** Toda mi experiencia es nativa de la nube. Conecto y despliego servicios usando Azure, Google Cloud Run y Cloudflare, gestionando DNS, workers y contenedores.
+## Experiencia y Proyectos Destacados
 
-## 02 Prioridades técnicas
+- **Arelify — SaaS B2B en producción**
+  Cofundador técnico. Diseñé y construí toda la plataforma de reservas desde cero hasta despliegue comercial: backend multi-tenant en .NET 10, frontend React 19, edge en Cloudflare Workers, backend en Google Cloud Run. Doble reserva imposible por diseño (índice único filtrado en Postgres), aislamiento de tenants vía Global Query Filters.
 
-- **Seguridad:** Diseño bajo el principio de menor privilegio. Manejo el aislamiento de red, la gestión segura de secretos y la auditoría de accesos.
-- **Rendimiento:** Optimizo el uso de recursos y el tiempo de respuesta en la nube para mantener los costos controlados y evitar cuellos de botella.
-- **Decisiones objetivas:** La arquitectura dicta la herramienta. Justifico la adopción de cada tecnología basándome en su eficiencia para el proyecto, no en preferencias personales.
+- **Paste Image to Terminal — extensión para VS Code (uso personal)**
+  Extensión en TypeScript que resuelve un problema concreto: pegar imágenes en la terminal desde dentro de un Dev Container para pasárselas a un agente de IA. Usa la API IPC de VS Code para escribir el archivo en el contenedor sin montajes extra, deduplica por SHA-256 y envía la ruta como bracketed paste real.
 
-## 03 Proyectos
+- **Desarrollador Full-Stack en CONANI — Pasantía Institucional**
+  Sistema de gestión de visitas para una agencia gubernamental. Diseñé y aprovisioné toda la infraestructura en Azure (App Service, Static Web Apps, Database for MySQL), autenticación corporativa con Entra ID + JWT propio, y migré tres proyectos heredados a la nube.
 
-Aquí puedes ver la documentación de cómo aplico estos conceptos en entornos reales.
-
-// Para ver los casos de estudio, abre `projects/` en el explorador o presiona `Ctrl+P`.
+> Explora la carpeta `projects/` en el panel lateral para entrar a fondo en el código, las decisiones técnicas y la arquitectura de cada uno.

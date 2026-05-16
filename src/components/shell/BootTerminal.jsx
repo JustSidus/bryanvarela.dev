@@ -1,19 +1,18 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
 
 const BOOT_LINES = [
-  { text: 'Windows PowerShell',                                  type: 'banner',  delay: 0    },
-  { text: 'Copyright (C) Bryan Varela. All rights reserved.',   type: 'banner',  delay: 180  },
-  { text: '',                                                    type: 'blank',   delay: 360  },
-  { text: 'PS C:\\portfolio> dotnet run --project bryanvarela.dev', type: 'cmd', delay: 520  },
-  { text: '  Restoring packages...  ✓',                         type: 'info',    delay: 980  },
-  { text: '  Connecting to Cloudflare edge... ✓',               type: 'success', delay: 1300 },
-  { text: '  Runtime: .NET 10 · Node 22 · React 18',            type: 'info',    delay: 1620 },
-  { text: '  bryanvarela.dev loaded in 45ms',                   type: 'success', delay: 1920 },
-  { text: '',                                                    type: 'blank',   delay: 2200 },
-  { text: 'PS C:\\portfolio> _',                                 type: 'prompt',  delay: 2420 },
+  { text: 'PS C:\\portfolio> npm run dev',                       type: 'cmd',     delay: 0    },
+  { text: '',                                                    type: 'blank',   delay: 220  },
+  { text: '  > bryanvarela-dev@0.1.0 dev',                       type: 'info',    delay: 420  },
+  { text: '  > vite --host',                                     type: 'info',    delay: 620  },
+  { text: '',                                                    type: 'blank',   delay: 820  },
+  { text: '  VITE v5.4  ready',                                  type: 'success', delay: 1020 },
+  { text: '  ➜  Local:   http://localhost:5173/',                type: 'info',    delay: 1220 },
+  { text: '',                                                    type: 'blank',   delay: 1420 },
+  { text: 'PS C:\\portfolio> _',                                 type: 'prompt',  delay: 1620 },
 ]
 
-const TOTAL_BOOT_MS = 2420
+const TOTAL_BOOT_MS = 1620
 
 export const BootTerminal = forwardRef(function BootTerminal(_, ref) {
   const [visibleLines, setVisibleLines] = useState([])
