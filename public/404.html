@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 — Página no encontrada · Bryan Varela</title>
+  <meta name="description" content="La página que buscas no existe. Vuelve al portafolio de Bryan Varela." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://bryanvarela.dev/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      min-height: 100vh;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+    .code {
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: #58a6ff;
+      line-height: 1;
+      margin: 0 0 1rem;
+    }
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 0 0 0.5rem;
+      color: #e6edf3;
+    }
+    p {
+      color: #8b949e;
+      max-width: 480px;
+      margin: 0 0 2rem;
+      line-height: 1.6;
+    }
+    a {
+      display: inline-block;
+      padding: 0.625rem 1.25rem;
+      background: #238636;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+    a:hover {
+      background: #2ea043;
+    }
+    .path {
+      font-size: 0.875rem;
+      color: #6e7681;
+      margin-top: 2rem;
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="code">404</div>
+    <h1>file not found</h1>
+    <p>La ruta que buscas no existe en este portafolio. Volvé a la home para explorar los proyectos.</p>
+    <a href="/">cd ~/portfolio</a>
+    <div class="path" id="requested-path"></div>
+  </main>
+  <script>
+    document.getElementById('requested-path').textContent =
+      '$ pwd → ' + window.location.pathname;
+  </script>
+</body>
+</html>

@@ -34,6 +34,22 @@
   <meta name="twitter:image:alt" content="Bryan Varela — Backend & Cloud Software Engineer" />
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <style>
+    /* SEO snapshot: visible to crawlers, off-screen for users.
+       Hidden once React mounts (JS replaces #app contents). */
+    #seo-snapshot {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&family=VT323&display=swap" media="print" onload="this.media='all'" />
@@ -137,6 +153,96 @@
   </script>
 </head>
 <body>
+  <noscript>
+    <div style="padding:2rem;max-width:760px;margin:0 auto;font-family:system-ui,sans-serif;line-height:1.6;color:#e6edf3;background:#0d1117;">
+      <h1>Bryan Varela — Backend &amp; Cloud Software Engineer</h1>
+      <p>Este portafolio usa JavaScript para una experiencia interactiva tipo IDE. Habilita JavaScript o continúa leyendo el resumen estático.</p>
+    </div>
+  </noscript>
+  <div id="seo-snapshot">
+      <header>
+        <h1>Bryan Varela — Backend &amp; Cloud Software Engineer</h1>
+        <p>Software Engineer especializado en Backend y Arquitectura Cloud. Construyo plataformas SaaS multi-tenant con .NET, PostgreSQL, React y servicios en Google Cloud y Cloudflare. Basado en Santo Domingo, República Dominicana. Disponible para proyectos y posiciones remotas.</p>
+      </header>
+
+      <nav aria-label="Secciones del portafolio">
+        <ul>
+          <li><a href="/#about-me">Sobre mí</a></li>
+          <li><a href="/#arelify-platform">Arelify Platform</a></li>
+          <li><a href="/#visitor-management">Visitor Management System</a></li>
+          <li><a href="/#layered-ecommerce">Layered E-commerce</a></li>
+          <li><a href="/#tech-stack">Tech Stack</a></li>
+          <li><a href="/#contact">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <section id="about-me">
+        <h2>Sobre mí</h2>
+        <p>Construyo entornos seguros y resuelvo problemas. Tengo una base lógica fuerte y mi trabajo está orientado totalmente a la nube. Mi fuerte no es memorizar sintaxis, sino analizar arquitecturas, investigar dependencias y diseñar soluciones.</p>
+        <h3>Cómo trabajo</h3>
+        <ul>
+          <li><strong>Investigación técnica:</strong> Analizo el requerimiento, evalúo los servicios disponibles y defino la arquitectura que mejor se adapte al caso de uso.</li>
+          <li><strong>Adaptabilidad:</strong> Soy agnóstico al lenguaje. Si el backend requiere C#, Node.js o el frontend pide React, uso mi base lógica para adaptarme al stack sin perder velocidad.</li>
+          <li><strong>Enfoque Cloud:</strong> Toda mi experiencia es nativa de la nube. Conecto y despliego servicios usando Azure, Google Cloud Run y Cloudflare.</li>
+        </ul>
+        <h3>Prioridades técnicas</h3>
+        <ul>
+          <li><strong>Seguridad:</strong> Diseño bajo el principio de menor privilegio. Manejo aislamiento de red, gestión segura de secretos y auditoría de accesos.</li>
+          <li><strong>Rendimiento:</strong> Optimizo el uso de recursos y el tiempo de respuesta en la nube para mantener los costos controlados.</li>
+          <li><strong>Decisiones objetivas:</strong> La arquitectura dicta la herramienta. Justifico la adopción de cada tecnología basándome en su eficiencia para el proyecto.</li>
+        </ul>
+      </section>
+
+      <section id="arelify-platform">
+        <h2>Arelify Platform — SaaS B2B multi-tenant</h2>
+        <p><strong>Rol:</strong> Backend &amp; Cloud Software Engineer, fundador técnico.</p>
+        <p><strong>Stack:</strong> .NET 10, PostgreSQL 16, React 19, Cloudflare Workers, Google Cloud Run, WorkOS.</p>
+        <p><strong>Estado:</strong> En producción, pilotos activos en República Dominicana.</p>
+        <p>SaaS multi-tenant que le da a cada PYME un subdominio propio indexable por Google, agendamiento 24/7 con prevención de doble reserva a nivel de base de datos y un editor visual para que el dueño actualice su sitio sin depender de un desarrollador. Reservas online para PYMEs que hoy operan exclusivamente por WhatsApp.</p>
+        <p>Arquitectura: Cloudflare Worker como BFF (resuelve slug del negocio, prerendera HTML+JSON-LD para SEO real). Frontend React 19 + Vite sobre Cloudflare Pages (un bundle, tres superficies: landing, portal público, panel admin). Backend .NET 10 sobre Google Cloud Run con PostgreSQL multi-tenant.</p>
+        <p><a href="https://arelify.com">arelify.com</a></p>
+      </section>
+
+      <section id="visitor-management">
+        <h2>Visitor Management System</h2>
+        <p><strong>Rol:</strong> Full-stack engineer.</p>
+        <p><strong>Stack:</strong> Vue 3, TypeScript, .NET, SQL Server, Azure.</p>
+        <p><strong>Métricas:</strong> Tiempo de registro ~28 segundos, 3 roles (recepción / anfitrión / guardia), trazabilidad 100% QR.</p>
+        <p>Aplicación interna de gestión de accesos para edificio corporativo con ~600 personas. Tres apps que comparten el mismo backend, pensadas como flujos cortos. Recepción registra con foto opcional y genera QR. Anfitrión pre-registra visitas. Guardia escanea QR offline-first y registra entrada/salida.</p>
+      </section>
+
+      <section id="layered-ecommerce">
+        <h2>Layered E-commerce — N-Tier Architecture</h2>
+        <p><strong>Rol:</strong> Backend engineer · Diseño de capas.</p>
+        <p><strong>Stack:</strong> C#, ASP.NET Core, SQL Server, Redis, Docker.</p>
+        <p>Plataforma e-commerce con arquitectura N-Tier estricta: Presentation, Application/Services, Domain, Infrastructure. Dependencias unidireccionales, bordes explícitos por interfaz. Un único proceso, despliegue simple, pero con la disciplina interna que un sistema más grande exigiría. Clean Architecture aplicado a un equipo pequeño donde la prioridad era evitar que un cambio tocara cinco archivos no relacionados.</p>
+      </section>
+
+      <section id="tech-stack">
+        <h2>Tech Stack</h2>
+        <h3>Especialidad principal</h3>
+        <p>Lenguajes: C#, TypeScript, SQL. Backend: .NET 10, ASP.NET Core, Node.js.</p>
+        <h3>Infraestructura y Cloud</h3>
+        <p>Google Cloud Run, Azure, Cloudflare. DevOps: Docker, GitHub Actions.</p>
+        <h3>Bases de datos</h3>
+        <p>PostgreSQL, SQL Server, MySQL. Prácticas: aislamiento multi-tenant, optimización de consultas.</p>
+        <h3>Frontend</h3>
+        <p>React, Vue.js. Herramientas: Vite, Tailwind CSS.</p>
+        <h3>Capacidad agnóstica</h3>
+        <p>Python, Django, PHP, Laravel.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contacto</h2>
+        <ul>
+          <li>Email: <a href="mailto:bryanvarela2411@gmail.com">bryanvarela2411@gmail.com</a></li>
+          <li>GitHub: <a href="https://github.com/JustSidus">github.com/JustSidus</a></li>
+          <li>LinkedIn: <a href="https://linkedin.com/in/bryanvarela">linkedin.com/in/bryanvarela</a></li>
+          <li>Ubicación: Santo Domingo, República Dominicana (UTC-4)</li>
+          <li>Roles abiertos: Backend, Cloud, Tech Lead</li>
+        </ul>
+      </section>
+  </div>
   <div id="app"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

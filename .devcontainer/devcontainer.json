@@ -12,6 +12,14 @@
       "onAutoForward": "notify"
     }
   },
+  "mounts": [
+    "source=${localWorkspaceFolder}\\.devcontainer\\home\\.claude,target=/home/node/.claude,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}\\.devcontainer\\home\\.claude.json,target=/home/node/.claude.json,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}\\.devcontainer\\home\\.config,target=/home/node/.config,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}\\.devcontainer\\home\\.ssh,target=/home/node/.ssh,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}\\.devcontainer\\home\\.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}\\.devcontainer\\home\\.npm-global,target=/home/node/.npm-global,type=bind,consistency=cached"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -29,6 +37,6 @@
       }
     }
   },
-  "postCreateCommand": "npm install",
+  "postCreateCommand": "mkdir -p /home/node/.npm-global && npm config set prefix '/home/node/.npm-global' && npm install",
   "remoteUser": "node"
 }

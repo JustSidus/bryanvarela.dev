@@ -69,6 +69,17 @@
   animation: blink 1.05s step-start infinite;
 }
 
+/* Inline clickable URL inside source content */
+.code-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: color .12s;
+}
+.code-link:hover { color: var(--accent); }
+
 /* ── Syntax token colors (VS Code Dark+ inspired) ──────────────────────────── */
 /* keyword   */ .tk-key { color: #FF7B9C; }
 /* string    */ .tk-str { color: #CE9178; }

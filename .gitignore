@@ -3,6 +3,10 @@ dist/
 .claude/
 *.zip
 
+# Dev container persistent home (credentials, OAuth tokens, MCP config, SSH keys)
+# NEVER remove this line — contains secrets
+.devcontainer/home/
+
 # Environment & secrets
 .env
 .env.*
@@ -11,6 +15,7 @@ dist/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+.playwright-mcp/
 
 # MCP tooling config
 .mcp.json

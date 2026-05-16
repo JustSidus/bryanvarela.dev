@@ -1,109 +1,82 @@
 <template>
   <!--
-    @project   Visitor Management System
-    @type      Aplicación interna · gestión de accesos
-    @role      Full-stack engineer
-    @stack     Vue 3 · TypeScript · .NET · SQL Server · Azure
-    @tiempo-registro  ~28s
-    @roles     3 — recepción / anfitrión / guardia
-    @trazabilidad     100% QR
-  -->
+    visitor-management.vue
+    Sistema de gestión de visitas · agencia gubernamental (cliente real, sanitizado)
+    Pasantía CONANI · septiembre - diciembre 2025
 
-  <!--
-    CONTEXTO
-    ════════
-    Edificio corporativo con ~600 personas y volumen alto de visitas.
-    El proceso vivía en una libreta y un walkie-talkie. Tres dolores:
-    registro lento, sin trazabilidad y sin forma confiable de avisar al anfitrión.
-
-    DISEÑO
-    ══════
-    Tres apps que comparten el mismo backend, pensadas como flujos cortos —
-    no como dashboards. Cada rol ve solo lo que necesita.
-
-    · Recepción  — formulario rápido, foto opcional, genera QR y dispara
-                   notificación al anfitrión.
-    · Anfitrión  — ve sus visitas del día, puede pre-registrar (la visita
-                   llega y solo enseña QR).
-    · Guardia    — escanea QR, valida estado, registra entrada/salida.
-                   Funciona offline-first.
-
-    FLUJO · CHECK-IN
-    ════════════════
-
-    visitante          recepción            backend          anfitrión
-        │                   │                   │                 │
-        │  se presenta       │                   │                 │
-        │ ──────────────►    │                   │                 │
-        │                    │  POST /visits      │                 │
-        │                    │ ─────────────────► │                 │
-        │                    │                   │  push + email   │
-        │                    │                   │ ──────────────► │
-        │                    │ ◄──── QR ──────── │                 │
-        │ ◄── QR + badge ─── │                   │                 │
-        │                                                          │
-        │                                        guardia escanea   │
-        │ ──────────────────────────────────────────►  GET /visit/:qr
-        │                                         ◄── 200 · activa ─
+    Repo público sanitizado:
+    https://github.com/JustSidus/gestion-visitas-demo
   -->
 </template>
 
 <script setup lang="ts">
-// ── DETALLES QUE IMPORTARON ───────────────────────────────────────────────────
+// CONTEXTO ───────────────────────────────────────────────────────────────────
+//
+// Edificio gubernamental con cientos de visitas diarias registradas en una
+// libreta de papel. El proceso era lento, sin trazabilidad y sin forma de
+// validar quién estaba dentro en tiempo real. Lo reemplacé por una SPA con
+// API REST y autenticación corporativa.
 
-// Offline-first en la app del guardia
-// IndexedDB cache de las visitas activas; sincroniza cada 30s.
-// Si cae la red, el portón sigue abriendo a quien tenía QR válido.
-
-const useVisitCache = () => {
-  const db = openIndexedDB('visits-cache', 1)
-
-  const sync = async () => {
-    const active = await fetch('/api/visits/active').then(r => r.json())
-    await db.put('visits', active)
-  }
-
-  // sincronizar cada 30s en background
-  setInterval(sync, 30_000)
-
-  const validate = async (qr: string): Promise<VisitStatus> => {
-    const cached = await db.get('visits', qr)
-    return cached ?? { status: 'unknown', offline: true }
-  }
-
-  return { validate }
+interface Proyecto {
+  rol:    'Full-stack engineer'
+  stack:  ['Laravel', 'Vue 3', 'MSAL', 'Microsoft Entra ID', 'Azure', 'MySQL']
+  estado: 'Entregado en producción a la agencia'
 }
 
-// Auditoría inmutable
-// Cada cambio de estado va a una tabla append-only con hash encadenado.
-// Útil para incidentes y para cumplir auditoría interna.
+// DECISIÓN TÉCNICA QUE IMPORTÓ ───────────────────────────────────────────────
+//
+// SSO empresarial sin acoplar la app al proveedor de identidad.
+//
+// El cliente exigía login con la cuenta corporativa de Microsoft 365. La
+// trampa: si toda la autorización se hacía con el token de Microsoft, cada
+// llamada al backend dependía de un round-trip a Entra ID y migrar de
+// proveedor en el futuro hubiera sido reescribir la mitad del backend.
+//
+// Diseño que terminé usando: dos tokens, dos responsabilidades.
 
-interface AuditEntry {
-  id:         string
-  visitId:    string
-  action:     'CHECK_IN' | 'CHECK_OUT' | 'DENIED' | 'PRE_REGISTER'
-  actor:      string
-  timestamp:  string
-  prevHash:   string   // hash del entry anterior — cadena inmutable
-  hash:       string
+const authFlow = {
+  paso_1: 'Frontend autentica con MSAL contra Microsoft Entra ID',
+  paso_2: 'Recibe un access_token de Microsoft (prueba de identidad)',
+  paso_3: 'Backend Laravel valida el token contra los JWKS de Microsoft',
+  paso_4: 'Provisiona o sincroniza el usuario interno',
+  paso_5: 'Emite un JWT propio, con scope y claims controlados por nosotros',
+  paso_6: 'El frontend usa el JWT propio para todas las llamadas siguientes',
 }
 
-// Notificaciones que llegan
-// Email + Teams + push web. Si una vía falla, las otras toman el relevo.
-// Se mide cuál llegó primero por canal.
+// Resultado: Microsoft Entra ID maneja la identidad, Laravel maneja la
+// autorización. Cambiar de proveedor solo toca el paso 1-3.
 
-const NOTIFICATION_CHANNELS = ['email', 'teams', 'push'] as const
+// RBAC ───────────────────────────────────────────────────────────────────────
+//
+// Cuatro roles, cada uno con permisos definidos en el JWT. Las guardas
+// del router en Vue y el middleware de Laravel comparten la misma fuente
+// de verdad — el claim `role` del JWT.
 
-async function notifyHost(visitId: string, hostId: string) {
-  const results = await Promise.allSettled(
-    NOTIFICATION_CHANNELS.map(channel =>
-      sendNotification({ channel, visitId, hostId })
-    )
-  )
-  // al menos un canal debe llegar — si todos fallan, alertar
-  const anySuccess = results.some(r => r.status === 'fulfilled')
-  if (!anySuccess) await escalate(visitId)
+type Role = 'recepcionista' | 'anfitrion' | 'guardia' | 'admin'
+
+interface AuthClaims {
+  sub:   string
+  role:  Role
+  scope: string[]
+  exp:   number
 }
+
+// STACK ──────────────────────────────────────────────────────────────────────
+//
+// Backend     ·  Laravel (PHP 8) sobre Azure App Service
+// Frontend    ·  Vue 3 + Vite sobre Azure Static Web Apps
+// Datos       ·  Azure Database for MySQL
+// Identidad   ·  MSAL en el navegador, Entra ID, JWT propio
+// Despliegue  ·  Pipelines CI/CD originales (detached en el repo público)
+
+// IMPACTO ────────────────────────────────────────────────────────────────────
+//
+// Reemplazó el registro en papel. Auditoría real, validación en segundos,
+// y el guardia deja de depender del walkie-talkie para avisar al anfitrión.
+
+export const REPO = 'https://github.com/JustSidus/gestion-visitas-demo'
 </script>
 
-<!-- stack: Vue 3 · TypeScript · .NET · SQL Server · Azure App Service · SignalR -->
+<style scoped>
+/* stack: Laravel · Vue 3 · MSAL · Entra ID · Azure · MySQL */
+</style>

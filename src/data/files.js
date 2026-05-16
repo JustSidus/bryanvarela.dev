@@ -37,12 +37,12 @@ export const FILE_META = {
     path: '~/portfolio/projects',
     langAccent: 'var(--lang-vue)',
   },
-  'layered-ecommerce.cs': {
-    id: 'layered-ecommerce.cs',
-    name: 'layered-ecommerce.cs',
-    ext: 'cs',
+  'vscode-extension.ts': {
+    id: 'vscode-extension.ts',
+    name: 'vscode-extension.ts',
+    ext: 'ts',
     path: '~/portfolio/projects',
-    langAccent: 'var(--lang-cs)',
+    langAccent: 'var(--lang-ts)',
   },
   'tech-stack.json': {
     id: 'tech-stack.json',

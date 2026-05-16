@@ -1,26 +1,26 @@
 {
   "perfil": "Backend & Cloud Software Engineer",
-  "enfoque": "Construyo arquitecturas escalables. Dominio profundo en el ecosistema .NET y Cloud, con capacidad comprobada para adaptarme a cualquier stack que exija el problema.",
+  "enfoque": "Diseño y construyo plataformas escalables. Foco en arquitectura, seguridad de datos y despliegue en la nube.",
 
-  "especialidad_principal": {
+  "core": {
     "lenguajes": ["C#", "TypeScript", "SQL"],
-    "backend": [".NET 10", "ASP.NET Core", "Node.js"]
+    "backend": [".NET 10", "ASP.NET Core", "Node.js"],
+    "datos": ["PostgreSQL", "SQL Server"],
+    "cloud": ["Google Cloud Run", "Cloudflare Workers", "Azure"],
+    "frontend": ["React", "Vue 3", "Vite"]
   },
 
-  "infraestructura_y_cloud": {
-    "nube": ["Google Cloud Run", "Azure", "Cloudflare"],
-    "devops_y_contenedores": ["Docker", "GitHub Actions"]
+  "tambien_lo_hago": {
+    "lenguajes": ["PHP", "Python"],
+    "frameworks": ["Laravel", "Django"],
+    "datos": ["MySQL"]
   },
 
-  "bases_de_datos": {
-    "relacionales": ["PostgreSQL", "SQL Server", "MySQL"],
-    "practicas": ["Aislamiento multi-tenant", "Optimización de consultas"]
-  },
-
-  "frontend": {
-    "frameworks": ["React", "Vue.js"],
-    "herramientas": ["Vite", "Tailwind CSS"]
-  },
-
-  "capacidad_agnostica": ["Python", "Django", "PHP", "Laravel"]
+  "practicas": [
+    "Arquitectura limpia y separación de capas",
+    "Aislamiento multi-tenant con Global Query Filters",
+    "Integridad transaccional con constraints de base de datos",
+    "Autenticación SSO (Entra ID, WorkOS) con JWT propio",
+    "CI/CD con GitHub Actions, contenedores con Docker"
+  ]
 }

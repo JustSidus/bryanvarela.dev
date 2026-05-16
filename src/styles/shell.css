@@ -431,6 +431,11 @@
 .tab.dirty:hover .dirty { opacity: 0; }
 .tab.dirty:hover .close { opacity: 1; }
 
+/* drag & drop reordering */
+.tab--dragging { opacity: 0.35; }
+.tab--drop-before { box-shadow: inset 2px 0 0 var(--accent); }
+.tab--drop-after  { box-shadow: inset -2px 0 0 var(--accent); }
+
 /* breadcrumbs */
 .breadcrumbs {
   display: flex; align-items: center; gap: 6px;

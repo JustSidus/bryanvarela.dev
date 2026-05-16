@@ -13,7 +13,7 @@ import { MobileGate } from './components/shell/MobileGate'
 import { AboutMe } from './components/content/AboutMe'
 import { ArelifyPlatform } from './components/content/ArelifyPlatform'
 import { VisitorManagement } from './components/content/VisitorManagement'
-import { LayeredEcommerce } from './components/content/LayeredEcommerce'
+import { VscodeExtension } from './components/content/VscodeExtension'
 import { TechStack } from './components/content/TechStack'
 import { ContactSh } from './components/content/ContactSh'
 import { Welcome } from './components/content/Welcome'
@@ -25,7 +25,7 @@ const FILE_COMPONENTS = {
   'about-me.md':           AboutMe,
   'arelify-platform.cs':   ArelifyPlatform,
   'visitor-management.vue': VisitorManagement,
-  'layered-ecommerce.cs':  LayeredEcommerce,
+  'vscode-extension.ts':   VscodeExtension,
   'tech-stack.json':       TechStack,
   'contact.sh':            ContactSh,
 }
@@ -64,6 +64,21 @@ export default function App() {
   const openFile = useCallback((id) => {
     setOpenFiles((prev) => prev.includes(id) ? prev : [...prev, id])
     setActiveId(id)
+  }, [])
+
+  const moveFile = useCallback((fromIndex, toIndex) => {
+    setOpenFiles((prev) => {
+      if (
+        fromIndex === toIndex ||
+        fromIndex < 0 || fromIndex >= prev.length ||
+        toIndex < 0 || toIndex > prev.length
+      ) return prev
+      const next = prev.slice()
+      const [moved] = next.splice(fromIndex, 1)
+      const insertAt = toIndex > fromIndex ? toIndex - 1 : toIndex
+      next.splice(insertAt, 0, moved)
+      return next
+    })
   }, [])
 
   const closeFile = useCallback((id) => {
@@ -117,6 +132,7 @@ export default function App() {
           activeId={activeId}
           setActive={setActiveId}
           closeFile={closeFile}
+          moveFile={moveFile}
         />
         <Breadcrumbs activeId={activeId} />
         <div className="content" key={activeId}>
