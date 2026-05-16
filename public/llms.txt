@@ -1,0 +1,65 @@
+# Bryan Varela — Software Engineer
+
+> Backend & Cloud Software Engineer. Diseño y construyo plataformas SaaS multi-tenant, APIs y sistemas de infraestructura cloud.
+
+## Identidad
+
+- **Nombre:** Bryan Varela
+- **Rol:** Backend & Cloud Software Engineer
+- **Ubicación:** República Dominicana
+- **Portfolio:** https://bryanvarela.dev
+- **GitHub:** https://github.com/bryanvrd
+- **Disponibilidad:** Disponible para proyectos y posiciones remotas
+
+## Especialización técnica
+
+Foco principal en backend y arquitectura cloud. Agnóstico al lenguaje — me adapto al stack que demande la infraestructura.
+
+### Lenguajes
+- C# / .NET (principal, 0.95)
+- TypeScript / JavaScript (0.85)
+- SQL (0.85)
+- Python (0.55)
+
+### Backend
+- ASP.NET Core · EF Core · MediatR/CQRS · FluentValidation · SignalR
+
+### Datos
+- PostgreSQL · SQL Server · Redis · Patrones multi-tenant
+
+### Cloud & Infraestructura
+- Google Cloud Run · Cloudflare Workers & Pages · Azure App Service · Docker · GitHub Actions
+
+### Frontend
+- React · Vue 3 (Composition API) · Tailwind CSS · Vite
+
+### Prácticas
+- Clean Architecture · N-Tier · ADRs · Code Review · Testing pragmático
+
+## Proyectos
+
+### Arelify Platform
+SaaS B2B multi-tenant en producción en República Dominicana.
+- Rol: Tech lead · Backend & arquitectura
+- Stack: .NET 8 · PostgreSQL · React · Google Cloud Run · Cloudflare Workers
+- Métricas: 12+ tenants, ~180ms p95 API, 99.9% uptime (6 meses)
+
+### Visitor Management System
+Aplicación interna de gestión de accesos con flujo de registro en ~28 segundos.
+- Rol: Full-stack engineer
+- Stack: Vue 3 · TypeScript · .NET · SQL Server · Azure App Service · SignalR
+- Features: 3 roles (recepción/anfitrión/guardia), trazabilidad QR completa, offline-first
+
+### Layered E-commerce
+Plataforma e-commerce con arquitectura N-Tier y Clean Architecture.
+- Rol: Backend engineer · Diseño de capas
+- Stack: C# · ASP.NET Core · SQL Server · Redis · Docker
+
+## Cómo trabajo
+
+Antes de tirar líneas de código, defino el problema a nivel de sistema. Diseño bajo el principio de menor privilegio. La arquitectura dicta la herramienta — justifico la adopción de cada tecnología basándome en su eficiencia para el proyecto.
+
+## Experiencia
+
+- **2024 — presente:** Fundador técnico · Arelify (SaaS multi-tenant en producción)
+- **2024 (3 meses):** Desarrollador (pasantía) · CONANI (Gobierno dominicano) — oferta de contratación recibida al finalizar

@@ -1,0 +1,15 @@
+/* TEAM */
+Developer: Bryan Varela
+Role: Backend & Cloud Software Engineer
+Location: República Dominicana
+GitHub: https://github.com/bryanvrd
+Contact: sidustarop [at] gmail [dot] com
+
+/* SITE */
+Last update: 2026-05-16
+Language: Spanish (es-DO)
+Doctype: HTML5
+IDE: Visual Studio Code
+Standards: HTML5, CSS3, ES2024
+Components: React 18, Vite 5
+Hosting: Cloudflare Pages
