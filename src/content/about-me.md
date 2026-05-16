@@ -1,8 +1,8 @@
 {
-  "developer": "Bryan Varela",
-  "role":      "Software Engineer",
-  "focus":     ["Backend", "Cloud Architecture", "System Design"],
-  "status":    "200 OK — Available"
+"developer": "Bryan Varela",
+"role": "Software Engineer",
+"focus": ["Backend", "Cloud Architecture", "System Design"],
+"status": "200 OK — Available"
 }
 
 # about-me
@@ -22,7 +22,7 @@ Antes de tirar líneas de código, defino el problema a nivel de sistema.
 - **Investigación técnica:** Analizo el requerimiento, evalúo los servicios
   disponibles y defino la arquitectura que mejor se adapte al caso de uso.
 - **Adaptabilidad:** Soy agnóstico al lenguaje. Si el backend requiere C#,
-  Node.js o el frontend pide React, uso mi base lógica y herramientas de IA
+  Node.js o el frontend pide React, uso mi base lógica y herramientas
   para adaptarme al stack sin perder velocidad.
 - **Enfoque Cloud:** Toda mi experiencia es nativa de la nube. Conecto y
   despliego servicios usando Azure, Google Cloud Run y Cloudflare, gestionando

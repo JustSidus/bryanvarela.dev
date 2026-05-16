@@ -31,6 +31,7 @@
   line-height: 1.65em;
   text-align: right;
   padding-right: 20px;
+  padding-left: 16px;
   font-size: 12px;
   color: var(--fg-4);
   opacity: 0.5;
@@ -41,14 +42,15 @@
   border-right: 1px solid var(--border);
 }
 
-/* Line content — actual code, horizontal scroll, pre whitespace */
+/* Line content — actual code, preserve whitespace, horizontal scroll like VS Code */
 .line-content {
   flex: 1 1 auto;
   padding: 0 24px 0 16px;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   tab-size: 2;
   min-width: 0;
-  overflow-x: visible;
   line-height: 1.65em;
 }
 
@@ -184,6 +186,522 @@
   color: var(--fg-3);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/* ── UI Snapshots inside code files ───────────────────────── */
+.snapshot-line {
+  align-items: stretch;
+}
+.snapshot {
+  flex: 1 1 auto;
+  padding: 10px 24px 10px 16px;
+}
+.snapshot img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-1);
+  display: block;
+}
+.snapshot--wide {
+  width: 100%;
+  min-width: 0;
+}
+.snapshot-fallback {
+  display: flex;
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  background: var(--bg-1);
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-3);
+  text-align: center;
+}
+.snapshot-badge {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.snapshot-label {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--fg-2);
+}
+
+/* ── ASCII Diagram (self-contained scroll container) ─────────── */
+.ascii-diagram-wrap {
+  overflow-x: auto;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 4px 0;
+  position: relative;
+}
+.ascii-diagram-label {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: var(--fg-4);
+  text-transform: uppercase;
+}
+.ascii-diagram {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--fg-1);
+  white-space: pre;
+}
+
+/* ── Infrastructure Diagram (clean, solid blocks) ─────────── */
+.infra-diagram {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--fg-1);
+  padding: 18px 20px 20px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 680px;
+  max-width: 100%;
+}
+
+.infra-header {
+  text-align: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-strong);
+  margin-bottom: 2px;
+}
+.infra-header__title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-0);
+  font-weight: 600;
+}
+
+/* Actors row */
+.infra-actors {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+  padding: 4px 0 0;
+}
+.infra-actor {
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+}
+.infra-actor__name {
+  font-weight: 600;
+  color: var(--fg-0);
+  font-size: 12px;
+}
+.infra-actor__host {
+  font-size: 11px;
+  color: var(--accent);
+  margin-top: 2px;
+}
+.infra-actor__action {
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-top: 1px;
+}
+
+/* ── Solid Boxes ───────────────────────────────────────────── */
+.infra-box {
+  padding: 12px 14px;
+  border-radius: 5px;
+  border: 1px solid;
+  min-width: 0;
+  flex: 1;
+}
+.infra-box__head {
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.infra-box__title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+.infra-box__subtitle {
+  font-size: 11px;
+  margin-top: 2px;
+  opacity: 0.75;
+}
+
+/* Box variants — solid backgrounds */
+.infra-box--edge {
+  background: rgba(243, 128, 32, 0.10);
+  border-color: rgba(243, 128, 32, 0.35);
+}
+.infra-box--edge .infra-box__title { color: #f3a050; }
+.infra-box--edge .infra-box__subtitle { color: #d4955a; }
+
+.infra-box--worker {
+  background: rgba(243, 128, 32, 0.08);
+  border-color: rgba(243, 128, 32, 0.28);
+}
+.infra-box--worker .infra-box__title { color: #f3a050; }
+.infra-box--worker .infra-box__subtitle { color: #d4955a; }
+
+.infra-box--api {
+  background: rgba(66, 133, 244, 0.10);
+  border-color: rgba(66, 133, 244, 0.35);
+}
+.infra-box--api .infra-box__title { color: #6ba3f7; }
+.infra-box--api .infra-box__subtitle { color: #8ab4f8; }
+
+.infra-box--spa {
+  background: rgba(243, 128, 32, 0.08);
+  border-color: rgba(243, 128, 32, 0.28);
+}
+.infra-box--spa .infra-box__title { color: #f3a050; }
+.infra-box--spa .infra-box__subtitle { color: #d4955a; }
+
+.infra-box--db {
+  background: rgba(51, 103, 214, 0.10);
+  border-color: rgba(51, 103, 214, 0.35);
+}
+.infra-box--db .infra-box__title { color: #5c8ce6; }
+.infra-box--db .infra-box__subtitle { color: #7aa0e6; }
+
+.infra-box--auth {
+  background: rgba(107, 70, 193, 0.10);
+  border-color: rgba(107, 70, 193, 0.35);
+}
+.infra-box--auth .infra-box__title { color: #a78bfa; }
+.infra-box--auth .infra-box__subtitle { color: #b9a0fa; }
+
+.infra-box__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.infra-box__bullets li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--fg-2);
+}
+.infra-box__bullets li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--fg-4);
+}
+
+.infra-pill {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--fg-2);
+  margin-top: 4px;
+}
+
+/* Row layout */
+.infra-row {
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+}
+.infra-row > .infra-box {
+  flex: 1 1 0;
+}
+
+/* ── Arrows ───────────────────────────────────────────────── */
+.infra-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 18px;
+}
+.infra-arrow::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background: var(--border-strong);
+}
+.infra-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--border-strong);
+}
+
+/* Split arrow (two branches) */
+.infra-split {
+  display: flex;
+  gap: 14px;
+  height: 32px;
+  position: relative;
+}
+.infra-split__branch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.infra-split__line {
+  width: 2px;
+  flex: 1;
+  background: var(--border-strong);
+  position: relative;
+}
+.infra-split__line::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--border-strong);
+}
+.infra-split__label {
+  position: absolute;
+  top: 2px;
+  font-size: 11px;
+  color: var(--fg-2);
+  font-weight: 500;
+  background: var(--bg-0);
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.infra-split__sublabel {
+  position: absolute;
+  bottom: 2px;
+  font-size: 10px;
+  color: var(--fg-3);
+  white-space: nowrap;
+}
+
+/* Fork: one stem down that splits to two legs */
+.infra-fork {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 22px;
+}
+.infra-fork__stem {
+  width: 2px;
+  height: 10px;
+  background: var(--border-strong);
+}
+.infra-fork__legs {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 8px;
+}
+.infra-fork__legs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(50% - 14px);
+  height: 2px;
+  background: var(--border-strong);
+}
+.infra-fork__leg {
+  width: 2px;
+  height: 10px;
+  background: var(--border-strong);
+  position: relative;
+}
+.infra-fork__leg::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--border-strong);
+}
+
+/* Bottom labels */
+.infra-labels {
+  display: flex;
+  justify-content: space-around;
+  gap: 14px;
+  font-size: 10.5px;
+  color: var(--fg-3);
+  padding-top: 2px;
+}
+.infra-labels span {
+  flex: 1;
+  text-align: center;
+}
+
+/* ── Welcome doc (first-visit) ─────────────────────────── */
+.welcome-doc {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 8px 80px;
+  font-family: var(--font-prose);
+  color: var(--fg-1);
+}
+.welcome-doc__header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+.welcome-doc__title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--fg-0);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+.welcome-doc__subtitle {
+  font-size: 14px;
+  color: var(--fg-3);
+  margin: 0;
+}
+.welcome-doc__section {
+  margin: 28px 0;
+}
+.welcome-doc__section h2 {
+  font-size: 13px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+.welcome-doc__section p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fg-1);
+  margin: 0;
+}
+.welcome-doc__kbd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-bottom-color: var(--border-strong);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: var(--fg-1);
+  margin: 0 2px;
+}
+.welcome-doc__shortcuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.welcome-doc__shortcut {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.welcome-doc__keys {
+  display: inline-flex;
+  align-items: center;
+  min-width: 96px;
+}
+.welcome-doc__mouse {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-2);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+.welcome-doc__shortcut-label {
+  font-size: 13px;
+  color: var(--fg-2);
+}
+.welcome-doc__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+.welcome-doc__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px 16px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+.welcome-doc__card:hover {
+  border-color: var(--accent-line, var(--border-strong));
+  background: var(--bg-2);
+  transform: translateY(-1px);
+}
+.welcome-doc__card-file {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+.welcome-doc__card-desc {
+  font-size: 12px;
+  color: var(--fg-3);
+}
+.welcome-doc__footer {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-4);
+  text-align: center;
 }
 
 /* terminal block */

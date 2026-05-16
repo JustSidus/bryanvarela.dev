@@ -1,7 +1,7 @@
 import { Icon, FileIcon, FolderIcon } from '../../icons'
 import { FILE_META } from '../../data/files'
 
-export function TreeRow({ node, depth, openFolders, toggleFolder, openFile, activeId }) {
+export function TreeRow({ node, depth, openFolders, toggleFolder, openFile, activeId, openFiles }) {
   if (node.kind === 'folder') {
     const open = openFolders.has(node.id)
     return (
@@ -28,6 +28,7 @@ export function TreeRow({ node, depth, openFolders, toggleFolder, openFile, acti
                 toggleFolder={toggleFolder}
                 openFile={openFile}
                 activeId={activeId}
+                openFiles={openFiles}
               />
             ))}
           </div>
@@ -37,9 +38,10 @@ export function TreeRow({ node, depth, openFolders, toggleFolder, openFile, acti
   }
   const file = FILE_META[node.id]
   const active = activeId === node.id
+  const isOpen = openFiles?.includes(node.id)
   return (
     <div
-      className={`tree-row ${active ? 'selected active' : ''} ${depth ? `indent-${depth}` : ''}`}
+      className={`tree-row ${active ? 'selected active' : ''} ${isOpen && !active ? 'open-file' : ''} ${depth ? `indent-${depth}` : ''}`}
       onClick={() => openFile(node.id)}
     >
       <span className="chev"></span>

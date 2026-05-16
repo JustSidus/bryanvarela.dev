@@ -1,8 +1,7 @@
 import { Icon } from '../../icons'
 import { FILE_META, LANG_LABELS } from '../../data/files'
-import { contact } from '../../data/contact'
 
-export function StatusBar({ activeId, onOpenPalette }) {
+export function StatusBar({ activeId }) {
   const f = activeId ? FILE_META[activeId] : null
   const langLabel = LANG_LABELS[f?.ext] || '—'
 
@@ -35,18 +34,6 @@ export function StatusBar({ activeId, onOpenPalette }) {
         <span className="status-item">UTF-8</span>
         <span className="status-item">LF</span>
         <span className="status-item">Ln 1, Col 1</span>
-        <span className="status-item link" onClick={onOpenPalette} title="Command palette">
-          Ctrl+K
-        </span>
-        <a className="status-item social" href={contact.github} target="_blank" rel="noreferrer" title="GitHub">
-          <Icon.github style={{ width: 14, height: 14 }} />
-        </a>
-        <a className="status-item social" href={contact.linkedin} target="_blank" rel="noreferrer" title="LinkedIn">
-          <Icon.linkedin style={{ width: 14, height: 14 }} />
-        </a>
-        <a className="status-item social" href={`mailto:${contact.email}`} title="Email">
-          <Icon.mail style={{ width: 14, height: 14 }} />
-        </a>
       </div>
     </div>
   )

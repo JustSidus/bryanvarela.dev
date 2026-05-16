@@ -9,6 +9,13 @@
  *   4. Register the component in App.jsx's FILE_COMPONENTS map
  */
 export const FILE_META = {
+  'welcome': {
+    id: 'welcome',
+    name: 'welcome',
+    ext: 'welcome',
+    path: '~/portfolio',
+    langAccent: null,
+  },
   'about-me.md': {
     id: 'about-me.md',
     name: 'about-me.md',
@@ -16,12 +23,12 @@ export const FILE_META = {
     path: '~/portfolio',
     langAccent: null,
   },
-  'arelify-platform.ts': {
-    id: 'arelify-platform.ts',
-    name: 'arelify-platform.ts',
-    ext: 'ts',
+  'arelify-platform.cs': {
+    id: 'arelify-platform.cs',
+    name: 'arelify-platform.cs',
+    ext: 'cs',
     path: '~/portfolio/projects',
-    langAccent: 'var(--lang-ts)',
+    langAccent: 'var(--lang-cs)',
   },
   'visitor-management.vue': {
     id: 'visitor-management.vue',
@@ -57,6 +64,7 @@ export const FILE_META = {
  * Language display labels for the status bar.
  */
 export const LANG_LABELS = {
+  welcome: 'Welcome',
   md: 'Markdown',
   ts: 'TypeScript',
   vue: 'Vue · TS',

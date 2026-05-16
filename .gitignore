@@ -20,3 +20,4 @@ dist/
 memory.jsonl
 .ai-terminal-images/
 ai_terminal_images/
+.env

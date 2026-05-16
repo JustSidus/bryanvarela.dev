@@ -16,7 +16,7 @@ export function Caption({ activeId, onOpenPalette }) {
           <Icon.branch />
           main
         </span>
-        <span style={{ color: 'var(--fg-3)', fontFamily: 'var(--font-mono)', fontSize: 11 }}>
+        <span style={{ color: 'var(--fg-3)', fontFamily: 'var(--font-mono)', fontSize: 11, marginLeft: 6 }}>
           {f ? `· ${f.name}` : ''}
         </span>
       </div>

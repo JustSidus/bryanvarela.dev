@@ -11,6 +11,12 @@ export function Tabs({ openFiles, activeId, setActive, closeFile }) {
             key={id}
             className={`tab ${activeId === id ? 'active' : ''}`}
             onClick={() => setActive(id)}
+            onMouseDown={(e) => {
+              if (e.button === 1) {
+                e.preventDefault()
+                closeFile(id)
+              }
+            }}
           >
             <FileIcon ext={f.ext} />
             <span>{f.name}</span>

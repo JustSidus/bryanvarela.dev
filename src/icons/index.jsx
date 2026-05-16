@@ -179,6 +179,11 @@ const FOLDER_ICON_MAP = {
 }
 
 export function FileIcon({ ext }) {
+  if (ext === 'welcome') {
+    return (
+      <Icon.star style={{ width: 14, height: 14, color: 'var(--accent)', flexShrink: 0 }} />
+    )
+  }
   const iconId = FILE_ICON_MAP[ext]
   if (iconId) {
     return (

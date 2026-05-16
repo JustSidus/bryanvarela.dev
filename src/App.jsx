@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback, useRef, useEffect, useLayoutEffect } from 'react'
 import { FILE_META } from './data/files'
 import { Caption } from './components/shell/Caption'
 import { ActivityRail } from './components/shell/ActivityRail'
@@ -9,32 +9,57 @@ import { StatusBar } from './components/shell/StatusBar'
 import { CommandPalette } from './components/shell/CommandPalette'
 import { EmptyStateDashboard } from './components/shell/EmptyStateDashboard'
 import { BootTerminal } from './components/shell/BootTerminal'
+import { MobileGate } from './components/shell/MobileGate'
 import { AboutMe } from './components/content/AboutMe'
 import { ArelifyPlatform } from './components/content/ArelifyPlatform'
 import { VisitorManagement } from './components/content/VisitorManagement'
 import { LayeredEcommerce } from './components/content/LayeredEcommerce'
 import { TechStack } from './components/content/TechStack'
 import { ContactSh } from './components/content/ContactSh'
+import { Welcome } from './components/content/Welcome'
 import { useAccentColor } from './hooks/useAccentColor'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 
 const FILE_COMPONENTS = {
+  'welcome':               Welcome,
   'about-me.md':           AboutMe,
-  'arelify-platform.ts':   ArelifyPlatform,
+  'arelify-platform.cs':   ArelifyPlatform,
   'visitor-management.vue': VisitorManagement,
   'layered-ecommerce.cs':  LayeredEcommerce,
   'tech-stack.json':       TechStack,
   'contact.sh':            ContactSh,
 }
 
+const isFirstVisit = () => {
+  try {
+    return localStorage.getItem('bv-visited') === null
+  } catch {
+    return false
+  }
+}
+
 export default function App() {
-  const [openFiles, setOpenFiles] = useState(['about-me.md'])
-  const [activeId, setActiveId] = useState('about-me.md')
+  const [openFiles, setOpenFiles] = useState(() =>
+    isFirstVisit() ? ['welcome', 'about-me.md'] : ['about-me.md']
+  )
+  const [activeId, setActiveId] = useState(() =>
+    isFirstVisit() ? 'welcome' : 'about-me.md'
+  )
   const [openFolders, setOpenFolders] = useState(new Set(['projects', 'infrastructure']))
   const [paletteOpen, setPaletteOpen] = useState(false)
+  const [activePanelId, setActivePanelId] = useState('files')
+  const [sidebarWidth, setSidebarWidth] = useState(260)
   const terminalRef = useRef(null)
 
   useAccentColor(activeId)
+
+  useLayoutEffect(() => {
+    const el = document.getElementById('app')
+    if (!el) return
+    el.style.setProperty('--sidebar-w', sidebarWidth + 'px')
+    if (activePanelId) el.removeAttribute('data-sidebar')
+    else el.setAttribute('data-sidebar', 'hidden')
+  }, [sidebarWidth, activePanelId])
 
   const openFile = useCallback((id) => {
     setOpenFiles((prev) => prev.includes(id) ? prev : [...prev, id])
@@ -42,6 +67,9 @@ export default function App() {
   }, [])
 
   const closeFile = useCallback((id) => {
+    if (id === 'welcome') {
+      try { localStorage.setItem('bv-visited', '1') } catch {}
+    }
     setOpenFiles((prev) => {
       const idx = prev.indexOf(id)
       const next = prev.filter((x) => x !== id)
@@ -67,14 +95,21 @@ export default function App() {
 
   return (
     <>
+      <MobileGate />
       <Caption activeId={activeId} onOpenPalette={() => setPaletteOpen(true)} />
-      <ActivityRail onOpenPalette={() => setPaletteOpen(true)} />
+      <ActivityRail
+        activePanelId={activePanelId}
+        onSetPanel={(id) => setActivePanelId(prev => prev === id ? null : id)}
+        onOpenPalette={() => setPaletteOpen(true)}
+      />
       <Sidebar
+        activePanelId={activePanelId}
         openFolders={openFolders}
         toggleFolder={toggleFolder}
         openFile={openFile}
         activeId={activeId}
         openFiles={openFiles}
+        onResize={setSidebarWidth}
       />
       <main className="editor">
         <Tabs
@@ -87,7 +122,7 @@ export default function App() {
         <div className="content" key={activeId}>
           {ActiveComp ? (
             <div className="content-inner">
-              <ActiveComp />
+              <ActiveComp openFile={openFile} />
             </div>
           ) : (
             <EmptyStateDashboard />
@@ -95,7 +130,7 @@ export default function App() {
         </div>
         <BootTerminal ref={terminalRef} />
       </main>
-      <StatusBar activeId={activeId} onOpenPalette={() => setPaletteOpen(true)} />
+      <StatusBar activeId={activeId} />
 
       {paletteOpen && (
         <CommandPalette

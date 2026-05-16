@@ -5,8 +5,8 @@ export function useKeyboardShortcuts({ activeId, closeFile, setPaletteOpen, term
     const onKey = (e) => {
       const ctrl = e.metaKey || e.ctrlKey
 
-      // Ctrl+P or Ctrl+K → command palette
-      if (ctrl && (e.key === 'k' || e.key === 'K' || e.key === 'p' || e.key === 'P')) {
+      // Ctrl+P → command palette
+      if (ctrl && (e.key === 'p' || e.key === 'P')) {
         e.preventDefault()
         setPaletteOpen(true)
         return
