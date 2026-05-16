@@ -40,7 +40,7 @@ const isFirstVisit = () => {
 
 export default function App() {
   const [openFiles, setOpenFiles] = useState(() =>
-    isFirstVisit() ? ['welcome', 'about-me.md'] : ['about-me.md']
+    isFirstVisit() ? ['welcome'] : ['about-me.md']
   )
   const [activeId, setActiveId] = useState(() =>
     isFirstVisit() ? 'welcome' : 'about-me.md'

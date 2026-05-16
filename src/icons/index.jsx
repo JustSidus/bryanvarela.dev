@@ -1,5 +1,6 @@
 import React from 'react'
 import { Icon as Iconify } from '@iconify/react'
+import './material-icons-offline'
 
 // ── Shell icons (stroke-based, custom) ───────────────────────────────────────
 
