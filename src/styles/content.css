@@ -9,6 +9,7 @@
   color: var(--fg-1);
   min-height: 100%;
   padding-bottom: 80px;
+  width: 100%;
 }
 
 /* Each row = flex container so line-number always aligns to top of its row */

@@ -699,10 +699,12 @@
 .content {
   overflow: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 .content-inner {
   width: 100%;
-  max-width: 1200px;
   min-width: 0;
   min-height: 100%;
   padding: 24px;
