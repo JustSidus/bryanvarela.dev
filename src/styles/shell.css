@@ -22,22 +22,6 @@
   grid-template-columns: 48px 0 1fr;
 }
 
-@media (max-width: 1024px) {
-  #app {
-    --sidebar-w: 220px;
-  }
-}
-
-@media (max-width: 768px) {
-  #app {
-    --sidebar-w: 0px;
-    grid-template-columns: 48px 0 1fr;
-  }
-  [data-sidebar="hidden"] #app {
-    grid-template-columns: 48px 0 1fr;
-  }
-}
-
 /* ============================================================
    Win11 Title bar (caption)
    ============================================================ */
@@ -575,7 +559,6 @@
   background: var(--bg-0);
   min-width: 0;
   overflow: hidden;
-  width: 100%;
 }
 
 /* tabs strip */
@@ -716,25 +699,17 @@
 .content {
   overflow: auto;
   position: relative;
-  min-width: 0;
 }
 .content-inner {
   width: 100%;
   max-width: 1200px;
   min-width: 0;
   min-height: 100%;
-  padding: 24px 16px;
+  padding: 24px;
   font-size: var(--prose-fs);
   line-height: var(--prose-lh);
   color: var(--fg-1);
   animation: content-fade 0.28s ease-out both;
-  box-sizing: border-box;
-}
-
-@media (min-width: 768px) {
-  .content-inner {
-    padding: 24px;
-  }
 }
 
 /* ============================================================
