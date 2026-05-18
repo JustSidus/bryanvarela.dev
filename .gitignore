@@ -42,3 +42,6 @@ public/images/
 
 # Local review/audit screenshots (do not commit)
 review-*.png
+
+# Build-time output (regenerated on every build by npm run build)
+src/data/recent-commits.js
