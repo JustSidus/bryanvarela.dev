@@ -2,11 +2,11 @@
 Developer: Bryan Varela
 Role: Backend & Cloud Software Engineer
 Location: República Dominicana
-GitHub: https://github.com/bryanvrd
-Contact: sidustarop [at] gmail [dot] com
+GitHub: https://github.com/JustSidus
+Contact: hola [at] bryanvarela [dot] dev
 
 /* SITE */
-Last update: 2026-05-16
+Last update: 2026-05-18
 Language: Spanish (es-DO)
 Doctype: HTML5
 IDE: Visual Studio Code

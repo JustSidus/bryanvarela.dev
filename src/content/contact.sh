@@ -1,9 +1,9 @@
 #!/bin/bash
 # contact.sh
 
-EMAIL="bryanvarela2411@gmail.com"
+EMAIL="hola@bryanvarela.dev"
 GITHUB="https://github.com/JustSidus"
-LINKEDIN="https://linkedin.com/in/bryanvarela"
+LINKEDIN="https://www.linkedin.com/in/bryan-varela-mazzei/"
 LOCATION="Santo Domingo (UTC-4)"
 ROLES="Backend, Cloud, Tech Lead"
 

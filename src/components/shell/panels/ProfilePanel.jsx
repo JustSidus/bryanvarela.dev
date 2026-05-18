@@ -35,7 +35,7 @@ export function ProfilePanel() {
             rel="noreferrer"
             style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--accent)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}
           >
-            <span>↗</span> linkedin.com/in/bryanvarela
+            <span>↗</span> linkedin.com/in/bryan-varela-mazzei
           </a>
           <a
             href={`mailto:${contact.email}`}

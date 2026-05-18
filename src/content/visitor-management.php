@@ -7,8 +7,6 @@ namespace Portafolio\Proyectos;
 
 readonly class VisitorManagementSystem
 {
-    public const REPO_URL = 'https://github.com/JustSidus/gestion-visitas-demo';
-
     public string $tipo  = 'Sistema Institucional';
     public string $estado = 'Producción';
 

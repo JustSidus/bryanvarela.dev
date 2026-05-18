@@ -1,5 +1,5 @@
 /* ============================================================
-   EditorFile — VS Code-faithful gutter + code area
+   EditorFile - VS Code-faithful gutter + code area
    ============================================================ */
 
 .editor-file {
@@ -20,10 +20,10 @@
 
 /* Hover highlight */
 .code-line:hover {
-  background: rgba(255,255,255,0.025);
+  background: rgba(255, 255, 255, 0.025);
 }
 
-/* Line number — fixed-width, non-selectable, tenue */
+/* Line number - fixed-width, non-selectable, tenue */
 .line-number {
   flex: 0 0 52px;
   width: 52px;
@@ -42,7 +42,7 @@
   border-right: 1px solid var(--border);
 }
 
-/* Line content — actual code, preserve whitespace, horizontal scroll like VS Code */
+/* Line content - actual code, preserve whitespace, horizontal scroll like VS Code */
 .line-content {
   flex: 1 1 auto;
   padding: 0 24px 0 16px;
@@ -54,7 +54,7 @@
   line-height: 1.65em;
 }
 
-/* Typing cursor — block cursor (VS Code / terminal style) */
+/* Typing cursor - block cursor (VS Code / terminal style) */
 .typed-cursor {
   display: inline-block;
   width: 7.5px;
@@ -76,18 +76,42 @@
   text-decoration-color: var(--accent);
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
-  transition: color .12s;
+  transition: color 0.12s;
 }
-.code-link:hover { color: var(--accent); }
+.code-link:hover {
+  color: var(--accent);
+}
 
 /* ── Syntax token colors (VS Code Dark+ inspired) ──────────────────────────── */
-/* keyword   */ .tk-key { color: #FF7B9C; }
-/* string    */ .tk-str { color: #CE9178; }
-/* number    */ .tk-num { color: #B5CEA8; }
-/* comment   */ .tk-com { color: var(--fg-3); font-style: italic; }
-/* function  */ .tk-fn  { color: #DCDCAA; }
-/* type      */ .tk-typ { color: #4EC9B0; }
-/* punctuation */ .tk-pun { color: var(--fg-2); }
+/* keyword   */
+.tk-key {
+  color: #ff7b9c;
+}
+/* string    */
+.tk-str {
+  color: #ce9178;
+}
+/* number    */
+.tk-num {
+  color: #b5cea8;
+}
+/* comment   */
+.tk-com {
+  color: var(--fg-3);
+  font-style: italic;
+}
+/* function  */
+.tk-fn {
+  color: #dcdcaa;
+}
+/* type      */
+.tk-typ {
+  color: #4ec9b0;
+}
+/* punctuation */
+.tk-pun {
+  color: var(--fg-2);
+}
 
 /* ── Legacy rich components (kept for any remaining UI usage) ──────────────── */
 
@@ -103,12 +127,23 @@
   grid-template-columns: max-content 1fr;
   gap: 4px 16px;
 }
-.frontmatter .k { color: var(--fg-3); }
-.frontmatter .v { color: var(--fg-1); }
-.frontmatter .v.accent { color: var(--accent); }
+.frontmatter .k {
+  color: var(--fg-3);
+}
+.frontmatter .v {
+  color: var(--fg-1);
+}
+.frontmatter .v.accent {
+  color: var(--accent);
+}
 
 /* tag chips for tech */
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 8px; }
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 8px;
+}
 .chip {
   font-family: var(--font-mono);
   font-size: 11.5px;
@@ -118,10 +153,20 @@
   padding: 3px 9px;
   border-radius: 4px;
   letter-spacing: 0.01em;
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
-.chip .dot { width: 7px; height: 7px; border-radius: 50%; }
-.chip.accent { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+.chip .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.chip.accent {
+  color: var(--accent);
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
 
 /* metric grid */
 .metrics {
@@ -134,7 +179,10 @@
   border-radius: 6px;
   overflow: hidden;
 }
-.metric { background: var(--bg-1); padding: 16px 18px; }
+.metric {
+  background: var(--bg-1);
+  padding: 16px 18px;
+}
 .metric .v {
   font-family: var(--font-mono);
   font-size: 22px;
@@ -142,7 +190,12 @@
   font-weight: 500;
   letter-spacing: -0.02em;
 }
-.metric .v .unit { font-size: 13px; color: var(--fg-3); margin-left: 2px; font-weight: 400; }
+.metric .v .unit {
+  font-size: 13px;
+  color: var(--fg-3);
+  margin-left: 2px;
+  font-weight: 400;
+}
 .metric .k {
   font-family: var(--font-mono);
   font-size: 10.5px;
@@ -164,7 +217,9 @@
   line-height: 1.65;
 }
 .codeblock-head {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 6px 12px;
   background: var(--bg-2);
   border-bottom: 1px solid var(--border);
@@ -172,9 +227,18 @@
   font-size: 11.5px;
   letter-spacing: 0.04em;
 }
-.codeblock-head .lang { color: var(--fg-2); }
-.codeblock-body { padding: 14px 16px; overflow-x: auto; }
-.codeblock pre { margin: 0; color: var(--fg-1); white-space: pre; }
+.codeblock-head .lang {
+  color: var(--fg-2);
+}
+.codeblock-body {
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+.codeblock pre {
+  margin: 0;
+  color: var(--fg-1);
+  white-space: pre;
+}
 
 /* ASCII diagram block */
 .diagram {
@@ -192,7 +256,9 @@
   position: relative;
 }
 .diagram .label {
-  position: absolute; top: 10px; right: 12px;
+  position: absolute;
+  top: 10px;
+  right: 12px;
   font-size: 10px;
   color: var(--fg-3);
   letter-spacing: 0.08em;
@@ -261,7 +327,7 @@
   top: 8px;
   right: 10px;
   font-size: 9px;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   color: var(--fg-4);
   text-transform: uppercase;
 }
@@ -345,7 +411,7 @@
 .infra-box__head {
   margin-bottom: 8px;
   padding-bottom: 6px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .infra-box__title {
   font-family: var(--font-mono);
@@ -359,48 +425,72 @@
   opacity: 0.75;
 }
 
-/* Box variants — solid backgrounds */
+/* Box variants - solid backgrounds */
 .infra-box--edge {
-  background: rgba(243, 128, 32, 0.10);
+  background: rgba(243, 128, 32, 0.1);
   border-color: rgba(243, 128, 32, 0.35);
 }
-.infra-box--edge .infra-box__title { color: #f3a050; }
-.infra-box--edge .infra-box__subtitle { color: #d4955a; }
+.infra-box--edge .infra-box__title {
+  color: #f3a050;
+}
+.infra-box--edge .infra-box__subtitle {
+  color: #d4955a;
+}
 
 .infra-box--worker {
   background: rgba(243, 128, 32, 0.08);
   border-color: rgba(243, 128, 32, 0.28);
 }
-.infra-box--worker .infra-box__title { color: #f3a050; }
-.infra-box--worker .infra-box__subtitle { color: #d4955a; }
+.infra-box--worker .infra-box__title {
+  color: #f3a050;
+}
+.infra-box--worker .infra-box__subtitle {
+  color: #d4955a;
+}
 
 .infra-box--api {
-  background: rgba(66, 133, 244, 0.10);
+  background: rgba(66, 133, 244, 0.1);
   border-color: rgba(66, 133, 244, 0.35);
 }
-.infra-box--api .infra-box__title { color: #6ba3f7; }
-.infra-box--api .infra-box__subtitle { color: #8ab4f8; }
+.infra-box--api .infra-box__title {
+  color: #6ba3f7;
+}
+.infra-box--api .infra-box__subtitle {
+  color: #8ab4f8;
+}
 
 .infra-box--spa {
   background: rgba(243, 128, 32, 0.08);
   border-color: rgba(243, 128, 32, 0.28);
 }
-.infra-box--spa .infra-box__title { color: #f3a050; }
-.infra-box--spa .infra-box__subtitle { color: #d4955a; }
+.infra-box--spa .infra-box__title {
+  color: #f3a050;
+}
+.infra-box--spa .infra-box__subtitle {
+  color: #d4955a;
+}
 
 .infra-box--db {
-  background: rgba(51, 103, 214, 0.10);
+  background: rgba(51, 103, 214, 0.1);
   border-color: rgba(51, 103, 214, 0.35);
 }
-.infra-box--db .infra-box__title { color: #5c8ce6; }
-.infra-box--db .infra-box__subtitle { color: #7aa0e6; }
+.infra-box--db .infra-box__title {
+  color: #5c8ce6;
+}
+.infra-box--db .infra-box__subtitle {
+  color: #7aa0e6;
+}
 
 .infra-box--auth {
-  background: rgba(107, 70, 193, 0.10);
+  background: rgba(107, 70, 193, 0.1);
   border-color: rgba(107, 70, 193, 0.35);
 }
-.infra-box--auth .infra-box__title { color: #a78bfa; }
-.infra-box--auth .infra-box__subtitle { color: #b9a0fa; }
+.infra-box--auth .infra-box__title {
+  color: #a78bfa;
+}
+.infra-box--auth .infra-box__subtitle {
+  color: #b9a0fa;
+}
 
 .infra-box__bullets {
   list-style: none;
@@ -429,8 +519,8 @@
   font-size: 11px;
   padding: 3px 10px;
   border-radius: 4px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--fg-2);
   margin-top: 4px;
 }
@@ -689,7 +779,10 @@
   text-align: left;
   font: inherit;
   color: inherit;
-  transition: border-color .15s, background .15s, transform .15s;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    transform 0.15s;
 }
 .welcome-doc__card:hover {
   border-color: var(--accent-line, var(--border-strong));
@@ -729,23 +822,54 @@
 .terminal-head {
   background: var(--bg-2);
   padding: 8px 12px;
-  display: flex; align-items: center; gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   border-bottom: 1px solid var(--border);
   color: var(--fg-3);
   font-size: 11.5px;
   letter-spacing: 0.04em;
 }
-.terminal-head .dots { display: flex; gap: 6px; }
-.terminal-head .dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--bg-4); display: block; }
-.terminal-body { padding: 16px 18px; color: var(--fg-1); }
-.term-line { display: flex; gap: 10px; align-items: baseline; }
-.term-prompt { color: var(--accent); flex-shrink: 0; }
-.term-cmd { color: var(--fg-0); }
-.term-out { color: var(--fg-2); padding-left: 24px; }
-.term-out a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-line); }
+.terminal-head .dots {
+  display: flex;
+  gap: 6px;
+}
+.terminal-head .dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg-4);
+  display: block;
+}
+.terminal-body {
+  padding: 16px 18px;
+  color: var(--fg-1);
+}
+.term-line {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.term-prompt {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.term-cmd {
+  color: var(--fg-0);
+}
+.term-out {
+  color: var(--fg-2);
+  padding-left: 24px;
+}
+.term-out a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-line);
+}
 .term-cur {
   display: inline-block;
-  width: 8px; height: 14px;
+  width: 8px;
+  height: 14px;
   background: var(--accent);
   vertical-align: middle;
   margin-left: 2px;

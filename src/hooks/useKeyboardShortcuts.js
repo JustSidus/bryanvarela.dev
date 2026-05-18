@@ -31,6 +31,23 @@ export function useKeyboardShortcuts({ activeId, closeFile, setPaletteOpen, term
         terminalRef?.current?.toggle()
         return
       }
+
+      // Ctrl+G → open GitHub profile
+      if (ctrl && (e.key === 'g' || e.key === 'G')) {
+        e.preventDefault()
+        window.open('https://github.com/JustSidus', '_blank', 'noreferrer')
+        return
+      }
+
+      // Ctrl+D → download CV
+      if (ctrl && (e.key === 'd' || e.key === 'D')) {
+        e.preventDefault()
+        const a = document.createElement('a')
+        a.href = '/cv-bryan-varela.pdf'
+        a.download = 'cv-bryan-varela.pdf'
+        a.click()
+        return
+      }
     }
 
     window.addEventListener('keydown', onKey)

@@ -1,70 +1,72 @@
 /* ============================================================
-   CSS Custom Properties — Theme & Density Tokens
+   CSS Custom Properties - Theme & Density Tokens
    Extracted from src/index.css
    ============================================================ */
 
 :root {
   /* GitHub Dark inspired palette */
-  --bg-0: #0D1117;          /* canvas (GH dark) */
-  --bg-1: #010409;          /* sidebar / title bar (GH darker) */
-  --bg-2: #161B22;          /* tabs strip / panels (GH muted) */
-  --bg-3: #1F242C;          /* hover */
-  --bg-4: #262C36;          /* selected */
-  --border: #21262D;
-  --border-strong: #30363D;
+  --bg-0: #0d1117; /* canvas (GH dark) */
+  --bg-1: #010409; /* sidebar / title bar (GH darker) */
+  --bg-2: #161b22; /* tabs strip / panels (GH muted) */
+  --bg-3: #1f242c; /* hover */
+  --bg-4: #262c36; /* selected */
+  --border: #21262d;
+  --border-strong: #30363d;
 
-  --fg-0: #E6EDF3;          /* primary text */
-  --fg-1: #C9D1D9;          /* body text */
-  --fg-2: #8B949E;          /* muted */
-  --fg-3: #6E7681;          /* subtle */
-  --fg-4: #484F58;          /* very subtle */
+  --fg-0: #e6edf3; /* primary text */
+  --fg-1: #c9d1d9; /* body text */
+  --fg-2: #8b949e; /* muted */
+  --fg-3: #6e7681; /* subtle */
+  --fg-4: #484f58; /* very subtle */
 
-  /* accent (overridden by tweaks) — defaults to GitHub blue */
-  --accent: #58A6FF;
+  /* accent (overridden by tweaks) - defaults to GitHub blue */
+  --accent: #58a6ff;
   --accent-soft: #58a6ff22;
   --accent-line: #58a6ff55;
 
   /* GitHub-style secondary accent (green) */
-  --accent-2: #3FB950;
+  --accent-2: #3fb950;
 
-  /* language hues — GitHub linguist style */
-  --lang-ts: #3178C6;
-  --lang-vue: #41B883;
-  --lang-cs: #9D7CFF;
-  --lang-md: #C9D1D9;
-  --lang-json: #E3B341;
-  --lang-php: #C678DD;
-  --lang-sh: #F1502F;
+  /* language hues - GitHub linguist style */
+  --lang-ts: #3178c6;
+  --lang-vue: #41b883;
+  --lang-cs: #9d7cff;
+  --lang-md: #c9d1d9;
+  --lang-json: #e3b341;
+  --lang-php: #c678dd;
+  --lang-sh: #f1502f;
 
   /* status / chips */
-  --ok: #3FB950;
-  --warn: #D29922;
-  --err: #F85149;
+  --ok: #3fb950;
+  --warn: #d29922;
+  --err: #f85149;
 
   /* Win11 caption */
   --caption-h: 36px;
 
   /* type */
-  --font-prose: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-prose:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+    sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
 
   /* Rack pixel-art palette */
-  --led-power:     #4cd964;
-  --led-net:       #4fc3f7;
-  --led-disk:      #ffaa3b;
+  --led-power: #4cd964;
+  --led-net: #4fc3f7;
+  --led-disk: #ffaa3b;
   --chassis-frame: #14141a;
-  --rail-mid:      #44444e;
-  --screw:         #08080a;
-  --panel-face:    #2e2e36;
-  --panel-edge:    #1c1c22;
-  --bay-edge:      #50505c;
-  --bay-body:      #08080c;
-  --bay-handle:    #74747e;
-  --vent-dark:     #06060a;
-  --vent-light:    #2a2a34;
-  --led-bezel:     #08080c;
-  --led-dim:       #2a2a34;
-  --rack-port:     #050507;
+  --rail-mid: #44444e;
+  --screw: #08080a;
+  --panel-face: #2e2e36;
+  --panel-edge: #1c1c22;
+  --bay-edge: #50505c;
+  --bay-body: #08080c;
+  --bay-handle: #74747e;
+  --vent-dark: #06060a;
+  --vent-light: #2a2a34;
+  --led-bezel: #08080c;
+  --led-dim: #2a2a34;
+  --rack-port: #050507;
 
   /* density */
   --row-h: 26px;

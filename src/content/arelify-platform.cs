@@ -9,7 +9,7 @@ public static class ArelifyPlatform
 {
     public static readonly object Resumen = new
     {
-        Rol     = "Cofundador técnico — 100% del backend, infraestructura y frontend",
+        Rol     = "Cofundador técnico - 100% del backend, infraestructura y frontend",
         Promesa = "Reservas online para PYMEs de servicios que hoy operan por WhatsApp",
         Stack   = ".NET 10 · PostgreSQL 16 · React 19 · Cloudflare Workers · Google Cloud Run",
         Estado  = "En producción, pilotos activos en República Dominicana"
@@ -37,7 +37,7 @@ public static class ArelifyPlatform
             ComoFunciona: "EF Core inyecta WHERE TenantId = @current en cada consulta vía Global Query Filters. El TenantId sale del JWT firmado por el servidor, nunca de un header enviado por el cliente."
         ),
         new(
-            Nombre:       "Borde como BFF — SEO real y API oculta",
+            Nombre:       "Borde como BFF - SEO real y API oculta",
             ComoFunciona: "Cloudflare Worker resuelve el subdominio del negocio, prerendera HTML + JSON-LD para que Google indexe contenido real, y proxea /api/* hacia Cloud Run manteniendo las cookies httpOnly opacas al navegador."
         ),
         new(

@@ -1,9 +1,9 @@
-import { Icon } from '../../icons'
-import { FILE_META, LANG_LABELS } from '../../data/files'
+import { Icon } from "../../icons";
+import { FILE_META, LANG_LABELS } from "../../data/files";
 
 export function StatusBar({ activeId }) {
-  const f = activeId ? FILE_META[activeId] : null
-  const langLabel = LANG_LABELS[f?.ext] || '—'
+  const f = activeId ? FILE_META[activeId] : null;
+  const langLabel = LANG_LABELS[f?.ext] || "-";
 
   return (
     <div className="status">
@@ -13,19 +13,28 @@ export function StatusBar({ activeId }) {
           main
         </span>
         <span className="status-item" title="Sync">
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}>
+          <span
+            style={{ display: "inline-flex", alignItems: "center", gap: 3 }}
+          >
             <span style={{ fontSize: 10 }}>↑</span>0
             <span style={{ fontSize: 10, marginLeft: 4 }}>↓</span>0
           </span>
         </span>
-        <span className="status-item" style={{ color: 'var(--ok)' }}>
+        <span className="status-item" style={{ color: "var(--ok)" }}>
           <Icon.cloud style={{ width: 13, height: 13 }} />
           deployed
         </span>
         <span className="status-item">
-          <Icon.warn style={{ width: 12, height: 12, color: 'var(--warn)' }} />
+          <Icon.warn style={{ width: 12, height: 12, color: "var(--warn)" }} />
           0
-          <Icon.err style={{ width: 12, height: 12, color: 'var(--err)', marginLeft: 6 }} />
+          <Icon.err
+            style={{
+              width: 12,
+              height: 12,
+              color: "var(--err)",
+              marginLeft: 6,
+            }}
+          />
           0
         </span>
         <a
@@ -44,5 +53,5 @@ export function StatusBar({ activeId }) {
         <span className="status-item">Ln 1, Col 1</span>
       </div>
     </div>
-  )
+  );
 }

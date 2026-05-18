@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { Icon, BvLogo } from '../../icons'
 import { FILE_META } from '../../data/files'
+import { CogModal } from './CogModal'
 
 export function Caption({ activeId, onOpenPalette }) {
+  const [cogOpen, setCogOpen] = useState(false)
   const f = activeId ? FILE_META[activeId] : null
   return (
     <div className="caption">
@@ -28,15 +31,14 @@ export function Caption({ activeId, onOpenPalette }) {
       </div>
 
       <div className="caption-right">
-        <a
+        <button
           className="meta-bit meta-bit--link"
-          href="https://github.com/JustSidus/bryanvarela.dev"
-          target="_blank"
-          rel="noreferrer"
+          onClick={() => setCogOpen(true)}
           title="Código fuente de este portfolio"
         >
           <Icon.github /><span className="num">view source</span>
-        </a>
+        </button>
+        {cogOpen && <CogModal onClose={() => setCogOpen(false)} />}
       </div>
 
       <div className="caption-buttons">

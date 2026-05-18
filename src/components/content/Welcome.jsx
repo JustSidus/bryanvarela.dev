@@ -14,7 +14,7 @@ export function Welcome({ openFile }) {
           <button
             type="button"
             className="welcome-doc__card"
-            onClick={() => openFile?.('arelify-platform.cs')}
+            onClick={() => openFile?.("arelify-platform.cs")}
           >
             <span className="welcome-doc__card-file">arelify-platform.cs</span>
             <span className="welcome-doc__card-desc">Proyecto destacado</span>
@@ -22,7 +22,7 @@ export function Welcome({ openFile }) {
           <button
             type="button"
             className="welcome-doc__card"
-            onClick={() => openFile?.('about-me.md')}
+            onClick={() => openFile?.("about-me.md")}
           >
             <span className="welcome-doc__card-file">about-me.md</span>
             <span className="welcome-doc__card-desc">Mi perfil completo</span>
@@ -30,7 +30,7 @@ export function Welcome({ openFile }) {
           <button
             type="button"
             className="welcome-doc__card"
-            onClick={() => openFile?.('contact.sh')}
+            onClick={() => openFile?.("contact.sh")}
           >
             <span className="welcome-doc__card-file">contact.sh</span>
             <span className="welcome-doc__card-desc">Cómo contactarme</span>
@@ -39,8 +39,8 @@ export function Welcome({ openFile }) {
       </section>
 
       <footer className="welcome-doc__footer">
-        Cerrá esta pestaña cuando quieras — no volverá a aparecer.
+        Cerrá esta pestaña cuando quieras - no volverá a aparecer.
       </footer>
     </div>
-  )
+  );
 }
