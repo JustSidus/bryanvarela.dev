@@ -19,7 +19,7 @@ function BellButton() {
         className="rail-btn"
         role="button"
         tabIndex={0}
-        title="Estado laboral"
+        data-tip="Estado laboral"
         aria-label="Estado laboral"
         onClick={() => setOpen(v => !v)}
       >
@@ -38,7 +38,7 @@ function CogButton() {
         className="rail-btn"
         role="button"
         tabIndex={0}
-        title="Color Theme"
+        data-tip="Color Theme"
         aria-label="Color Theme"
         onClick={() => setOpen(true)}
       >
@@ -60,7 +60,7 @@ export function ActivityRail({ activePanelId, onSetPanel, onOpenPalette }) {
           tabIndex={0}
           aria-current={activePanelId === p.id ? 'true' : 'false'}
           aria-label={p.title}
-          title={p.title}
+          data-tip={p.title}
           onClick={() => onSetPanel(p.id)}
         >
           <p.icon />

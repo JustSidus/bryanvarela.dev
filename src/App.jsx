@@ -31,21 +31,9 @@ const FILE_COMPONENTS = {
   'contact.sh':            ContactSh,
 }
 
-const isFirstVisit = () => {
-  try {
-    return localStorage.getItem('bv-visited') === null
-  } catch {
-    return false
-  }
-}
-
 export default function App() {
-  const [openFiles, setOpenFiles] = useState(() =>
-    isFirstVisit() ? ['welcome'] : ['about-me.md']
-  )
-  const [activeId, setActiveId] = useState(() =>
-    isFirstVisit() ? 'welcome' : 'about-me.md'
-  )
+  const [openFiles, setOpenFiles] = useState(['welcome'])
+  const [activeId, setActiveId] = useState('welcome')
   const [openFolders, setOpenFolders] = useState(new Set(['projects', 'infrastructure']))
   const [paletteOpen, setPaletteOpen] = useState(false)
   const [activePanelId, setActivePanelId] = useState('files')
@@ -64,7 +52,15 @@ export default function App() {
   }, [sidebarWidth, activePanelId])
 
   const openFile = useCallback((id) => {
-    setOpenFiles((prev) => prev.includes(id) ? prev : [...prev, id])
+    setOpenFiles((prev) => {
+      if (prev.includes(id)) return prev
+      // Auto-close welcome tab the first time the user opens any other file.
+      // Matches VS Code behavior; the user can reopen welcome via Ctrl+H.
+      if (id !== 'welcome' && prev.length === 1 && prev[0] === 'welcome') {
+        return [id]
+      }
+      return [...prev, id]
+    })
     setActiveId(id)
   }, [])
 
@@ -84,9 +80,6 @@ export default function App() {
   }, [])
 
   const closeFile = useCallback((id) => {
-    if (id === 'welcome') {
-      try { localStorage.setItem('bv-visited', '1') } catch {}
-    }
     setOpenFiles((prev) => {
       const idx = prev.indexOf(id)
       const next = prev.filter((x) => x !== id)
@@ -106,7 +99,7 @@ export default function App() {
     })
   }, [])
 
-  useKeyboardShortcuts({ activeId, closeFile, setPaletteOpen, terminalRef })
+  useKeyboardShortcuts({ activeId, closeFile, setPaletteOpen, terminalRef, openFile })
 
   const ActiveComp = activeId ? FILE_COMPONENTS[activeId] : null
 

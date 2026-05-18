@@ -37,20 +37,14 @@ export function StatusBar({ activeId }) {
           />
           0
         </span>
-        <a
-          className="status-item status-item--link"
-          href="/resume.pdf"
-          download="bryan-varela-cv.pdf"
-          title="Descargar CV en PDF"
-        >
-          ↓ resume.pdf
-        </a>
       </div>
       <div className="right">
-        <span className="status-item">{langLabel}</span>
-        <span className="status-item">UTF-8</span>
-        <span className="status-item">LF</span>
-        <span className="status-item">Ln 1, Col 1</span>
+        <span className="status-item" title="Lenguaje del archivo activo">
+          {langLabel}
+        </span>
+        <span className="status-item" title="Encoding · End-of-line">
+          UTF-8 · LF
+        </span>
       </div>
     </div>
   );

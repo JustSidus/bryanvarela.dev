@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export function useKeyboardShortcuts({ activeId, closeFile, setPaletteOpen, terminalRef }) {
+export function useKeyboardShortcuts({ activeId, closeFile, setPaletteOpen, terminalRef, openFile }) {
   useEffect(() => {
     const onKey = (e) => {
       const ctrl = e.metaKey || e.ctrlKey
@@ -43,14 +43,21 @@ export function useKeyboardShortcuts({ activeId, closeFile, setPaletteOpen, term
       if (ctrl && (e.key === 'd' || e.key === 'D')) {
         e.preventDefault()
         const a = document.createElement('a')
-        a.href = '/cv-bryan-varela.pdf'
+        a.href = '/resume.pdf'
         a.download = 'cv-bryan-varela.pdf'
         a.click()
+        return
+      }
+
+      // Ctrl+H → abrir Welcome
+      if (ctrl && (e.key === 'h' || e.key === 'H')) {
+        e.preventDefault()
+        openFile?.('welcome')
         return
       }
     }
 
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [activeId, closeFile, setPaletteOpen, terminalRef])
+  }, [activeId, closeFile, setPaletteOpen, terminalRef, openFile])
 }

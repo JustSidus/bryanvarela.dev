@@ -198,7 +198,8 @@
   align-items: center;
   padding: 8px 0;
   gap: 4px;
-  overflow: hidden;
+  /* overflow: visible so .rail-btn[data-tip]::after can escape to the right */
+  overflow: visible;
 }
 [data-rail="hidden"] .rail {
   display: none;
@@ -223,6 +224,31 @@
 .rail-btn[aria-current="true"] {
   color: var(--fg-0);
   border-left-color: var(--accent);
+}
+/* Custom rail tooltip — appears faster (180ms) and bigger than the native title */
+.rail-btn[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-3, #1f2733);
+  color: var(--fg-0);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 9px;
+  border: 1px solid var(--border-strong, #2a3340);
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.08s ease 0.18s;
+  z-index: 60;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+.rail-btn[data-tip]:hover::after,
+.rail-btn[data-tip]:focus-visible::after {
+  opacity: 1;
 }
 .rail-spacer {
   flex: 1;
@@ -644,10 +670,10 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 0 14px;
+  gap: 5px;
+  padding: 0 12px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 10.5px;
   color: var(--fg-3);
   background: var(--bg-0);
   border-bottom: 1px solid var(--border);
@@ -1489,6 +1515,10 @@
   color: var(--fg-3);
   font-family: var(--font-mono);
 }
+.mobile-gate__footer a {
+  color: var(--accent);
+  text-decoration: underline;
+}
 
 /* ============================================================
    Boot Terminal (bottom panel) - smooth transform-based slide
@@ -1629,6 +1659,22 @@
 }
 .boot-terminal-line.term-error {
   color: var(--err);
+}
+.boot-terminal-line.term-comment {
+  color: #7d8590;
+  font-style: italic;
+}
+.boot-terminal-line.term-log {
+  display: flex;
+  gap: 10px;
+  padding-left: 2px;
+}
+.boot-terminal-line.term-log .git-hash {
+  color: #d4a574;
+  flex-shrink: 0;
+}
+.boot-terminal-line.term-log .git-msg {
+  color: #cccccc;
 }
 
 .pwsh-prompt {
