@@ -45,13 +45,19 @@
 /* Line content - actual code, preserve whitespace, horizontal scroll like VS Code */
 .line-content {
   flex: 1 1 auto;
-  padding: 0 24px 0 16px;
+  padding: 0 16px;
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: break-word;
   tab-size: 2;
   min-width: 0;
   line-height: 1.65em;
+}
+
+@media (min-width: 768px) {
+  .line-content {
+    padding: 0 24px 0 16px;
+  }
 }
 
 /* Typing cursor - block cursor (VS Code / terminal style) */
