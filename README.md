@@ -16,9 +16,3 @@ npm install
 npm run dev      # localhost:5173
 npm run build    # outputs to dist/
 ```
-
-## Deploy
-
-Push to `main` → Cloudflare Pages builds and deploys automatically.
-
-One-time setup: conectar el repo en [dash.cloudflare.com](https://dash.cloudflare.com) → Pages → build command `npm run build`, output dir `dist`.
