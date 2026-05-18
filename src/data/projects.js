@@ -7,7 +7,7 @@ export const projects = {
     frontmatter: [
       { key: "project", value: "Arelify Platform", accent: true },
       { key: "type", value: "SaaS B2B · Multi-tenant" },
-      { key: "role", value: "Tech lead · Backend & arquitectura" },
+      { key: "role", value: "Cofundador técnico · Backend & arquitectura" },
       {
         key: "stack",
         value: ".NET 8 · PostgreSQL · React · Cloud Run · Cloudflare",

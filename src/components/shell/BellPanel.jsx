@@ -27,16 +27,9 @@ export function BellPanel({ onClose }) {
             <span className="bell-label">Buscando:</span>
             <span>{contact.openTo.join(' · ')}</span>
           </div>
-          <div className="bell-row">
-            <span className="bell-label">Prefiero:</span>
-            <span>Email para contexto largo</span>
-          </div>
-          <div style={{ paddingLeft: 80, fontSize: 11.5, color: 'var(--fg-2)' }}>
-            LinkedIn para intros · GitHub para código
-          </div>
-          <div className="bell-row" style={{ marginTop: 8 }}>
-            <span className="bell-label">Pro-tip:</span>
-            <span>Mándame el JD o el problema concreto.</span>
+          <div className="bell-row" style={{ marginTop: 4 }}>
+            <span className="bell-label">Contacto:</span>
+            <span style={{ fontSize: 11.5 }}>{contact.prefer}</span>
           </div>
           <div className="bell-row" style={{ marginTop: 4 }}>
             <span className="bell-label">No gracias:</span>

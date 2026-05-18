@@ -6,12 +6,8 @@ export const contact = {
   github: "https://github.com/JustSidus",
   githubUser: "JustSidus",
   linkedin: "https://www.linkedin.com/in/bryan-varela-mazzei/",
-  timezone: "America/Lima · UTC−5",
-  openTo: ["backend", "cloud", "arquitectura", "tech-lead"],
-  prefer:
-    "Email para contexto largo · LinkedIn para intros · GitHub para código",
-  format:
-    'Si me escribes por un rol, mándame el JD o el problema concreto. Respondo mejor a casos que a "tengo una vacante".',
-  noThanks:
-    'Recruiters genéricos, "oportunidades únicas" sin detalles, take-homes de 8h.',
+  timezone: "America/Santo_Domingo · UTC−4",
+  openTo: ["backend", "cloud", "arquitectura"],
+  prefer: "Email es lo más directo. LinkedIn también vale.",
+  noThanks: "Roles 100% frontend o solo React/UI. Mi foco es backend y cloud.",
 };

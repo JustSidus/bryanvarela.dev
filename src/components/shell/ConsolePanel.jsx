@@ -1,5 +1,6 @@
 const SHORTCUTS = [
   { keys: ["Ctrl", "P"], desc: "Buscar archivo" },
+  { keys: ["Ctrl", "H"], desc: "Abrir Welcome" },
   { keys: ["Ctrl", "G"], desc: "Ir a GitHub" },
   { keys: ["Ctrl", "D"], desc: "Descargar CV" },
 ];

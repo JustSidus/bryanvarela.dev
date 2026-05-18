@@ -5,7 +5,7 @@ EMAIL="hola@bryanvarela.dev"
 GITHUB="https://github.com/JustSidus"
 LINKEDIN="https://www.linkedin.com/in/bryan-varela-mazzei/"
 LOCATION="Santo Domingo (UTC-4)"
-ROLES="Backend, Cloud, Tech Lead"
+ROLES="Backend, Cloud"
 
 cat <<EOF
 {
