@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { tokenize, tokenClass } from '../../utils/tokenize'
 import { TypedLines } from './TypedLines'
 
@@ -51,40 +51,14 @@ function renderTokenText(text, keyPrefix) {
   return parts
 }
 
-function SnapshotImage({ src, alt }) {
-  const [error, setError] = useState(false)
-
-  return (
-    <div className="snapshot">
-      {!error && (
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          onError={() => setError(true)}
-        />
-      )}
-      {error && (
-        <div className="snapshot-fallback">
-          <span className="snapshot-badge">UI SNAPSHOT</span>
-          <span className="snapshot-label">{alt}</span>
-        </div>
-      )}
-    </div>
-  )
-}
-
 /**
  * EditorFile — VS Code-style file viewer with per-row line numbers.
  *
- * Each .code-line is a flex row: [line-number | line-content].
- * This guarantees the line number stays top-aligned even if word-wrap is on.
- *
- * @param {string} code        - Raw file content (imported with ?raw)
- * @param {string} lang        - Language: md | ts | cs | json | vue | sh
+ * @param {string} code         - Raw file content (imported with ?raw)
+ * @param {string} lang         - Language: md | ts | cs | json | vue | sh
  * @param {number} animateLastN - Last N lines use a typing animation
- * @param {object} snapshots   - Optional map of { [lineIndex]: Snapshot }
- *        Snapshot: { type: 'image', src, alt } | { type: 'component', component, alt }
+ * @param {object} snapshots    - Optional map { [lineIndex]: { component } } to
+ *                                replace a directive line with a React component.
  */
 export function EditorFile({ code, lang, animateLastN = 0, snapshots = {} }) {
   const lines = useMemo(() => tokenize(code, lang), [code, lang])
@@ -97,21 +71,13 @@ export function EditorFile({ code, lang, animateLastN = 0, snapshots = {} }) {
       {staticLines.map((tokens, i) => {
         const snap = snapshots[i]
         if (snap) {
-          if (snap.type === 'component') {
-            const Comp = snap.component
-            return (
-              <div key={i} className="code-line snapshot-line">
-                <span className="line-number" aria-hidden="true">·</span>
-                <div className="snapshot snapshot--wide">
-                  <Comp />
-                </div>
-              </div>
-            )
-          }
+          const Comp = snap.component
           return (
             <div key={i} className="code-line snapshot-line">
-              <span className="line-number" aria-hidden="true">·</span>
-              <SnapshotImage src={snap.src} alt={snap.alt} />
+              <span className="line-number" aria-hidden="true">{i + 1}</span>
+              <div className="snapshot snapshot--wide">
+                <Comp />
+              </div>
             </div>
           )
         }

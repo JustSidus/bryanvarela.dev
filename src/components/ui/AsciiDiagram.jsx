@@ -15,7 +15,7 @@ const DIAGRAM = `
                                           │
                                           ▼
     ┌────────────────────────────────────────────────────────────────────────┐
-    │           CLOUDFLARE WORKER  (Backend-for-Frontend)                     │
+    │           CLOUDFLARE WORKER  (Backend-for-Frontend)                    │
     │                                                                        │
     │   ├─ Resuelve el subdominio del negocio                                │
     │   ├─ Pre-renderiza HTML + JSON-LD para SEO                             │
@@ -26,29 +26,29 @@ const DIAGRAM = `
                     │ /api/v1/*                                  │ Bundle SPA
                     │ (BFF con cookies opacas)                   │ (assets versionados)
                     ▼                                            ▼
-    ┌──────────────────────────────────────┐    ┌────────────────────────────┐
-    │   GOOGLE CLOUD RUN  (us-east4)       │    │   CLOUDFLARE PAGES         │
-    │   arelify-backend  ·  .NET 10        │    │   React 19 + Vite          │
-    │                                      │    │   Rutas por host + ruta    │
-    │   ├─ JWT en cookie httpOnly          │    └────────────────────────────┘
-    │   ├─ Límite de peticiones por capa   │
-    │   ├─ Aislamiento multi-tenant (EF)   │
-    │   ├─ Disponibilidad calculada en UTC │
-    │   └─ Auditoría inmutable             │
-    └──────────────────────────────────────┘
+    ┌───────────────────────────────────────┐    ┌────────────────────────────┐
+    │   GOOGLE CLOUD RUN  (us-east4)        │    │   CLOUDFLARE PAGES         │
+    │   arelify-backend  ·  .NET 10         │    │   React 19 + Vite          │
+    │                                       │    │   Rutas por host + ruta    │
+    │   ├─ JWT en cookie httpOnly           │    └────────────────────────────┘
+    │   ├─ Límite de peticiones por capa    │
+    │   ├─ Aislamiento multi-tenant (EF)    │
+    │   ├─ Disponibilidad calculada en UTC  │
+    │   └─ Auditoría inmutable              │
+    └───────────────────────────────────────┘
           │                            │
           │ TLS interno                │ OIDC (login sin contraseña)
           ▼                            ▼
-    ┌─────────────────────────┐    ┌────────────────────────────┐
-    │   POSTGRESQL 16         │    │   WORKOS                   │
-    │   (administrada)        │    │                            │
-    │                         │    │   ├─ Código de verificación│
-    │   ├─ TenantId por fila  │    │   │  enviado por email     │
-    │   ├─ Índice único       │    │   └─ Identidad federada    │
-    │   │  anti-doble-reserva │    │                            │
-    │   └─ Auditoría inmutable│    └────────────────────────────┘
-    └─────────────────────────┘
-`
+    ┌──────────────────────────┐    ┌──────────────────────────────┐
+    │   POSTGRESQL 16          │    │   WORKOS                     │
+    │   (administrada)         │    │                              │
+    │                          │    │   ├─ Código de verificación  │
+    │   ├─ TenantId por fila   │    │   │  enviado por email       │
+    │   ├─ Índice único        │    │   └─ Identidad federada      │
+    │   │  anti-doble-reserva  │    └──────────────────────────────┘
+    │   └─ Auditoría inmutable │    
+    └──────────────────────────┘
+`;
 
 export function AsciiDiagram() {
   return (
@@ -56,5 +56,5 @@ export function AsciiDiagram() {
       <div className="ascii-diagram-label">ASCII</div>
       <pre className="ascii-diagram">{DIAGRAM}</pre>
     </div>
-  )
+  );
 }

@@ -142,32 +142,30 @@ function buildJsonRules() {
   ]
 }
 
-function buildVueRules() {
-  // Vue SFC: template tags → markup, script → TS, style → CSS
-  const kw = new RegExp(`\\b(${TS_KEYWORDS.join('|')})\\b`, 'g')
+
+function buildPhpRules() {
+  const PHP_KEYWORDS = [
+    'abstract','array','as','bool','break','callable','case','catch','class',
+    'clone','const','continue','declare','default','do','echo','else','elseif',
+    'empty','enum','extends','false','final','finally','float','fn','for',
+    'foreach','function','if','implements','include','instanceof','interface',
+    'int','isset','list','match','namespace','new','null','object','print',
+    'private','protected','public','readonly','return','static','string',
+    'switch','throw','trait','true','try','unset','use','void','while','yield',
+  ]
+  const kw = new RegExp(`\\b(${PHP_KEYWORDS.join('|')})\\b`, 'g')
   return [
-    // HTML comments
-    { re: /<!--[\s\S]*?-->/g,             type: 'comment' },
-    // JS/TS single-line comments
-    { re: /\/\/[^\n]*/g,                  type: 'comment' },
-    // SFC section tags
-    { re: /<\/?(?:template|script|style)[^>]*>/g, type: 'keyword' },
-    // HTML tags
-    { re: /<\/?[a-zA-Z][a-zA-Z0-9-]*[^>]*>/g, type: 'type' },
-    // strings
-    { re: /"(?:[^"\\]|\\.)*"/g,           type: 'string'  },
-    { re: /'(?:[^'\\]|\\.)*'/g,           type: 'string'  },
-    { re: /`(?:[^`\\]|\\.)*`/g,           type: 'string'  },
-    // numbers
-    { re: /\b\d+(\.\d+)?\b/g,             type: 'number'  },
-    // keywords
-    { re: kw,                              type: 'keyword' },
-    // types
-    { re: /\b[A-Z][A-Za-z0-9_]*\b/g,     type: 'type'    },
-    // functions
-    { re: /\b[a-z_][a-zA-Z0-9_]*(?=\s*[\(])/g, type: 'function' },
-    // punctuation
-    { re: /[{}[\]().,;:<>!=+\-*/%&|^~?@]/g, type: 'punctuation' },
+    { re: /\/\/[^\n]*/g,              type: 'comment'   },
+    { re: /#[^\n]*/g,                 type: 'comment'   },
+    { re: /\/\*[\s\S]*?\*\//g,        type: 'comment'   },
+    { re: /"(?:[^"\\]|\\.)*"/g,       type: 'string'    },
+    { re: /'(?:[^'\\]|\\.)*'/g,       type: 'string'    },
+    { re: /\$[a-zA-Z_][a-zA-Z0-9_]*/g, type: 'type'    },
+    { re: /\b\d+(\.\d+)?\b/g,         type: 'number'   },
+    { re: kw,                          type: 'keyword'  },
+    { re: /\b[A-Z][A-Za-z0-9_]*\b/g,  type: 'type'    },
+    { re: /\b[a-z_][a-zA-Z0-9_]*(?=\s*\()/g, type: 'function' },
+    { re: /[{}[\]().,;:<>!=+\-*\/%&|^~?@\\]/g, type: 'punctuation' },
   ]
 }
 
@@ -207,7 +205,7 @@ function getRules(lang) {
       case 'cs':   RULE_CACHE[lang] = buildCsRules();   break
       case 'md':   RULE_CACHE[lang] = buildMdRules();   break
       case 'json': RULE_CACHE[lang] = buildJsonRules(); break
-      case 'vue':  RULE_CACHE[lang] = buildVueRules();  break
+      case 'php':  RULE_CACHE[lang] = buildPhpRules();  break
       case 'sh':   RULE_CACHE[lang] = buildShRules();   break
       default:     RULE_CACHE[lang] = [];                break
     }

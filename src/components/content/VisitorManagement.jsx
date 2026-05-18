@@ -1,6 +1,6 @@
 import { EditorFile } from '../ui/EditorFile'
-import rawContent from '../../content/visitor-management.vue?raw'
+import rawContent from '../../content/visitor-management.php?raw'
 
 export function VisitorManagement() {
-  return <EditorFile code={rawContent} lang="vue" />
+  return <EditorFile code={rawContent} lang="php" />
 }

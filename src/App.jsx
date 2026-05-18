@@ -24,7 +24,7 @@ const FILE_COMPONENTS = {
   'welcome':               Welcome,
   'about-me.md':           AboutMe,
   'arelify-platform.cs':   ArelifyPlatform,
-  'visitor-management.vue': VisitorManagement,
+  'visitor-management.php': VisitorManagement,
   'vscode-extension.ts':   VscodeExtension,
   'tech-stack.json':       TechStack,
   'contact.sh':            ContactSh,

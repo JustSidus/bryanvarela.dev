@@ -9,7 +9,7 @@ export const TREE = [
     kind: 'folder', id: 'projects', label: 'projects',
     children: [
       { kind: 'file', id: 'arelify-platform.cs' },
-      { kind: 'file', id: 'visitor-management.vue' },
+      { kind: 'file', id: 'visitor-management.php' },
       { kind: 'file', id: 'vscode-extension.ts' },
     ],
   },

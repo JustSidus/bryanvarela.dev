@@ -1,168 +1,234 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="format-detection" content="telephone=no" />
-  <title>Bryan Varela — Software Engineer · Backend &amp; Cloud</title>
-  <meta name="description" content="Portfolio de Bryan Varela — Backend & Cloud Software Engineer especializado en .NET, PostgreSQL, Google Cloud y Cloudflare. Disponible para proyectos y posiciones remotas." />
-  <meta name="author" content="Bryan Varela" />
-  <meta name="theme-color" content="#0d1117" />
-  <link rel="canonical" href="https://bryanvarela.dev/" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Bryan Varela - Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio de Bryan Varela — Backend & Cloud Software Engineer especializado en .NET, PostgreSQL, Google Cloud y Cloudflare. Disponible para proyectos y posiciones remotas."
+    />
+    <meta name="author" content="Bryan Varela" />
+    <meta name="theme-color" content="#0d1117" />
+    <link rel="canonical" href="https://bryanvarela.dev/" />
 
-  <meta name="geo.region" content="DO" />
-  <meta name="geo.placename" content="República Dominicana" />
+    <meta name="geo.region" content="DO" />
+    <meta name="geo.placename" content="República Dominicana" />
 
-  <meta name="keywords" content="Bryan Varela, Software Engineer, Backend Developer, Cloud Engineer, C#, .NET, ASP.NET Core, PostgreSQL, React, Vue, Docker, Google Cloud Run, Cloudflare, Azure, República Dominicana, Remote" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta
+      name="keywords"
+      content="Bryan Varela, Software Engineer, Backend Developer, Cloud Engineer, C#, .NET, ASP.NET Core, PostgreSQL, React, Vue, Docker, Google Cloud Run, Cloudflare, Azure, República Dominicana, Remote"
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://bryanvarela.dev/" />
-  <meta property="og:title" content="Bryan Varela — Software Engineer" />
-  <meta property="og:description" content="Portfolio personal en formato IDE. Backend & Cloud — C#/.NET, PostgreSQL, Google Cloud, Cloudflare. Disponible para posiciones remotas." />
-  <meta property="og:site_name" content="bryanvarela.dev" />
-  <meta property="og:locale" content="es_DO" />
-  <meta property="og:image" content="https://bryanvarela.dev/images/og-preview.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Bryan Varela — Backend & Cloud Software Engineer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bryanvarela.dev/" />
+    <meta property="og:title" content="Bryan Varela — Software Engineer" />
+    <meta
+      property="og:description"
+      content="Portfolio personal en formato IDE. Backend & Cloud — C#/.NET, PostgreSQL, Google Cloud, Cloudflare. Disponible para posiciones remotas."
+    />
+    <meta property="og:site_name" content="bryanvarela.dev" />
+    <meta property="og:locale" content="es_DO" />
+    <meta
+      property="og:image"
+      content="https://bryanvarela.dev/images/og-preview.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Bryan Varela — Backend & Cloud Software Engineer"
+    />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bryan Varela — Software Engineer" />
-  <meta name="twitter:description" content="Portfolio personal en formato IDE. Backend & Cloud — C#/.NET, PostgreSQL, Google Cloud, Cloudflare." />
-  <meta name="twitter:image" content="https://bryanvarela.dev/images/og-preview.png" />
-  <meta name="twitter:image:alt" content="Bryan Varela — Backend & Cloud Software Engineer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bryan Varela — Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Portfolio personal en formato IDE. Backend & Cloud — C#/.NET, PostgreSQL, Google Cloud, Cloudflare."
+    />
+    <meta
+      name="twitter:image"
+      content="https://bryanvarela.dev/images/og-preview.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Bryan Varela — Backend & Cloud Software Engineer"
+    />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <style>
-    /* SEO snapshot: visible to crawlers, off-screen for users.
+    <style>
+      /* SEO snapshot: visible to crawlers, off-screen for users.
        Hidden once React mounts (JS replaces #app contents). */
-    #seo-snapshot {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&family=VT323&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&family=VT323&display=swap" /></noscript>
+      #seo-snapshot {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+    <!-- Fonts via Cloudflare Fonts (faster than direct Google Fonts)
+         Requires: Caching > Fonts enabled in Cloudflare Dashboard -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&family=VT323&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
+    <script type="application/ld+json">
       {
-        "@type": "Person",
-        "@id": "https://bryanvarela.dev/#person",
-        "name": "Bryan Varela",
-        "url": "https://bryanvarela.dev",
-        "image": "https://bryanvarela.dev/images/og-preview.png",
-        "jobTitle": "Backend & Cloud Software Engineer",
-        "description": "Software Engineer especializado en Backend y Cloud. Construyo plataformas SaaS multi-tenant con .NET, PostgreSQL, React y servicios en Google Cloud y Cloudflare.",
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "Backend & Cloud Software Engineer",
-          "skills": "C#, .NET, ASP.NET Core, PostgreSQL, React, Vue, Docker, Google Cloud Run, Cloudflare Workers, Azure"
-        },
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Arelify",
-          "url": "https://arelify.com"
-        },
-        "knowsAbout": ["C#", ".NET", "ASP.NET Core", "PostgreSQL", "React", "Vue", "Docker", "Google Cloud Run", "Cloudflare Workers", "Azure", "Clean Architecture", "CQRS", "Multi-tenant SaaS"],
-        "nationality": { "@type": "Country", "name": "República Dominicana" },
-        "sameAs": [
-          "https://github.com/JustSidus"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://bryanvarela.dev/#website",
-        "url": "https://bryanvarela.dev",
-        "name": "Bryan Varela — Software Engineer",
-        "description": "Portfolio personal en formato IDE. Backend & Cloud — C#/.NET, Vue, infraestructura.",
-        "author": { "@id": "https://bryanvarela.dev/#person" },
-        "inLanguage": "es",
-        "copyrightYear": 2026,
-        "copyrightHolder": { "@id": "https://bryanvarela.dev/#person" }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://bryanvarela.dev/#webpage",
-        "url": "https://bryanvarela.dev",
-        "name": "Bryan Varela — Software Engineer · Backend & Cloud",
-        "isPartOf": { "@id": "https://bryanvarela.dev/#website" },
-        "about": { "@id": "https://bryanvarela.dev/#person" },
-        "description": "Portfolio personal de Bryan Varela, Backend & Cloud Software Engineer de República Dominicana.",
-        "inLanguage": "es",
-        "dateModified": "2026-05-16"
-      },
-      {
-        "@type": "ItemList",
-        "@id": "https://bryanvarela.dev/#projects",
-        "name": "Proyectos de Bryan Varela",
-        "itemListElement": [
+        "@context": "https://schema.org",
+        "@graph": [
           {
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-              "@type": "SoftwareApplication",
-              "name": "Arelify Platform",
-              "description": "SaaS B2B multi-tenant en producción en República Dominicana. Tech lead de backend y arquitectura. Stack: .NET 10, PostgreSQL, React, Google Cloud Run, Cloudflare.",
-              "applicationCategory": "BusinessApplication",
-              "operatingSystem": "Cloud",
-              "author": { "@id": "https://bryanvarela.dev/#person" }
-            }
+            "@type": "Person",
+            "@id": "https://bryanvarela.dev/#person",
+            "name": "Bryan Varela",
+            "url": "https://bryanvarela.dev",
+            "image": "https://bryanvarela.dev/images/og-preview.png",
+            "jobTitle": "Backend & Cloud Software Engineer",
+            "description": "Software Engineer especializado en Backend y Cloud. Construyo plataformas SaaS multi-tenant con .NET, PostgreSQL, React y servicios en Google Cloud y Cloudflare.",
+            "hasOccupation": {
+              "@type": "Occupation",
+              "name": "Backend & Cloud Software Engineer",
+              "skills": "C#, .NET, ASP.NET Core, PostgreSQL, React, Vue, Docker, Google Cloud Run, Cloudflare Workers, Azure"
+            },
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Arelify",
+              "url": "https://arelify.com"
+            },
+            "knowsAbout": [
+              "C#",
+              ".NET",
+              "ASP.NET Core",
+              "PostgreSQL",
+              "React",
+              "Vue",
+              "Docker",
+              "Google Cloud Run",
+              "Cloudflare Workers",
+              "Azure",
+              "Clean Architecture",
+              "CQRS",
+              "Multi-tenant SaaS"
+            ],
+            "nationality": {
+              "@type": "Country",
+              "name": "República Dominicana"
+            },
+            "sameAs": ["https://github.com/JustSidus"]
           },
           {
-            "@type": "ListItem",
-            "position": 2,
-            "item": {
-              "@type": "SoftwareApplication",
-              "name": "Visitor Management System",
-              "description": "Aplicación interna de gestión de accesos con tiempo de registro de ~28 segundos, 3 roles y trazabilidad QR completa. Stack: Vue 3, TypeScript, Laravel (PHP 8), MySQL, Azure.",
-              "applicationCategory": "BusinessApplication",
-              "operatingSystem": "Cloud",
-              "author": { "@id": "https://bryanvarela.dev/#person" }
-            }
+            "@type": "WebSite",
+            "@id": "https://bryanvarela.dev/#website",
+            "url": "https://bryanvarela.dev",
+            "name": "Bryan Varela — Software Engineer",
+            "description": "Portfolio personal en formato IDE. Backend & Cloud — C#/.NET, Vue, infraestructura.",
+            "author": { "@id": "https://bryanvarela.dev/#person" },
+            "inLanguage": "es",
+            "copyrightYear": 2026,
+            "copyrightHolder": { "@id": "https://bryanvarela.dev/#person" }
           },
           {
-            "@type": "ListItem",
-            "position": 3,
-            "item": {
-              "@type": "SoftwareApplication",
-              "name": "VS Code Extension · paste-image-to-terminal",
-              "description": "Extensión de VSCode que pega imágenes al terminal como secuencias de escape bracketed paste reales. Stack: VSCode API, TypeScript, SHA-256 deduplication, multi-plataforma.",
-              "applicationCategory": "DeveloperApplication",
-              "operatingSystem": "Desktop",
-              "author": { "@id": "https://bryanvarela.dev/#person" }
-            }
+            "@type": "WebPage",
+            "@id": "https://bryanvarela.dev/#webpage",
+            "url": "https://bryanvarela.dev",
+            "name": "Bryan Varela — Software Engineer · Backend & Cloud",
+            "isPartOf": { "@id": "https://bryanvarela.dev/#website" },
+            "about": { "@id": "https://bryanvarela.dev/#person" },
+            "description": "Portfolio personal de Bryan Varela, Backend & Cloud Software Engineer de República Dominicana.",
+            "inLanguage": "es",
+            "dateModified": "2026-05-16"
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://bryanvarela.dev/#projects",
+            "name": "Proyectos de Bryan Varela",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "Arelify Platform",
+                  "description": "SaaS B2B multi-tenant en producción en República Dominicana. Tech lead de backend y arquitectura. Stack: .NET 10, PostgreSQL, React, Google Cloud Run, Cloudflare.",
+                  "applicationCategory": "BusinessApplication",
+                  "operatingSystem": "Cloud",
+                  "author": { "@id": "https://bryanvarela.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "Visitor Management System",
+                  "description": "Aplicación interna de gestión de accesos con tiempo de registro de ~28 segundos, 3 roles y trazabilidad QR completa. Stack: Vue 3, TypeScript, Laravel (PHP 8), MySQL, Azure.",
+                  "applicationCategory": "BusinessApplication",
+                  "operatingSystem": "Cloud",
+                  "author": { "@id": "https://bryanvarela.dev/#person" }
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "SoftwareApplication",
+                  "name": "VS Code Extension · paste-image-to-terminal",
+                  "description": "Extensión de VSCode que pega imágenes al terminal como secuencias de escape bracketed paste reales. Stack: VSCode API, TypeScript, SHA-256 deduplication, multi-plataforma.",
+                  "applicationCategory": "DeveloperApplication",
+                  "operatingSystem": "Desktop",
+                  "author": { "@id": "https://bryanvarela.dev/#person" }
+                }
+              }
+            ]
           }
         ]
       }
-    ]
-  }
-  </script>
-</head>
-<body>
-  <noscript>
-    <div style="padding:2rem;max-width:760px;margin:0 auto;font-family:system-ui,sans-serif;line-height:1.6;color:#e6edf3;background:#0d1117;">
-      <h1>Bryan Varela — Backend &amp; Cloud Software Engineer</h1>
-      <p>Este portafolio usa JavaScript para una experiencia interactiva tipo IDE. Habilita JavaScript o continúa leyendo el resumen estático.</p>
-    </div>
-  </noscript>
-  <div id="seo-snapshot">
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div
+        style="
+          padding: 2rem;
+          max-width: 760px;
+          margin: 0 auto;
+          font-family: system-ui, sans-serif;
+          line-height: 1.6;
+          color: #e6edf3;
+          background: #0d1117;
+        "
+      >
+        <h1>Bryan Varela — Backend &amp; Cloud Software Engineer</h1>
+        <p>
+          Este portafolio usa JavaScript para una experiencia interactiva tipo
+          IDE. Habilita JavaScript o continúa leyendo el resumen estático.
+        </p>
+      </div>
+    </noscript>
+    <div id="seo-snapshot">
       <header>
         <h1>Bryan Varela — Backend &amp; Cloud Software Engineer</h1>
-        <p>Software Engineer especializado en Backend y Arquitectura Cloud. Construyo plataformas SaaS multi-tenant con .NET, PostgreSQL, React y servicios en Google Cloud y Cloudflare. Basado en Santo Domingo, República Dominicana. Disponible para proyectos y posiciones remotas.</p>
+        <p>
+          Software Engineer especializado en Backend y Arquitectura Cloud.
+          Construyo plataformas SaaS multi-tenant con .NET, PostgreSQL, React y
+          servicios en Google Cloud y Cloudflare. Basado en Santo Domingo,
+          República Dominicana. Disponible para proyectos y posiciones remotas.
+        </p>
       </header>
 
       <nav aria-label="Secciones del portafolio">
@@ -178,55 +244,137 @@
 
       <section id="about-me">
         <h2>Sobre mí</h2>
-        <p>Construyo entornos seguros y resuelvo problemas. Tengo una base lógica fuerte y mi trabajo está orientado totalmente a la nube. Mi fuerte no es memorizar sintaxis, sino analizar arquitecturas, investigar dependencias y diseñar soluciones.</p>
+        <p>
+          Construyo entornos seguros y resuelvo problemas. Tengo una base lógica
+          fuerte y mi trabajo está orientado totalmente a la nube. Mi fuerte no
+          es memorizar sintaxis, sino analizar arquitecturas, investigar
+          dependencias y diseñar soluciones.
+        </p>
         <h3>Cómo trabajo</h3>
         <ul>
-          <li><strong>Investigación técnica:</strong> Analizo el requerimiento, evalúo los servicios disponibles y defino la arquitectura que mejor se adapte al caso de uso.</li>
-          <li><strong>Adaptabilidad:</strong> Soy agnóstico al lenguaje. Si el backend requiere C#, Node.js o el frontend pide React, uso mi base lógica para adaptarme al stack sin perder velocidad.</li>
-          <li><strong>Enfoque Cloud:</strong> Toda mi experiencia es nativa de la nube. Conecto y despliego servicios usando Azure, Google Cloud Run y Cloudflare.</li>
+          <li>
+            <strong>Investigación técnica:</strong> Analizo el requerimiento,
+            evalúo los servicios disponibles y defino la arquitectura que mejor
+            se adapte al caso de uso.
+          </li>
+          <li>
+            <strong>Adaptabilidad:</strong> Soy agnóstico al lenguaje. Si el
+            backend requiere C#, Node.js o el frontend pide React, uso mi base
+            lógica para adaptarme al stack sin perder velocidad.
+          </li>
+          <li>
+            <strong>Enfoque Cloud:</strong> Toda mi experiencia es nativa de la
+            nube. Conecto y despliego servicios usando Azure, Google Cloud Run y
+            Cloudflare.
+          </li>
         </ul>
         <h3>Prioridades técnicas</h3>
         <ul>
-          <li><strong>Seguridad:</strong> Diseño bajo el principio de menor privilegio. Manejo aislamiento de red, gestión segura de secretos y auditoría de accesos.</li>
-          <li><strong>Rendimiento:</strong> Optimizo el uso de recursos y el tiempo de respuesta en la nube para mantener los costos controlados.</li>
-          <li><strong>Decisiones objetivas:</strong> La arquitectura dicta la herramienta. Justifico la adopción de cada tecnología basándome en su eficiencia para el proyecto.</li>
+          <li>
+            <strong>Seguridad:</strong> Diseño bajo el principio de menor
+            privilegio. Manejo aislamiento de red, gestión segura de secretos y
+            auditoría de accesos.
+          </li>
+          <li>
+            <strong>Rendimiento:</strong> Optimizo el uso de recursos y el
+            tiempo de respuesta en la nube para mantener los costos controlados.
+          </li>
+          <li>
+            <strong>Decisiones objetivas:</strong> La arquitectura dicta la
+            herramienta. Justifico la adopción de cada tecnología basándome en
+            su eficiencia para el proyecto.
+          </li>
         </ul>
       </section>
 
       <section id="arelify-platform">
         <h2>Arelify Platform — SaaS B2B multi-tenant</h2>
-        <p><strong>Rol:</strong> Backend &amp; Cloud Software Engineer, fundador técnico.</p>
-        <p><strong>Stack:</strong> .NET 10, PostgreSQL 16, React 19, Cloudflare Workers, Google Cloud Run, WorkOS.</p>
-        <p><strong>Estado:</strong> En producción, pilotos activos en República Dominicana.</p>
-        <p>SaaS multi-tenant que le da a cada PYME un subdominio propio indexable por Google, agendamiento 24/7 con prevención de doble reserva a nivel de base de datos y un editor visual para que el dueño actualice su sitio sin depender de un desarrollador. Reservas online para PYMEs que hoy operan exclusivamente por WhatsApp.</p>
-        <p>Arquitectura: Cloudflare Worker como BFF (resuelve slug del negocio, prerendera HTML+JSON-LD para SEO real). Frontend React 19 + Vite sobre Cloudflare Pages (un bundle, tres superficies: landing, portal público, panel admin). Backend .NET 10 sobre Google Cloud Run con PostgreSQL multi-tenant.</p>
+        <p>
+          <strong>Rol:</strong> Backend &amp; Cloud Software Engineer, fundador
+          técnico.
+        </p>
+        <p>
+          <strong>Stack:</strong> .NET 10, PostgreSQL 16, React 19, Cloudflare
+          Workers, Google Cloud Run, WorkOS.
+        </p>
+        <p>
+          <strong>Estado:</strong> En producción, pilotos activos en República
+          Dominicana.
+        </p>
+        <p>
+          SaaS multi-tenant que le da a cada PYME un subdominio propio indexable
+          por Google, agendamiento 24/7 con prevención de doble reserva a nivel
+          de base de datos y un editor visual para que el dueño actualice su
+          sitio sin depender de un desarrollador. Reservas online para PYMEs que
+          hoy operan exclusivamente por WhatsApp.
+        </p>
+        <p>
+          Arquitectura: Cloudflare Worker como BFF (resuelve slug del negocio,
+          prerendera HTML+JSON-LD para SEO real). Frontend React 19 + Vite sobre
+          Cloudflare Pages (un bundle, tres superficies: landing, portal
+          público, panel admin). Backend .NET 10 sobre Google Cloud Run con
+          PostgreSQL multi-tenant.
+        </p>
         <p><a href="https://arelify.com">arelify.com</a></p>
       </section>
 
       <section id="visitor-management">
         <h2>Visitor Management System</h2>
         <p><strong>Rol:</strong> Full-stack engineer.</p>
-        <p><strong>Stack:</strong> Vue 3, TypeScript, Laravel (PHP 8), MySQL, Azure.</p>
-        <p><strong>Métricas:</strong> Tiempo de registro ~28 segundos, 3 roles (recepción / anfitrión / guardia), trazabilidad 100% QR.</p>
-        <p>Aplicación interna de gestión de accesos para edificio corporativo con ~600 personas. Tres apps que comparten el mismo backend, pensadas como flujos cortos. Recepción registra con foto opcional y genera QR. Anfitrión pre-registra visitas. Guardia escanea QR offline-first y registra entrada/salida.</p>
-        <p><a href="https://github.com/JustSidus/gestion-visitas-demo">→ gestion-visitas-demo (repo sanitizado)</a></p>
+        <p>
+          <strong>Stack:</strong> Vue 3, TypeScript, Laravel (PHP 8), MySQL,
+          Azure.
+        </p>
+        <p>
+          <strong>Métricas:</strong> Tiempo de registro ~28 segundos, 3 roles
+          (recepción / anfitrión / guardia), trazabilidad 100% QR.
+        </p>
+        <p>
+          Aplicación interna de gestión de accesos para edificio corporativo con
+          ~600 personas. Tres apps que comparten el mismo backend, pensadas como
+          flujos cortos. Recepción registra con foto opcional y genera QR.
+          Anfitrión pre-registra visitas. Guardia escanea QR offline-first y
+          registra entrada/salida.
+        </p>
+        <p>
+          <a href="https://github.com/JustSidus/gestion-visitas-demo"
+            >→ gestion-visitas-demo (repo sanitizado)</a
+          >
+        </p>
       </section>
 
       <section id="vscode-extension">
         <h2>VS Code Extension · paste-image-to-terminal</h2>
         <p><strong>Rol:</strong> Developer tool creator.</p>
-        <p><strong>Stack:</strong> VSCode API, TypeScript, SHA-256 deduplication, multi-plataforma.</p>
-        <p>Extensión que pega imágenes al terminal usando secuencias de escape bracketed paste. Deduplicación por SHA-256 para evitar duplicados, manejo de multi-plataforma (Windows/Mac/Linux) sin dependencias npm, y concurrencia segura. Uso personal y disponible en su repositorio público.</p>
+        <p>
+          <strong>Stack:</strong> VSCode API, TypeScript, SHA-256 deduplication,
+          multi-plataforma.
+        </p>
+        <p>
+          Extensión que pega imágenes al terminal usando secuencias de escape
+          bracketed paste. Deduplicación por SHA-256 para evitar duplicados,
+          manejo de multi-plataforma (Windows/Mac/Linux) sin dependencias npm, y
+          concurrencia segura. Uso personal y disponible en su repositorio
+          público.
+        </p>
       </section>
 
       <section id="tech-stack">
         <h2>Tech Stack</h2>
         <h3>Especialidad principal</h3>
-        <p>Lenguajes: C#, TypeScript, SQL. Backend: .NET 10, ASP.NET Core, Node.js.</p>
+        <p>
+          Lenguajes: C#, TypeScript, SQL. Backend: .NET 10, ASP.NET Core,
+          Node.js.
+        </p>
         <h3>Infraestructura y Cloud</h3>
-        <p>Google Cloud Run, Azure, Cloudflare. DevOps: Docker, GitHub Actions.</p>
+        <p>
+          Google Cloud Run, Azure, Cloudflare. DevOps: Docker, GitHub Actions.
+        </p>
         <h3>Bases de datos</h3>
-        <p>PostgreSQL, SQL Server, MySQL. Prácticas: aislamiento multi-tenant, optimización de consultas.</p>
+        <p>
+          PostgreSQL, SQL Server, MySQL. Prácticas: aislamiento multi-tenant,
+          optimización de consultas.
+        </p>
         <h3>Frontend</h3>
         <p>React, Vue.js. Herramientas: Vite, Tailwind CSS.</p>
         <h3>Capacidad agnóstica</h3>
@@ -236,15 +384,28 @@
       <section id="contact">
         <h2>Contacto</h2>
         <ul>
-          <li>Email: <a href="mailto:bryanvarela2411@gmail.com">bryanvarela2411@gmail.com</a></li>
-          <li>GitHub: <a href="https://github.com/JustSidus">github.com/JustSidus</a></li>
-          <li>LinkedIn: <a href="https://linkedin.com/in/bryanvarela">linkedin.com/in/bryanvarela</a></li>
+          <li>
+            Email:
+            <a href="mailto:bryanvarela2411@gmail.com"
+              >bryanvarela2411@gmail.com</a
+            >
+          </li>
+          <li>
+            GitHub:
+            <a href="https://github.com/JustSidus">github.com/JustSidus</a>
+          </li>
+          <li>
+            LinkedIn:
+            <a href="https://linkedin.com/in/bryanvarela"
+              >linkedin.com/in/bryanvarela</a
+            >
+          </li>
           <li>Ubicación: Santo Domingo, República Dominicana (UTC-4)</li>
           <li>Roles abiertos: Backend, Cloud, Tech Lead</li>
         </ul>
       </section>
-  </div>
-  <div id="app"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+    </div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

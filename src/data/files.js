@@ -30,12 +30,12 @@ export const FILE_META = {
     path: '~/portfolio/projects',
     langAccent: 'var(--lang-cs)',
   },
-  'visitor-management.vue': {
-    id: 'visitor-management.vue',
-    name: 'visitor-management.vue',
-    ext: 'vue',
+  'visitor-management.php': {
+    id: 'visitor-management.php',
+    name: 'visitor-management.php',
+    ext: 'php',
     path: '~/portfolio/projects',
-    langAccent: 'var(--lang-vue)',
+    langAccent: 'var(--lang-php)',
   },
   'vscode-extension.ts': {
     id: 'vscode-extension.ts',
@@ -67,7 +67,7 @@ export const LANG_LABELS = {
   welcome: 'Welcome',
   md: 'Markdown',
   ts: 'TypeScript',
-  vue: 'Vue · TS',
+  php: 'PHP',
   cs: 'C#',
   json: 'JSON',
   sh: 'Shell',

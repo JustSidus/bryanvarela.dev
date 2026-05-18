@@ -1,6 +1,5 @@
 // arelify-platform.cs · SaaS B2B multi-tenant
 // Producto:     https://arelify.com
-// Arquitectura: https://github.com/JustSidus/arelify-architecture   (próximamente)
 
 namespace Portafolio.Arelify;
 
@@ -25,36 +24,7 @@ public static class ArelifyPlatform
         en español, pensada para el contexto LATAM.
         """;
 
-    public const string DiagramaInfraestructura =
-        """
-        ┌─────────────────────────────────────────────────────────────────┐
-        │  Cliente final                                                  │
-        └────────────────────────────┬────────────────────────────────────┘
-                                     │ HTTPS
-                                     ▼
-        ┌─────────────────────────────────────────────────────────────────┐
-        │  Cloudflare Worker  (BFF / Edge)                                │
-        │   · Resuelve el subdominio del tenant                           │
-        │   · Server-side rendering con HTML + JSON-LD para SEO real      │
-        │   · Proxy seguro de /api/*  (cookies httpOnly opacas)           │
-        └─────┬──────────────────────────────────────────┬────────────────┘
-              │ assets                                   │ /api/*
-              ▼                                          ▼
-        ┌────────────────────────────┐         ┌────────────────────────────┐
-        │  Cloudflare Pages          │         │  Google Cloud Run          │
-        │   · React 19 + Vite        │         │   · .NET 10 ASP.NET Core   │
-        │   · Landing · Portal       │         │   · Global Query Filter    │
-        │     público · Admin        │         │     por TenantId           │
-        └────────────────────────────┘         └────────────┬───────────────┘
-                                                            │ SQL
-                                                            ▼
-                                               ┌────────────────────────────┐
-                                               │  PostgreSQL 16             │
-                                               │   · Aislamiento por        │
-                                               │     TenantId               │
-                                               │   · Índice único filtrado  │
-                                               └────────────────────────────┘
-        """;
+    // [UI_DIAGRAM]
 
     public static readonly DecisionTecnica[] DecisionesTecnicas =
     [
@@ -63,7 +33,7 @@ public static class ArelifyPlatform
             ComoFunciona: "Índice único filtrado en PostgreSQL sobre (TenantId, ServiceOfferingId, StartsAtUtc) hace que el segundo INSERT concurrente falle a nivel de transacción. La aplicación solo traduce el conflicto a un 409. La regla vive en la base de datos, no en el código."
         ),
         new(
-            Nombre:       "Aislamiento multi-tenant sin confiar en el equipo",
+            Nombre:       "Aislamiento multi-tenant a prueba de errores humanos",
             ComoFunciona: "EF Core inyecta WHERE TenantId = @current en cada consulta vía Global Query Filters. El TenantId sale del JWT firmado por el servidor, nunca de un header enviado por el cliente."
         ),
         new(
@@ -76,8 +46,4 @@ public static class ArelifyPlatform
         )
     ];
 
-    public static readonly string[] Enlaces =
-    [
-        "Producto en vivo:  https://arelify.com",
-    ];
 }

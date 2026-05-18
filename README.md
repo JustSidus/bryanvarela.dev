@@ -7,8 +7,7 @@ Live at [bryanvarela.dev](https://bryanvarela.dev)
 ## Stack
 
 - **React 18 + Vite 5** — single-page app, IDE-inspired design (GitHub Dark aesthetic)
-- **GitHub Actions** → Docker build (Node 22 + nginx) → static files → **GitHub Pages**
-- Custom domain via `public/CNAME`
+- **Cloudflare Pages** — deploy automático desde `main`
 
 ## Dev
 
@@ -20,6 +19,6 @@ npm run build    # outputs to dist/
 
 ## Deploy
 
-Push to `main` triggers the workflow: Docker builds the Vite app, nginx serves it, the static files are extracted and deployed to GitHub Pages automatically.
+Push to `main` → Cloudflare Pages builds and deploys automatically.
 
-One-time repo setup: **Settings → Pages → Source → GitHub Actions**
+One-time setup: conectar el repo en [dash.cloudflare.com](https://dash.cloudflare.com) → Pages → build command `npm run build`, output dir `dist`.

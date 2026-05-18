@@ -166,8 +166,8 @@ export function BvLogo({ size = 18, className = '' }) {
 const FILE_ICON_MAP = {
   md:   'material-icon-theme:markdown',
   ts:   'material-icon-theme:typescript',
-  vue:  'material-icon-theme:vue',
   cs:   'material-icon-theme:csharp',
+  php:  'material-icon-theme:php',
   json: 'material-icon-theme:json',
   sh:   'material-icon-theme:console',
 }

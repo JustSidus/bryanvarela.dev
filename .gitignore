@@ -26,3 +26,23 @@ memory.jsonl
 .ai-terminal-images/
 ai_terminal_images/
 .env
+
+# Claude Code tooling (local only, no subir a GitHub)
+CLAUDE.md
+skills-lock.json
+
+# Artefactos de deploy antiguos (migrado a Cloudflare Pages)
+Dockerfile
+.dockerignore
+docker-compose.yml
+CNAME
+
+# Claude Code tooling (local only, no subir a GitHub)
+CLAUDE.md
+skills-lock.json
+
+# Artefactos de deploy antiguos (migrado a Cloudflare Pages)
+Dockerfile
+.dockerignore
+docker-compose.yml
+CNAME
