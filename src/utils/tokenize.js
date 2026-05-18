@@ -231,24 +231,24 @@ function buildCsRules() {
 
 function buildMdRules() {
   return [
-    // fenced code block (treat as comment so it gets a subtle color)
+    // fenced code block
     { re: /```[\s\S]*?```/g, type: "comment" },
-    // headings - the # prefix token
-    { re: /^#{1,6}(?= )/gm, type: "keyword" },
+    // headings - whole line (# heading text)
+    { re: /^#{1,6} [^\n]+/gm, type: "heading" },
     // bold **...**
-    { re: /\*\*[^*]+\*\*/g, type: "type" },
+    { re: /\*\*[^*]+\*\*/g, type: "bold" },
     // italic *...*
-    { re: /\*[^*\n]+\*/g, type: "function" },
+    { re: /\*[^*\n]+\*/g, type: "italic" },
     // inline code `...`
     { re: /`[^`\n]+`/g, type: "string" },
+    // blockquote >
+    { re: /^>(?= )/gm, type: "punctuation" },
     // links [text](url)
     { re: /\[[^\]]*\]\([^)]*\)/g, type: "function" },
     // comment-style lines starting with //
     { re: /\/\/[^\n]*/g, type: "comment" },
     // bullet markers - at start of line
     { re: /^[-*+](?= )/gm, type: "punctuation" },
-    // JSON-like block at top (braces, quotes, colons)
-    { re: /[{}[\],:"]/g, type: "punctuation" },
     // numbers
     { re: /\b\d+(\.\d+)?\b/g, type: "number" },
   ];
@@ -258,7 +258,9 @@ function buildJsonRules() {
   return [
     // string keys (before colon)
     { re: /"(?:[^"\\]|\\.)*"(?=\s*:)/g, type: "key" },
-    // string values
+    // short strings (≤30 chars) inside arrays — tech names like "C#", "React", ".NET 10"
+    { re: /"[^"\\]{1,30}"(?=\s*[,\]])/g, type: "type" },
+    // string values (long descriptions)
     { re: /"(?:[^"\\]|\\.)*"/g, type: "string" },
     // numbers
     { re: /\b-?\d+(\.\d+)?([eE][+-]?\d+)?\b/g, type: "number" },
@@ -338,8 +340,11 @@ function buildPhpRules() {
     { re: /#[^\n]*/g, type: "comment" },
     { re: /\/\*[\s\S]*?\*\//g, type: "comment" },
     { re: /"(?:[^"\\]|\\.)*"/g, type: "string" },
+    // array key (single-quoted) before => must come BEFORE generic string rule
+    { re: /'[^']*'(?=\s*=>)/g, type: "prop" },
     { re: /'(?:[^'\\]|\\.)*'/g, type: "string" },
-    { re: /\$[a-zA-Z_][a-zA-Z0-9_]*/g, type: "type" },
+    // PHP variables ($var) — distinct from class names
+    { re: /\$[a-zA-Z_][a-zA-Z0-9_]*/g, type: "variable" },
     { re: /\b\d+(\.\d+)?\b/g, type: "number" },
     { re: kw, type: "keyword" },
     { re: /\b[A-Z][A-Za-z0-9_]*\b/g, type: "type" },
@@ -354,6 +359,8 @@ function buildShRules() {
     { re: /^#!.*/gm, type: "comment" },
     // comments
     { re: /#[^\n]*/g, type: "comment" },
+    // JSON-style keys ("key": ...) inside heredocs
+    { re: /"[^"\\]*"(?=\s*:)/g, type: "prop" },
     // strings
     { re: /"(?:[^"\\]|\\.)*"/g, type: "string" },
     { re: /'[^']*'/g, type: "string" },
@@ -361,7 +368,7 @@ function buildShRules() {
     { re: /\$\([^)]*\)/g, type: "function" },
     { re: /`[^`]*`/g, type: "function" },
     // variables $VAR, ${VAR}
-    { re: /\$\{?[A-Za-z_][A-Za-z0-9_]*\}?/g, type: "type" },
+    { re: /\$\{?[A-Za-z_][A-Za-z0-9_]*\}?/g, type: "variable" },
     // numbers
     { re: /\b\d+\b/g, type: "number" },
     // shell keywords
@@ -465,9 +472,14 @@ export function tokenClass(type) {
     comment: "tk-com",
     function: "tk-fn",
     type: "tk-typ",
+    variable: "tk-var",
+    prop: "tk-prop",
+    heading: "tk-head",
+    bold: "tk-bold",
+    italic: "tk-italic",
     punctuation: "tk-pun",
     operator: "tk-pun",
-    key: "tk-key",
+    key: "tk-prop",
     value: "tk-str",
     plain: "",
   };

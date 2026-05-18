@@ -19,6 +19,7 @@ import { ContactSh } from './components/content/ContactSh'
 import { Welcome } from './components/content/Welcome'
 import { useAccentColor } from './hooks/useAccentColor'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
+import { useTheme } from './hooks/useTheme'
 
 const FILE_COMPONENTS = {
   'welcome':               Welcome,
@@ -52,6 +53,7 @@ export default function App() {
   const terminalRef = useRef(null)
 
   useAccentColor(activeId)
+  useTheme()
 
   useLayoutEffect(() => {
     const el = document.getElementById('app')

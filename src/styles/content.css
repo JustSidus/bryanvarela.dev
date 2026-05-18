@@ -73,45 +73,83 @@
 .code-link {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: var(--accent);
+  text-decoration-color: var(--fg-3);
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
-  transition: color 0.12s;
+  transition: color 0.12s, text-decoration-color 0.12s;
 }
 .code-link:hover {
   color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
-/* ── Syntax token colors (VS Code Dark+ inspired) ──────────────────────────── */
+/* ── Syntax token colors (One Dark Pro) ────────────────────────────────────── */
 /* keyword   */
 .tk-key {
-  color: #ff7b9c;
+  color: #C678DD;
 }
 /* string    */
 .tk-str {
-  color: #ce9178;
+  color: #98C379;
 }
 /* number    */
 .tk-num {
-  color: #b5cea8;
+  color: #D19A66;
 }
 /* comment   */
 .tk-com {
-  color: var(--fg-3);
+  color: #5C6370;
   font-style: italic;
 }
 /* function  */
 .tk-fn {
-  color: #dcdcaa;
+  color: #61AFEF;
 }
-/* type      */
+/* type / class name / tech names */
 .tk-typ {
-  color: #4ec9b0;
+  color: #56B6C2;
+}
+/* variable ($var in PHP, $VAR in sh) */
+.tk-var {
+  color: #E06C75;
+}
+/* JSON / object key */
+.tk-prop {
+  color: var(--accent);
 }
 /* punctuation */
 .tk-pun {
   color: var(--fg-2);
 }
+/* md heading (# Title) - whole line colored + bold */
+.tk-head {
+  color: #C678DD;
+  font-weight: 700;
+}
+/* md bold **...** */
+.tk-bold {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+/* md italic *...* */
+.tk-italic {
+  color: var(--fg-2);
+  font-style: italic;
+}
+
+/* ── Theme: Modern (GitHub Dark-inspired, clean & minimal) ─────────────────── */
+.theme-modern .tk-key   { color: #FF7B72; }
+.theme-modern .tk-str   { color: #A5D6FF; }
+.theme-modern .tk-num   { color: #79C0FF; }
+.theme-modern .tk-com   { color: #8B949E; font-style: italic; }
+.theme-modern .tk-fn    { color: #D2A8FF; }
+.theme-modern .tk-typ   { color: #FFA657; }
+.theme-modern .tk-var   { color: #FFA657; }
+.theme-modern .tk-prop  { color: #7EE787; }
+.theme-modern .tk-pun   { color: var(--fg-2); }
+.theme-modern .tk-head  { color: #FF7B72; font-weight: 700; }
+.theme-modern .tk-bold  { color: #FFFFFF; font-weight: 700; }
+.theme-modern .tk-italic { color: var(--fg-2); font-style: italic; }
 
 /* ── Legacy rich components (kept for any remaining UI usage) ──────────────── */
 

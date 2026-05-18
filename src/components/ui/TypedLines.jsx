@@ -1,6 +1,24 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { tokenClass } from "../../utils/tokenize";
 
+function leadingIndentWidth(tokens) {
+  let count = 0;
+  for (const tok of tokens) {
+    for (const ch of tok.text) {
+      if (ch === " ") count += 1;
+      else if (ch === "\t") count += 2;
+      else return count;
+    }
+  }
+  return count;
+}
+
+function indentStyle(tokens) {
+  const w = leadingIndentWidth(tokens);
+  if (w === 0) return undefined;
+  return { paddingLeft: `calc(16px + ${w}ch)`, textIndent: `-${w}ch` };
+}
+
 function tokensToText(tokens) {
   return tokens.map((t) => t.text).join("");
 }
@@ -100,7 +118,7 @@ export function TypedLines({ lines, lineOffset = 0 }) {
             <span className="line-number" aria-hidden="true">
               {lineOffset + lineIdx + 1}
             </span>
-            <span className="line-content">
+            <span className="line-content" style={indentStyle(tokens)}>
               {content}
               {showCursor && (
                 <span

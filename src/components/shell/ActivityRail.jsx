@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Icon } from '../../icons'
 import { BellPanel } from './BellPanel'
-import { CogModal } from './CogModal'
+import { ThemeModal } from './ThemeModal'
 
 const PANELS = [
   { id: 'files',      icon: Icon.files,   title: 'Explorer' },
@@ -38,13 +38,13 @@ function CogButton() {
         className="rail-btn"
         role="button"
         tabIndex={0}
-        title="Ver código fuente"
-        aria-label="Ver código fuente"
+        title="Color Theme"
+        aria-label="Color Theme"
         onClick={() => setOpen(true)}
       >
         <Icon.cog />
       </div>
-      {open && <CogModal onClose={() => setOpen(false)} />}
+      {open && <ThemeModal onClose={() => setOpen(false)} />}
     </>
   )
 }
