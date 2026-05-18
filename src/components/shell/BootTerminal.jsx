@@ -1,18 +1,16 @@
 import { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
+import { RECENT_COMMITS } from '../../data/recent-commits'
 
+// Faux terminal session: short `git log` of the repo's own last 3 commits
+// (injected at build-time by scripts/generate-recent-commits.mjs). Falls back
+// to a curated synthetic list when the real history is not conventional-commits clean.
 const BOOT_LINES = [
-  { text: 'PS C:\\portfolio> npm run dev',                       type: 'cmd',     delay: 0    },
-  { text: '',                                                    type: 'blank',   delay: 220  },
-  { text: '  > bryanvarela-dev@0.1.0 dev',                       type: 'info',    delay: 420  },
-  { text: '  > vite --host',                                     type: 'info',    delay: 620  },
-  { text: '',                                                    type: 'blank',   delay: 820  },
-  { text: '  VITE v5.4  ready',                                  type: 'success', delay: 1020 },
-  { text: '  ➜  Local:   http://localhost:5173/',                type: 'info',    delay: 1220 },
-  { text: '',                                                    type: 'blank',   delay: 1420 },
-  { text: 'PS C:\\portfolio> _',                                 type: 'prompt',  delay: 1620 },
+  { text: 'PS C:\\portfolio> git log --oneline -3', type: 'cmd', delay: 0 },
+  ...RECENT_COMMITS.map((c, i) => ({ ...c, type: 'log', delay: 260 + i * 160 })),
+  { text: 'PS C:\\portfolio> _', type: 'prompt', delay: 260 + RECENT_COMMITS.length * 160 + 80 },
 ]
 
-const TOTAL_BOOT_MS = 1620
+const TOTAL_BOOT_MS = BOOT_LINES[BOOT_LINES.length - 1].delay
 
 export const BootTerminal = forwardRef(function BootTerminal(_, ref) {
   const [visibleLines, setVisibleLines] = useState([])
@@ -82,6 +80,17 @@ export const BootTerminal = forwardRef(function BootTerminal(_, ref) {
           }
           if (line.type === 'info') {
             return <div key={i} className="boot-terminal-line term-info">{line.text}</div>
+          }
+          if (line.type === 'comment') {
+            return <div key={i} className="boot-terminal-line term-comment">{line.text}</div>
+          }
+          if (line.type === 'log') {
+            return (
+              <div key={i} className="boot-terminal-line term-log">
+                <span className="git-hash">{line.hash}</span>
+                <span className="git-msg">{line.msg}</span>
+              </div>
+            )
           }
           if (line.type === 'prompt') {
             return (
