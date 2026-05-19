@@ -330,6 +330,7 @@ const FILE_ICON_MAP = {
   php: "material-icon-theme:php",
   json: "material-icon-theme:json",
   sh: "material-icon-theme:console",
+  pdf: "material-icon-theme:pdf",
 };
 
 const FOLDER_ICON_MAP = {
