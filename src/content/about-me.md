@@ -8,7 +8,7 @@ Backend & Cloud Software Engineer
 
 ## Perfil Profesional
 
-Ingeniero de software, cursando el 9no cuatrimestre de Ingeniería de Software. Mi fuerte está en arquitectura y entrega: pensar el sistema, decidir las piezas, conectarlas y desplegarlas.
+Cursando el 9no cuatrimestre de Ingeniería de Software. Mi fuerte está en arquitectura y entrega: pensar el sistema, decidir las piezas, conectarlas y desplegarlas.
 
 Uso herramientas modernas como agentes de IA y Model Context Protocol (MCP) para acelerar el desarrollo sin perder calidad técnica, enfocando todo el esfuerzo en construir soluciones reales que sean mantenibles, escalables y seguras desde el primer día.
 
