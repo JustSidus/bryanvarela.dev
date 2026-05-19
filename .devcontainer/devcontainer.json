@@ -37,6 +37,6 @@
       }
     }
   },
-  "postCreateCommand": "mkdir -p /home/node/.npm-global && npm config set prefix '/home/node/.npm-global' && npm install",
+  "postCreateCommand": "mkdir -p /home/node/.npm-global && npm config set prefix '/home/node/.npm-global' && sudo mkdir -p /opt/mcp-tools && sudo chown node:node /opt/mcp-tools && cd /opt/mcp-tools && (test -f package.json || npm init -y) && npm install @canva/cli@latest && cd /workspaces/bryanvarela.dev && npm install",
   "remoteUser": "node"
 }
