@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useCallback, useRef, useLayoutEffect } from 'react'
 import { FILE_META } from './data/files'
 import { Caption } from './components/shell/Caption'
 import { ActivityRail } from './components/shell/ActivityRail'
@@ -20,6 +20,7 @@ import { Welcome } from './components/content/Welcome'
 import { useAccentColor } from './hooks/useAccentColor'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import { useTheme } from './hooks/useTheme'
+import { useIsMobileDevice } from './hooks/useIsMobileDevice'
 
 const FILE_COMPONENTS = {
   'welcome':               Welcome,
@@ -32,6 +33,11 @@ const FILE_COMPONENTS = {
 }
 
 export default function App() {
+  const isMobile = useIsMobileDevice()
+  return isMobile ? <MobileGate /> : <IDEShell />
+}
+
+function IDEShell() {
   const [openFiles, setOpenFiles] = useState(['welcome'])
   const [activeId, setActiveId] = useState('welcome')
   const [openFolders, setOpenFolders] = useState(new Set(['projects', 'infrastructure']))
@@ -105,7 +111,6 @@ export default function App() {
 
   return (
     <>
-      <MobileGate />
       <Caption activeId={activeId} onOpenPalette={() => setPaletteOpen(true)} />
       <ActivityRail
         activePanelId={activePanelId}

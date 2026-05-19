@@ -37,6 +37,13 @@ export function MobileGate() {
             Backend &amp; Cloud Software Engineer
           </p>
           <p className="mobile-gate__location">Santo Domingo · UTC-4</p>
+          <a
+            className="mobile-gate__cta"
+            href="/resume.pdf"
+            download="cv-bryan-varela.pdf"
+          >
+            <span aria-hidden="true">↓</span> Descargar CV (PDF)
+          </a>
         </header>
 
         <section className="mobile-gate__section">
@@ -105,7 +112,7 @@ export function MobileGate() {
               href="https://bryanvarela.dev"
               style={{ marginLeft: "0.25rem", textDecoration: "underline" }}
             >
-              Ver versión IDE en escritorio
+              Ver versión completa en escritorio
             </a>
             .
           </p>

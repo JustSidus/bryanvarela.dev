@@ -1349,7 +1349,7 @@
    Mobile Gate · read-only fallback for screens < 768px
    ============================================================ */
 .mobile-gate {
-  display: none;
+  display: block;
   position: fixed;
   inset: 0;
   background: var(--bg-0);
@@ -1358,22 +1358,6 @@
   z-index: 9999;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-}
-
-@media (max-width: 767px) {
-  .mobile-gate {
-    display: block;
-  }
-  #app {
-    display: block;
-    grid-template-columns: none;
-    grid-template-rows: none;
-    grid-template-areas: none;
-    height: auto;
-  }
-  #app > :not(.mobile-gate) {
-    display: none !important;
-  }
 }
 
 .mobile-gate__inner {
@@ -1403,6 +1387,27 @@
   font-size: 13px;
   color: var(--fg-3);
   font-family: var(--font-mono);
+}
+.mobile-gate__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px 18px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--bg-0);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 44px;
+  box-sizing: border-box;
+  transition: opacity 0.12s, transform 0.12s;
+}
+.mobile-gate__cta:active {
+  transform: translateY(1px);
+  opacity: 0.9;
 }
 
 .mobile-gate__section {
