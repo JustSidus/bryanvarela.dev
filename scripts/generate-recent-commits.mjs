@@ -32,6 +32,12 @@ const FALLBACK = [
 
 function readRealCommits(n = 15) {
   try {
+    // Cloudflare Pages does a shallow clone (--depth=1) by default, leaving us
+    // with a single commit. Deepen the history silently so the quality gate
+    // has enough material to pick 3 commits.
+    try {
+      execSync(`git fetch --deepen ${n} --quiet`, { stdio: ["pipe", "pipe", "pipe"] });
+    } catch {}
     const raw = execSync(
       `git log --no-merges --pretty=%h%x09%s -n ${n}`,
       { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }
