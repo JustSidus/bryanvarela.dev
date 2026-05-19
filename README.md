@@ -6,7 +6,7 @@ Live at [bryanvarela.dev](https://bryanvarela.dev)
 
 ## Stack
 
-- **React 18 + Vite 5** - single-page app, IDE-inspired design (GitHub Dark aesthetic)
+- **React 18 + Vite 8** - single-page app, IDE-inspired design (GitHub Dark aesthetic)
 - **Cloudflare Pages** - deploy automático desde `main`
 
 ## Dev
