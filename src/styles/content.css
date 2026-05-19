@@ -861,6 +861,25 @@
   font-size: 12px;
   color: var(--fg-3);
 }
+.welcome-doc__external {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.welcome-doc__external-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-3);
+  margin: 0 0 10px;
+  text-align: center;
+}
+.welcome-doc__external-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
 .welcome-doc__footer {
   margin-top: 36px;
   padding-top: 18px;

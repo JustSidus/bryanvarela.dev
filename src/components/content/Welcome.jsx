@@ -14,6 +14,15 @@ const START_ITEMS = [
   { id: "about-me.md",     label: "about-me.md",     desc: "Mi perfil y experiencia" },
   { id: "contact.sh",      label: "contact.sh",      desc: "Información de contacto" },
   { id: "tech-stack.json", label: "tech-stack.json", desc: "Lenguajes y herramientas" },
+];
+
+const RECENT_ITEMS = [
+  { id: "arelify-platform.cs",    label: "arelify-platform.cs",    desc: "SaaS B2B multi-tenant" },
+  { id: "visitor-management.php", label: "visitor-management.php", desc: "Infraestructura Azure + Backend" },
+  { id: "vscode-extension.ts",    label: "vscode-extension.ts",    desc: "Extensión open source" },
+];
+
+const EXTERNAL_ITEMS = [
   {
     id: "resume.pdf",
     label: "resume.pdf",
@@ -31,50 +40,49 @@ const START_ITEMS = [
   },
 ];
 
-const RECENT_ITEMS = [
-  { id: "arelify-platform.cs",    label: "arelify-platform.cs",    desc: "SaaS B2B multi-tenant" },
-  { id: "visitor-management.php", label: "visitor-management.php", desc: "Infraestructura Azure + Backend" },
-  { id: "vscode-extension.ts",    label: "vscode-extension.ts",    desc: "Extensión open source" },
-];
+function ListItem({ it, openFile }) {
+  const ext = it.id.split(".").pop();
+  const inner = (
+    <>
+      {it.icon ?? <FileIcon ext={ext} />}
+      <span className="welcome-doc__list-label">{it.label}</span>
+      <span className="welcome-doc__list-desc">{it.desc}</span>
+    </>
+  );
+  if (it.href) {
+    return (
+      <a
+        className="welcome-doc__list-item"
+        href={it.href}
+        download={it.download}
+        target={it.target}
+        rel={it.target === "_blank" ? "noreferrer" : undefined}
+      >
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <button
+      type="button"
+      className="welcome-doc__list-item"
+      onClick={() => openFile?.(it.id)}
+    >
+      {inner}
+    </button>
+  );
+}
 
 function Column({ title, items, openFile }) {
   return (
     <div className="welcome-doc__col">
       <h2>{title}</h2>
       <ul className="welcome-doc__list">
-        {items.map((it) => {
-          const ext = it.id.split(".").pop();
-          const inner = (
-            <>
-              {it.icon ?? <FileIcon ext={ext} />}
-              <span className="welcome-doc__list-label">{it.label}</span>
-              <span className="welcome-doc__list-desc">{it.desc}</span>
-            </>
-          );
-          return (
-            <li key={it.id}>
-              {it.href ? (
-                <a
-                  className="welcome-doc__list-item"
-                  href={it.href}
-                  download={it.download}
-                  target={it.target}
-                  rel={it.target === "_blank" ? "noreferrer" : undefined}
-                >
-                  {inner}
-                </a>
-              ) : (
-                <button
-                  type="button"
-                  className="welcome-doc__list-item"
-                  onClick={() => openFile?.(it.id)}
-                >
-                  {inner}
-                </button>
-              )}
-            </li>
-          );
-        })}
+        {items.map((it) => (
+          <li key={it.id}>
+            <ListItem it={it} openFile={openFile} />
+          </li>
+        ))}
       </ul>
     </div>
   );
@@ -93,6 +101,15 @@ export function Welcome({ openFile }) {
       <div className="welcome-doc__grid">
         <Column title="Comenzar"  items={START_ITEMS}  openFile={openFile} />
         <Column title="Proyectos" items={RECENT_ITEMS} openFile={openFile} />
+      </div>
+
+      <div className="welcome-doc__external">
+        <h2 className="welcome-doc__external-title">Recursos externos</h2>
+        <div className="welcome-doc__external-row">
+          {EXTERNAL_ITEMS.map((it) => (
+            <ListItem key={it.id} it={it} openFile={openFile} />
+          ))}
+        </div>
       </div>
     </div>
   );
