@@ -16,7 +16,7 @@
   --fg-0: #e6edf3; /* primary text */
   --fg-1: #c9d1d9; /* body text */
   --fg-2: #8b949e; /* muted */
-  --fg-3: #6e7681; /* subtle */
+  --fg-3: #7d8590; /* subtle (raised from #6e7681 to clear WCAG AA on bg-0/bg-2) */
   --fg-4: #484f58; /* very subtle */
 
   /* accent (overridden by tweaks) - defaults to GitHub blue */
