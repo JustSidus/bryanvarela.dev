@@ -4,12 +4,12 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/generate-recent-commits.mjs && vite --host",
-    "build": "node scripts/generate-og-image.mjs && node scripts/generate-resume-placeholder.mjs && node scripts/generate-recent-commits.mjs && node scripts/optimize-images.mjs && vite build",
+    "dev": "vite --host 127.0.0.1",
+    "build": "node scripts/build.mjs",
     "preview": "vite preview",
     "images": "node scripts/optimize-images.mjs",
     "og": "node scripts/generate-og-image.mjs",
-    "resume": "node scripts/generate-resume-placeholder.mjs",
+    "resume": "node scripts/verify-resume.mjs",
     "commits": "node scripts/generate-recent-commits.mjs"
   },
   "dependencies": {
@@ -22,7 +22,7 @@
     "@playwright/test": "^1.59.1",
     "@vitejs/plugin-react": "^6.0.2",
     "dotenv-cli": "^11.0.0",
-    "sharp": "^0.34.5",
+    "sharp": "0.35.5",
     "vite": "^8.0.0"
   }
 }

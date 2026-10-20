@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bryanvarela.dev/sitemap.xml
+# Crawling remains allowed so crawlers can read noindex headers.
+# No sitemap is advertised while indexing is disabled.

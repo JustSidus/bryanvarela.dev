@@ -1,15 +1,8 @@
-/* TEAM */
 Developer: Bryan Varela
 Role: Backend & Cloud Software Engineer
-Location: República Dominicana
-GitHub: https://github.com/JustSidus
-Contact: hola [at] bryanvarela [dot] dev
-
-/* SITE */
-Last update: 2026-05-18
-Language: Spanish (es-DO)
-Doctype: HTML5
-IDE: Visual Studio Code
-Standards: HTML5, CSS3, ES2024
-Components: React 18, Vite 5
+Location: Santo Domingo, República Dominicana
+Contact: devbryanvarela@gmail.com
+Updated: 2026-10-20
+Stack: React 18, Vite 8, native CSS
 Hosting: Cloudflare Pages
+Indexing: noindex via meta and X-Robots-Tag

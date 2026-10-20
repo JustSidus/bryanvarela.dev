@@ -45,3 +45,5 @@ review-*.png
 
 # Build-time output (regenerated on every build by npm run build)
 src/data/recent-commits.js
+# Local audit reports
+review-*.json
