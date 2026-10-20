@@ -4,6 +4,8 @@ import assert from "node:assert/strict";
 const html = readFileSync("dist/index.html", "utf8");
 const headers = readFileSync("dist/_headers", "utf8");
 const robots = readFileSync("dist/robots.txt", "utf8");
+assert.doesNotMatch(html, /<script[^>]+type="module"/);
+assert.match(html, /rel="stylesheet"/);
 assert.match(html, /name="robots"\s+content="noindex,nofollow,noarchive"/);
 assert.match(
   headers,

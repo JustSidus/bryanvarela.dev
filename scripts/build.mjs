@@ -2,7 +2,7 @@ import "./verify-resume.mjs";
 import "./generate-og-image.mjs";
 import "./generate-icons.mjs";
 import { createServer, build } from "vite";
-import { renderToString } from "react-dom/server";
+import { renderToStaticMarkup } from "react-dom/server";
 import { createElement } from "react";
 process.env.NODE_ENV = "production";
 const server = await createServer({
@@ -13,7 +13,7 @@ const server = await createServer({
 let content;
 try {
   const { default: App } = await server.ssrLoadModule("/src/Portfolio.jsx");
-  content = renderToString(createElement(App));
+  content = renderToStaticMarkup(createElement(App));
 } finally {
   await server.close();
 }
@@ -25,7 +25,9 @@ await build({
       name: "portfolio-prerender",
       transformIndexHtml: {
         order: "pre",
-        handler: (html) => html.replace("<!--app-html-->", content),
+        handler: (html) => html
+          .replace("<!--app-html-->", content)
+          .replace('<script type="module" src="/src/main.jsx"></script>', '<link rel="stylesheet" href="/src/portfolio.css" />'),
       },
     },
   ],
