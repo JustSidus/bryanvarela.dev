@@ -1,5 +1,6 @@
 import "./verify-resume.mjs";
 import "./generate-og-image.mjs";
+import "./generate-icons.mjs";
 import { createServer, build } from "vite";
 import { renderToString } from "react-dom/server";
 import { createElement } from "react";
@@ -29,3 +30,4 @@ await build({
     },
   ],
 });
+await import("./verify-publication.mjs");

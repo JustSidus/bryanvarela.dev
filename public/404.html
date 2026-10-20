@@ -2,90 +2,82 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>404 - Página no encontrada · Bryan Varela</title>
-    <meta
-      name="description"
-      content="La página que buscas no existe. Vuelve al portafolio de Bryan Varela."
-    />
-    <meta name="robots" content="noindex, follow" />
-    <link rel="canonical" href="https://bryanvarela.dev/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>Página no encontrada | Bryan Varela</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261020-blue" />
     <style>
-      html,
+      :root {
+        color-scheme: light dark;
+        font-family: Arial, sans-serif;
+        color: #20273b;
+        background: #f8f9fd;
+      }
+      * {
+        box-sizing: border-box;
+      }
       body {
         margin: 0;
-        padding: 0;
-        background: #0d1117;
-        color: #e6edf3;
-        font-family:
-          "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-        min-height: 100vh;
       }
       main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        padding: 2rem;
-        text-align: center;
+        min-height: 100dvh;
+        display: grid;
+        align-content: center;
+        justify-items: start;
+        max-width: 700px;
+        margin: auto;
+        padding: 32px;
       }
       .code {
-        font-size: clamp(4rem, 12vw, 8rem);
+        font-size: 72px;
+        color: #3e50c6;
         font-weight: 700;
-        letter-spacing: -0.05em;
-        color: #58a6ff;
-        line-height: 1;
-        margin: 0 0 1rem;
+        margin: 0 0 20px;
       }
       h1 {
-        font-size: 1.25rem;
-        font-weight: 500;
-        margin: 0 0 0.5rem;
-        color: #e6edf3;
+        font-size: 30px;
+        letter-spacing: -1px;
       }
       p {
-        color: #8b949e;
-        max-width: 480px;
-        margin: 0 0 2rem;
-        line-height: 1.6;
+        color: #566078;
+        line-height: 1.8;
       }
       a {
         display: inline-block;
-        padding: 0.625rem 1.25rem;
-        background: #238636;
+        background: #3e50c6;
         color: #fff;
+        padding: 14px 20px;
         text-decoration: none;
-        border-radius: 6px;
-        font-weight: 500;
-        transition: background 0.15s;
+        border-radius: 4px;
+        margin-top: 18px;
       }
-      a:hover {
-        background: #2ea043;
+      a:focus-visible {
+        outline: 3px solid #aab9ff;
+        outline-offset: 5px;
       }
-      .path {
-        font-size: 0.875rem;
-        color: #6e7681;
-        margin-top: 2rem;
-        font-family: inherit;
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color: #edf0fc;
+          background: #141824;
+        }
+        p {
+          color: #b7c0d7;
+        }
+        .code {
+          color: #aab9ff;
+        }
       }
     </style>
   </head>
   <body>
     <main>
-      <div class="code">404</div>
-      <h1>file not found</h1>
+      <p class="code">404</p>
+      <h1>Esta página no está disponible.</h1>
       <p>
-        La ruta que buscas no existe en este portafolio. Volvé a la home para
-        explorar los proyectos.
+        Puedes volver al portafolio para ver mis proyectos, experiencia y formas
+        de contacto.
       </p>
-      <a href="/">cd ~/portfolio</a>
-      <div class="path" id="requested-path"></div>
+      <a href="/">Volver al portafolio</a>
     </main>
-    <script>
-      document.getElementById("requested-path").textContent =
-        "$ pwd → " + window.location.pathname;
-    </script>
   </body>
 </html>

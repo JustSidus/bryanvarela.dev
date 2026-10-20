@@ -1,14 +1,14 @@
 :root {
   font-family: Arial, "Segoe UI", sans-serif;
-  color: #202927;
-  background: #fafbf9;
+  color: #20273b;
+  background: #f8f9fd;
   font-synthesis: none;
-  --paper: #fafbf9;
-  --ink: #202927;
-  --muted: #52635d;
-  --accent: #23664c;
-  --line: #d7dfd8;
-  --surface: #eef2eb;
+  --paper: #f8f9fd;
+  --ink: #20273b;
+  --muted: #566078;
+  --accent: #3e50c6;
+  --line: #dce1ef;
+  --surface: #eef1fa;
   color-scheme: light dark;
 }
 * {
@@ -30,8 +30,8 @@ a:focus-visible {
   outline-offset: 6px;
 }
 ::selection {
-  background: #cbe3cc;
-  color: #183f2f;
+  background: #dce3ff;
+  color: #283a88;
 }
 .wrap {
   width: min(1184px, calc(100% - 96px));
@@ -365,17 +365,17 @@ footer {
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #151c19;
-    --ink: #edf3ee;
-    --muted: #b0c0b4;
-    --accent: #9bd6b0;
-    --line: #34433a;
-    --surface: #202d25;
+    --paper: #141824;
+    --ink: #edf0fc;
+    --muted: #b7c0d7;
+    --accent: #aab9ff;
+    --line: #333d56;
+    --surface: #20283b;
     color: var(--ink);
     background: var(--paper);
   }
   .button {
-    color: #13271b;
+    color: #151c38;
   }
 }
 @media (max-width: 900px) {

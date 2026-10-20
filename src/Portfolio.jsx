@@ -21,7 +21,7 @@ const projects = [
       "Desarrollé flujos de agenda, ventas, caja, inventario y comisiones. Incluye permisos de acceso, movimientos auditables, importes exactos y protección contra operaciones duplicadas.",
     detail:
       "Una herramienta adaptada a los procesos diarios de un negocio real.",
-    stack: "Next.js · TypeScript · PostgreSQL · Docker · Cloud Run",
+    stack: "Next.js · TypeScript · PostgreSQL / Supabase · Cloud Run",
   },
   {
     name: "Arelify",

@@ -15,9 +15,11 @@ Español nativo; inglés B2.
 
 ## Proyectos
 Staris (https://staris.do): estudio propio, sitios y catálogos; distingue trabajos publicados y conceptos.
-Sistema privado para salón: agenda, ventas, caja, inventario y comisiones. Next.js/TypeScript/PostgreSQL/Docker/Cloud Run. Fiscal deshabilitado.
+Sistema privado para salón: agenda, ventas, caja, inventario y comisiones. Next.js/TypeScript/PostgreSQL/Supabase/Docker/Cloud Run. Módulo e-CF en desarrollo; no implica activación fiscal.
 Arelify (https://arelify.com): reservas, .NET/React/PostgreSQL y aislamiento por negocio. Sin métricas de clientes, rendimiento o disponibilidad verificadas para publicación.
 Gestión de visitas: demo anonimizada https://github.com/JustSidus/gestion-visitas-demo.
 Paste Image to Terminal: extensión TypeScript https://github.com/JustSidus/vscode-paste-image-to-terminal.
 
 No publicar repositorios privados, datos de clientes ni métricas comerciales no verificadas.
+
+Indexación deshabilitada mediante noindex. El contenido sigue accesible por enlace directo.
