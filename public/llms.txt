@@ -1,70 +1,23 @@
-# Bryan Varela - Software Engineer
+# Bryan Varela - Desarrollador de software
 
-> Backend & Cloud Software Engineer. Diseño y construyo plataformas SaaS multi-tenant, APIs y sistemas de infraestructura cloud.
-
-## Identidad
-
-- **Nombre:** Bryan Varela
-- **Rol:** Backend & Cloud Software Engineer
-- **Ubicación:** República Dominicana
-- **Portfolio:** https://bryanvarela.dev
-- **GitHub:** https://github.com/JustSidus
-- **Contacto:** hola@bryanvarela.dev
-- **Disponibilidad:** Disponible para proyectos y posiciones remotas
-
-## Especialización técnica
-
-Foco principal en backend y arquitectura cloud. Me adapto al stack que demande la infraestructura.
-
-### Lenguajes
-- C# / .NET (principal)
-- TypeScript / JavaScript
-- PHP
-- SQL
-- Python
-
-### Backend
-- ASP.NET Core · EF Core · Laravel 12 · PHP 8.3
-
-### Datos
-- PostgreSQL · MySQL · SQL Server · Redis · Patrones multi-tenant
-
-### Cloud & Infraestructura
-- Google Cloud Run · Cloudflare Workers & Pages · Azure App Service · Azure Static Web Apps · Microsoft Entra ID · Docker
-
-### Frontend
-- React · Vue 3 (Composition API) · Tailwind CSS · Vite
-
-### Prácticas
-- Clean Architecture · ADRs · Code Review · Testing pragmático
-
-## Proyectos
-
-### Arelify Platform
-SaaS B2B multi-tenant en producción en República Dominicana.
-- Rol: Cofundador técnico - 100% del backend, infraestructura y frontend
-- Stack: .NET 10 · PostgreSQL · React · Google Cloud Run · Cloudflare Workers
-- Estado: en producción, pilotos activos
-- Repo: https://github.com/JustSidus (privado, arquitectura en documentación pública pendiente)
-
-### Visitor Management System
-Sistema institucional de gestión de accesos construido para una agencia gubernamental.
-- Rol: Full-stack engineer (pasantía CONANI, sep-dic 2025)
-- Stack: Laravel 12 · PHP 8.3 · Vue 3 · Microsoft Entra ID · Azure App Service · Azure Static Web Apps · Azure DB for MySQL
-- Features: SSO corporativo con JWT interno, RBAC en 4 roles (recepcionista/anfitrion/guardia/admin), log de auditoria inmutable
-- Repo: https://github.com/JustSidus/gestion-visitas-demo
-
-### VS Code Extension - Paste Image to Terminal
-Extension para VS Code que permite pegar imágenes directamente en el terminal integrado.
-- Stack: TypeScript · VS Code API
-- Features: deduplicacion SHA-256, mutex para concurrencia, bracketed paste sequences, multi-plataforma
-- Repo: https://github.com/JustSidus/vscode-paste-image-to-terminal
+Santo Domingo, República Dominicana. Disponible para trabajo remoto en español.
+Contacto: devbryanvarela@gmail.com
+Portfolio: https://bryanvarela.dev
+GitHub: https://github.com/JustSidus
+LinkedIn: https://www.linkedin.com/in/bryan-varela-mazzei/
+CV: https://bryanvarela.dev/resume.pdf
 
 ## Experiencia
+CONANI: pasantía full stack, septiembre-diciembre 2025. Laravel, Vue 3, MySQL, Entra ID, Azure, reportes y migración de tres proyectos.
+Programa Mundial de Alimentos: pasantía TI, octubre-diciembre 2022. Soporte a usuarios y control de activos.
+Ingeniería de Software, Universidad APEC, en curso. Finalización prevista: finales de 2027.
+Español nativo; inglés B2.
 
-- **2026 - presente:** Cofundador tecnico · Arelify (SaaS multi-tenant en produccion)
-- **sep-dic 2025:** Desarrollador (pasantia) · CONANI (Gobierno dominicano)
+## Proyectos
+Staris (https://staris.do): estudio propio, sitios y catálogos; distingue trabajos publicados y conceptos.
+Sistema privado para salón: agenda, ventas, caja, inventario y comisiones. Next.js/TypeScript/PostgreSQL/Docker/Cloud Run. Fiscal deshabilitado.
+Arelify (https://arelify.com): reservas, .NET/React/PostgreSQL y aislamiento por negocio. Sin métricas de clientes, rendimiento o disponibilidad verificadas para publicación.
+Gestión de visitas: demo anonimizada https://github.com/JustSidus/gestion-visitas-demo.
+Paste Image to Terminal: extensión TypeScript https://github.com/JustSidus/vscode-paste-image-to-terminal.
 
-## Como trabajo
-
-Antes de escribir código, defino el problema a nivel de sistema. La arquitectura dicta la herramienta. Diseño bajo el principio de menor privilegio.
+No publicar repositorios privados, datos de clientes ni métricas comerciales no verificadas.

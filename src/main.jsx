@@ -1,8 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import App from './App'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./portfolio.css";
+import App from "./Portfolio";
 
-ReactDOM.createRoot(document.getElementById('app')).render(<App />)
-
-document.getElementById('seo-snapshot')?.remove()
+const root = document.getElementById("app");
+if (root.querySelector("main")) ReactDOM.hydrateRoot(root, <App />);
+else ReactDOM.createRoot(root).render(<App />);
