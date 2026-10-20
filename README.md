@@ -11,7 +11,7 @@ npm run build
 npm run preview
 ```
 
-React 18 como fuente de autoría + Vite 8, CSS nativo y HTML estático generado. Producción no carga ni hidrata React: todos los controles son enlaces nativos. Sin fuentes remotas ni efectos de terminal. Tema claro/oscuro según el sistema y movimiento reducido. Contenido en `src/Portfolio.jsx`; estilos en `src/portfolio.css`. Los componentes IDE anteriores se conservan fuera del bundle activo.
+React 18 como fuente de autoría + Vite 8, CSS nativo y HTML estático generado. Producción no carga ni hidrata React: todos los controles son enlaces nativos. Sin fuentes remotas ni efectos de terminal. Tema claro fijo con azul cobalto según la referencia de Bryan y soporte de movimiento reducido. Contenido en `src/Portfolio.jsx`; estilos en `src/portfolio.css`. Los componentes IDE anteriores se conservan fuera del bundle activo.
 
 La fuente canónica de hechos y CV está en el repositorio privado job-search-hub. No copiar información sensible ni enlaces privados al sitio. `public/resume.pdf` es una variante pública real, confirmado por Bryan. El build comprueba que exista; nunca lo reemplaza por un marcador temporal.
 

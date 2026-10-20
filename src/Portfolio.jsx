@@ -4,33 +4,32 @@ const projects = [
   {
     name: "Staris",
     category: "Estudio web · proyecto propio",
-    summary: "De una necesidad de negocio a una web que se puede usar.",
+    summary: "Sitios web y sistemas para negocios dominicanos.",
     description:
-      "Desarrollo sitios, catálogos y herramientas para negocios dominicanos. Trabajo desde el levantamiento de requisitos hasta la implementación, las pruebas y la publicación.",
+      "Staris es mi estudio de desarrollo web. Trabajo en sitios, catálogos y sistemas de gestión: converso sobre lo que necesita el negocio, lo desarrollo y me encargo de las pruebas y la publicación.",
     detail:
-      "El sitio del estudio distingue trabajos publicados y conceptos de demostración.",
+      "En la web del estudio puedes ver trabajos publicados y propuestas de demostración, identificadas como tales.",
     stack: "Astro · TypeScript · Node.js · Cloudflare",
     url: "https://staris.do",
     link: "Visitar Staris",
   },
   {
-    name: "Sistema de operaciones para salón",
+    name: "Balayage OS",
     category: "Aplicación privada · desarrollo reciente",
-    summary: "La operación de un negocio, organizada en una sola aplicación.",
+    summary: "Agenda, ventas y caja de un salón.",
     description:
-      "Desarrollé flujos de agenda, ventas, caja, inventario y comisiones. Incluye permisos de acceso, movimientos auditables, importes exactos y protección contra operaciones duplicadas.",
+      "Desarrollé una aplicación que reúne las citas, las ventas, el inventario y las comisiones del personal. Implementé permisos por usuario, un registro de movimientos de caja y controles para evitar que una operación se procese dos veces.",
     detail:
-      "Una herramienta adaptada a los procesos diarios de un negocio real.",
+      "El código es privado. Puedo conversar sobre la estructura del sistema y las decisiones de implementación.",
     stack: "Next.js · TypeScript · PostgreSQL / Supabase · Cloud Run",
   },
   {
     name: "Arelify",
     category: "SaaS B2B · cofundador técnico",
-    summary: "Reservas con aislamiento de datos entre negocios.",
+    summary: "Una plataforma de reservas para varios negocios.",
     description:
-      "Construí una plataforma de reservas con API, frontend e infraestructura cloud. Implementé filtros de aislamiento por negocio y una restricción de base de datos para evitar reservas duplicadas.",
-    detail:
-      "Código privado. Puedo explicar las decisiones técnicas en una entrevista.",
+      "Como cofundador técnico, construí la API, la interfaz web y la infraestructura. Cada negocio tiene sus datos separados; la base de datos también comprueba que no se creen dos reservas para el mismo horario.",
+    detail: "Backend en C#/.NET, interfaz en React y datos en PostgreSQL.",
     stack: "C# / .NET · React · PostgreSQL · Cloudflare · Cloud Run",
     url: "https://arelify.com",
     link: "Visitar Arelify",
@@ -38,9 +37,9 @@ const projects = [
   {
     name: "Gestión de visitas",
     category: "CONANI · pasantía, sep–dic 2025",
-    summary: "Accesos, roles y reportes para una institución.",
+    summary: "El sistema de visitas que desarrollé en CONANI.",
     description:
-      "Desarrollé con Laravel y Vue 3 un sistema de visitas con Microsoft Entra ID, JWT, roles y reportes PDF/Excel. También trabajé en su infraestructura de Azure.",
+      "Durante mi pasantía desarrollé un sistema con Laravel y Vue 3 para gestionar visitas. Integré el inicio de sesión institucional con Microsoft Entra ID, los permisos por rol y la exportación de reportes a PDF y Excel.",
     detail:
       "La versión pública está anonimizada para proteger la información institucional.",
     stack: "PHP / Laravel · Vue 3 · MySQL · Microsoft Azure",
@@ -50,10 +49,11 @@ const projects = [
   {
     name: "Paste Image to Terminal",
     category: "Open source · herramientas de desarrollo",
-    summary: "Una fricción menos al trabajar con agentes de código.",
+    summary: "Pegar imágenes en una terminal dentro de un contenedor.",
     description:
-      "Creé una extensión de VS Code para pegar imágenes en la terminal dentro de Dev Containers. Usa la API de VS Code y deduplicación SHA-256 para apoyar flujos de desarrollo asistidos por IA.",
-    detail: "Un proyecto concreto de herramientas para desarrolladores.",
+      "Creé esta extensión de VS Code para usar imágenes al trabajar con agentes de código dentro de Dev Containers. Guarda la imagen y permite usar su ruta desde la terminal; si la imagen ya existe, evita guardarla de nuevo.",
+    detail:
+      "El repositorio público incluye el código y las instrucciones de uso.",
     stack: "TypeScript · VS Code API · Dev Containers",
     url: "https://github.com/JustSidus/vscode-paste-image-to-terminal",
     link: "Ver repositorio",
@@ -87,21 +87,21 @@ export default function Portfolio() {
               <span className="status-dot" /> Disponible para trabajo remoto
             </p>
             <h1 id="hero-title">
-              Software útil.
+              Soy Bryan Varela.
               <br />
-              <span>De principio a fin.</span>
+              <span>Desarrollador web.</span>
             </h1>
             <p className="intro">
-              Soy Bryan Varela, desarrollador de software en Santo Domingo.
-              Construyo aplicaciones web, APIs y herramientas que ayudan a
-              organizar el trabajo de un negocio.
+              Trabajo en aplicaciones web y APIs desde Santo Domingo. Mis
+              proyectos recientes incluyen sistemas de reservas, ventas e
+              inventario, además de sitios para negocios a través de Staris.
             </p>
             <p className="hero-note">
-              Full stack · Backend · Automatización · Soporte técnico
+              Desarrollo full stack · Backend · Automatización
             </p>
             <div className="actions">
               <a className="button" href="#proyectos">
-                Explorar proyectos <span aria-hidden="true">↘</span>
+                Ver mis proyectos <span aria-hidden="true">↘</span>
               </a>
               <a
                 className="text-link"
@@ -113,29 +113,26 @@ export default function Portfolio() {
             </div>
           </div>
           <aside className="profile-note" aria-label="Sobre mi trabajo">
-            <span className="note-label">CÓMO TRABAJO</span>
+            <span className="note-label">UN POCO SOBRE MÍ</span>
             <p>
-              Entender el problema.
-              <br />
-              Construir la solución.
-              <br />
-              Comprobar que funciona.
+              Llevo Staris, mi estudio de desarrollo web, y curso Ingeniería de
+              Software en APEC.
             </p>
             <div className="note-bottom">
-              <span>República Dominicana</span>
-              <span>UTC−4 · Remoto</span>
+              <span>Santo Domingo, República Dominicana</span>
+              <span>UTC−4 · Disponibilidad inmediata</span>
             </div>
           </aside>
         </section>
         <section id="proyectos" aria-labelledby="projects-title">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Trabajo seleccionado</p>
-              <h2 id="projects-title">Proyectos con contexto.</h2>
+              <p className="eyebrow">Mi trabajo</p>
+              <h2 id="projects-title">Proyectos recientes</h2>
             </div>
             <p>
-              Qué construí, para qué sirve
-              <br />y con qué herramientas.
+              Qué hace cada proyecto
+              <br />y cuál fue mi parte.
             </p>
           </div>
           <div>
@@ -175,8 +172,8 @@ export default function Portfolio() {
         >
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Experiencia y herramientas</p>
-              <h2 id="experience-title">Construir. Resolver. Aprender.</h2>
+              <p className="eyebrow">Mi recorrido</p>
+              <h2 id="experience-title">Experiencia y formación</h2>
             </div>
           </div>
           <div className="experience-grid">
@@ -188,9 +185,9 @@ export default function Portfolio() {
                 </h3>
                 <p className="organization">CONANI</p>
                 <p>
-                  Sistema de visitas con Laravel y Vue 3, autenticación y
-                  reportes. Infraestructura Azure, migración de tres proyectos,
-                  depuración y documentación técnica.
+                  Además del sistema de visitas, trabajé en infraestructura de
+                  Azure y en la migración de tres proyectos. También corregí
+                  errores y preparé documentación técnica.
                 </p>
               </article>
               <article className="job">
@@ -202,8 +199,8 @@ export default function Portfolio() {
                   Programa Mundial de Alimentos · ONU
                 </p>
                 <p>
-                  Soporte de hardware y software a usuarios corporativos,
-                  control de activos y gestión de recursos tecnológicos.
+                  Atendí problemas de hardware y software de los usuarios y
+                  colaboré con el control de los equipos y recursos de TI.
                 </p>
               </article>
               <article className="job">
@@ -220,7 +217,7 @@ export default function Portfolio() {
               </article>
             </div>
             <aside className="toolbox">
-              <h3>Mi caja de herramientas</h3>
+              <h3>Tecnologías que uso</h3>
               <dl>
                 <dt>Backend y datos</dt>
                 <dd>
@@ -229,18 +226,18 @@ export default function Portfolio() {
                 </dd>
                 <dt>Interfaces</dt>
                 <dd>React, Next.js, Vue 3, Astro, TypeScript y JavaScript.</dd>
-                <dt>Entrega y cloud</dt>
+                <dt>Infraestructura y despliegue</dt>
                 <dd>
                   Azure, Google Cloud Run, Cloudflare, Docker, Git y GitHub
                   Actions.
                 </dd>
                 <dt>Automatización e IA</dt>
                 <dd>
-                  Scripts, herramientas MCP y flujos con Codex y Claude Code,
-                  acompañados de validación y revisión.
+                  Escribo scripts y herramientas MCP. Uso Codex y Claude Code
+                  como apoyo al desarrollo, y reviso y pruebo los cambios.
                 </dd>
                 <dt>Idiomas</dt>
-                <dd>Español nativo. Inglés B2, en mejora continua.</dd>
+                <dd>Español nativo. Inglés B2; sigo practicándolo.</dd>
               </dl>
             </aside>
           </div>
@@ -250,11 +247,12 @@ export default function Portfolio() {
           id="contacto"
           aria-labelledby="contact-title"
         >
-          <p className="eyebrow">Hablemos</p>
-          <h2 id="contact-title">¿En qué puedo ayudarte?</h2>
+          <p className="eyebrow">Contacto</p>
+          <h2 id="contact-title">Podemos trabajar juntos.</h2>
           <p>
-            Busco oportunidades remotas en español y proyectos donde pueda
-            aportar desde el primer día. Disponibilidad inmediata.
+            Estoy buscando trabajo remoto en español, en desarrollo web,
+            backend, automatización o soporte técnico. Puedo empezar de
+            inmediato. Si tienes una vacante o un proyecto, escríbeme.
           </p>
           <a className="contact-email" href="mailto:devbryanvarela@gmail.com">
             devbryanvarela@gmail.com <span aria-hidden="true">↗</span>
@@ -282,7 +280,7 @@ export default function Portfolio() {
       </main>
       <footer className="wrap">
         <span>© 2026 Bryan Varela</span>
-        <span>Hecho con claridad, desde Santo Domingo.</span>
+        <span>Santo Domingo, República Dominicana</span>
       </footer>
     </>
   );
